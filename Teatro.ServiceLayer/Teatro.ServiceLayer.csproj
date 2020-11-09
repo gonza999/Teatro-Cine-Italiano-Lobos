@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Facades\IServicioClasificaciones.cs" />
+    <Compile Include="Facades\IServicioFormasVentas.cs" />
     <Compile Include="Facades\IServicioTipoEventos.cs" />
     <Compile Include="Facades\IServicioUbicaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servicios\ServicioClasificiones.cs" />
+    <Compile Include="Servicios\ServicioClasificaciones.cs" />
+    <Compile Include="Servicios\ServicioFormasVentas.cs" />
     <Compile Include="Servicios\ServicioTipoEventos.cs" />
     <Compile Include="Servicios\ServicioUbicaciones.cs" />
   </ItemGroup>

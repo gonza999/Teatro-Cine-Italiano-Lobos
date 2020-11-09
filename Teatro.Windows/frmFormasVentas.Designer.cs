@@ -1,6 +1,6 @@
 ﻿namespace Teatro.Windows
 {
-    partial class frmUbicaciones
+    partial class frmFormasVentas
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.cmnUbicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnFormaVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
@@ -66,7 +66,7 @@
             this.dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDatos.ColumnHeadersHeight = 30;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cmnUbicacion});
+            this.cmnFormaVenta});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 25);
             this.dgvDatos.MultiSelect = false;
@@ -90,12 +90,12 @@
             this.dgvDatos.Size = new System.Drawing.Size(585, 372);
             this.dgvDatos.TabIndex = 10;
             // 
-            // cmnUbicacion
+            // cmnFormaVenta
             // 
-            this.cmnUbicacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnUbicacion.HeaderText = "Ubicacion";
-            this.cmnUbicacion.Name = "cmnUbicacion";
-            this.cmnUbicacion.ReadOnly = true;
+            this.cmnFormaVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnFormaVenta.HeaderText = "Forma Venta";
+            this.cmnFormaVenta.Name = "cmnFormaVenta";
+            this.cmnFormaVenta.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -205,7 +205,7 @@
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
-            // frmUbicaciones
+            // frmFormasVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -216,11 +216,11 @@
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(601, 436);
             this.MinimumSize = new System.Drawing.Size(601, 436);
-            this.Name = "frmUbicaciones";
+            this.Name = "frmFormasVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmUbicaciones";
-            this.Load += new System.EventHandler(this.frmUbicaciones_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmUbicaciones_KeyPress);
+            this.Text = "frmFormasVentas";
+            this.Load += new System.EventHandler(this.frmFormasVentas_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmFormasVentas_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -244,6 +244,6 @@
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnUbicacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnFormaVenta;
     }
 }

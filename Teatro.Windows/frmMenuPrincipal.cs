@@ -41,5 +41,12 @@ namespace Teatro.Windows
             frmUbicaciones.Text = "Ubicaciones";
             frmUbicaciones.ShowDialog(this);
         }
+
+        private void formasDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFormasVentas frm = new frmFormasVentas();
+            frm.Text = "Formas de Ventas";
+            frm.ShowDialog(this);
+        }
     }
 }

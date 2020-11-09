@@ -15,9 +15,9 @@ using Teatro.Windows.Helpers.Enum;
 
 namespace Teatro.Windows
 {
-    public partial class frmClasificaciones : Form
+    public partial class frmFormasVentas : Form
     {
-        public frmClasificaciones()
+        public frmFormasVentas()
         {
             InitializeComponent();
         }
@@ -26,9 +26,9 @@ namespace Teatro.Windows
         {
             Close();
         }
-        private IServicioClasificaciones servicio;
-        private List<Clasificacion> lista = new List<Clasificacion>();
-        private void frmClasificaciones_Load(object sender, EventArgs e)
+        private IServicioFormasVentas servicio;
+        private List<FormaVenta> lista = new List<FormaVenta>();
+        private void frmFormasVentas_Load(object sender, EventArgs e)
         {
             Actualizar();
         }
@@ -37,7 +37,7 @@ namespace Teatro.Windows
         {
             try
             {
-                servicio = new ServicioClasificaciones();
+                servicio = new ServicioFormasVentas();
                 lista = servicio.GetLista();
                 MostrarDatosEnGrilla();
             }
@@ -52,16 +52,16 @@ namespace Teatro.Windows
         private void MostrarDatosEnGrilla()
         {
             dgvDatos.Rows.Clear();
-            foreach (var clasificacion in lista)
+            foreach (var formaVenta in lista)
             {
-                AgregarFila(clasificacion);
+                AgregarFila(formaVenta);
             }
         }
 
-        public void AgregarFila(Clasificacion clasificacion)
+        public void AgregarFila(FormaVenta formaVenta)
         {
             DataGridViewRow r = ConstruirFila();
-            SetearFila(r, clasificacion);
+            SetearFila(r, formaVenta);
             AgregarFila(r);
         }
 
@@ -70,11 +70,11 @@ namespace Teatro.Windows
             dgvDatos.Rows.Add(r);
         }
 
-        private void SetearFila(DataGridViewRow r, Clasificacion clasificacion)
+        private void SetearFila(DataGridViewRow r, FormaVenta formaVenta)
         {
-            r.Cells[cmnClasificacion.Index].Value = clasificacion.NombreClasificacion;
+            r.Cells[cmnFormaVenta.Index].Value = formaVenta.NombreFormaVenta;
 
-            r.Tag = clasificacion;
+            r.Tag = formaVenta;
         }
 
         private DataGridViewRow ConstruirFila()
@@ -86,12 +86,12 @@ namespace Teatro.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            frmClasificacionesAE frm = new frmClasificacionesAE(this);
+            frmFormasVentasAE frm = new frmFormasVentasAE(this);
             frm.Text = "Nuevo";
             frm.ShowDialog(this);
         }
 
-        private void frmClasificaciones_KeyPress(object sender, KeyPressEventArgs e)
+        private void frmFormasVentas_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
@@ -100,7 +100,7 @@ namespace Teatro.Windows
                 {
                     return;
                 }
-                lista = servicio.BuscarClasificacion(txtBuscar.Text);
+                lista = servicio.BuscarFormaVenta(txtBuscar.Text);
                 MostrarDatosEnGrilla();
             }
         }
@@ -116,9 +116,9 @@ namespace Teatro.Windows
             if (dgvDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
-                Clasificacion clasificacion = (Clasificacion)r.Tag;
+                FormaVenta formaVenta = (FormaVenta)r.Tag;
 
-                DialogResult dr = MessageBox.Show(this, $"¿Desea dar de baja a la clasificacion {clasificacion.NombreClasificacion}?",
+                DialogResult dr = MessageBox.Show(this, $"¿Desea dar de baja a la forma de Venta {formaVenta.NombreFormaVenta}?",
                     "Confirmar Baja",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
@@ -126,9 +126,9 @@ namespace Teatro.Windows
                 {
                     try
                     {
-                        if (!servicio.EstaRelacionado(clasificacion))
+                        if (!servicio.EstaRelacionado(formaVenta))
                         {
-                            servicio.Borrar(clasificacion.ClasificacionId);
+                            servicio.Borrar(formaVenta.FormaVentaId);
                             dgvDatos.Rows.Remove(r);
                             Helper.MensajeBox("Registro borrado", Tipo.Success);
                         }
@@ -151,19 +151,19 @@ namespace Teatro.Windows
             if (dgvDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
-                Clasificacion clasificacion = (Clasificacion)r.Tag;
-                Clasificacion clasificacionAux = (Clasificacion)clasificacion.Clone();
-                frmClasificacionesAE frm = new frmClasificacionesAE(this);
-                frm.Text = "Editar Clasificacion";
-                frm.SetClasificacion(clasificacion);
+                FormaVenta formaVenta = (FormaVenta)r.Tag;
+                FormaVenta formaVentaAux = (FormaVenta)formaVenta.Clone();
+                frmFormasVentasAE frm = new frmFormasVentasAE(this);
+                frm.Text = "Editar FormaVenta";
+                frm.SetFormaVenta(formaVenta);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.OK)
                 {
                     try
                     {
-                        clasificacion = frm.GetClasificacion();
-                        servicio.Guardar(clasificacion);
-                        SetearFila(r, clasificacion);
+                        formaVenta = frm.GetFormaVenta();
+                        servicio.Guardar(formaVenta);
+                        SetearFila(r, formaVenta);
                         Helper.MensajeBox("Registro Editado", Tipo.Success);
                     }
                     catch (Exception exception)
@@ -174,6 +174,7 @@ namespace Teatro.Windows
             }
         }
 
- 
+
     }
 }
+

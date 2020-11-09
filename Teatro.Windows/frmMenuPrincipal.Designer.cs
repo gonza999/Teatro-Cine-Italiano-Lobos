@@ -32,8 +32,9 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposDeEventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clasificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ubicacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formasDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tiposDeEventosToolStripMenuItem,
             this.clasificacionesToolStripMenuItem,
-            this.ubicacionesToolStripMenuItem});
+            this.ubicacionesToolStripMenuItem,
+            this.formasDeVentasToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(69, 21);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -64,16 +66,23 @@
             // tiposDeEventosToolStripMenuItem
             // 
             this.tiposDeEventosToolStripMenuItem.Name = "tiposDeEventosToolStripMenuItem";
-            this.tiposDeEventosToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.tiposDeEventosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.tiposDeEventosToolStripMenuItem.Text = "Tipos de Eventos";
             this.tiposDeEventosToolStripMenuItem.Click += new System.EventHandler(this.tiposDeEventosToolStripMenuItem_Click);
             // 
             // clasificacionesToolStripMenuItem
             // 
             this.clasificacionesToolStripMenuItem.Name = "clasificacionesToolStripMenuItem";
-            this.clasificacionesToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.clasificacionesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.clasificacionesToolStripMenuItem.Text = "Clasificaciones";
             this.clasificacionesToolStripMenuItem.Click += new System.EventHandler(this.clasificacionesToolStripMenuItem_Click);
+            // 
+            // ubicacionesToolStripMenuItem
+            // 
+            this.ubicacionesToolStripMenuItem.Name = "ubicacionesToolStripMenuItem";
+            this.ubicacionesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.ubicacionesToolStripMenuItem.Text = "Ubicaciones";
+            this.ubicacionesToolStripMenuItem.Click += new System.EventHandler(this.ubicacionesToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -82,12 +91,12 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // ubicacionesToolStripMenuItem
+            // formasDeVentasToolStripMenuItem
             // 
-            this.ubicacionesToolStripMenuItem.Name = "ubicacionesToolStripMenuItem";
-            this.ubicacionesToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.ubicacionesToolStripMenuItem.Text = "Ubicaciones";
-            this.ubicacionesToolStripMenuItem.Click += new System.EventHandler(this.ubicacionesToolStripMenuItem_Click);
+            this.formasDeVentasToolStripMenuItem.Name = "formasDeVentasToolStripMenuItem";
+            this.formasDeVentasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.formasDeVentasToolStripMenuItem.Text = "Formas de Ventas";
+            this.formasDeVentasToolStripMenuItem.Click += new System.EventHandler(this.formasDeVentasToolStripMenuItem_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -121,5 +130,6 @@
         private System.Windows.Forms.ToolStripMenuItem tiposDeEventosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clasificacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ubicacionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formasDeVentasToolStripMenuItem;
     }
 }

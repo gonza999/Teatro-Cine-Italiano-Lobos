@@ -9,11 +9,11 @@ using Teatro.DataLayer.Facades;
 
 namespace Teatro.DataLayer.Repositorios
 {
-    public class RepositorioUbicaciones:IRepositorioUbicaciones
+    public class RepositorioFormasVentas:IRepositorioFormasVentas
     {
         private readonly SqlConnection cn;
 
-        public RepositorioUbicaciones(SqlConnection cn)
+        public RepositorioFormasVentas(SqlConnection cn)
         {
             this.cn = cn;
         }
@@ -21,7 +21,7 @@ namespace Teatro.DataLayer.Repositorios
         {
             try
             {
-                string cadenaComando = "DELETE FROM Ubicaciones WHERE UbicacionId=@id";
+                string cadenaComando = "DELETE FROM FormasVentas WHERE FormaVentaId=@id";
                 SqlCommand comando = new SqlCommand(cadenaComando, cn);
                 comando.Parameters.AddWithValue("@id", id);
                 comando.ExecuteNonQuery();
@@ -33,29 +33,29 @@ namespace Teatro.DataLayer.Repositorios
             }
         }
 
-        public bool EstaRelacionado(Ubicacion ubicacion)
+        public bool EstaRelacionado(FormaVenta formaVenta)
         {
             return false;
         }
 
-        public bool Existe(Ubicacion ubicacion)
+        public bool Existe(FormaVenta formaVenta)
         {
             try
             {
                 SqlCommand comando;
-                if (ubicacion.UbicacionId == 0)
+                if (formaVenta.FormaVentaId == 0)
                 {
-                    string cadenaComando = "SELECT UbicacionId, Ubicacion FROM Ubicaciones WHERE Ubicacion=@nombre";
+                    string cadenaComando = "SELECT FormaVentaId, FormaVenta FROM FormasVentas WHERE FormaVenta=@nombre";
                     comando = new SqlCommand(cadenaComando, cn);
-                    comando.Parameters.AddWithValue("@nombre", ubicacion.NombreUbicacion);
+                    comando.Parameters.AddWithValue("@nombre", formaVenta.NombreFormaVenta);
 
                 }
                 else
                 {
-                    string cadenaComando = "SELECT UbicacionId, Ubicacion FROM Ubicaciones WHERE Ubicacion=@nombre AND UbicacionId<>@id";
+                    string cadenaComando = "SELECT FormaVentaId, FormaVenta FROM FormasVentas WHERE FormaVenta=@nombre AND FormaVentaId<>@id";
                     comando = new SqlCommand(cadenaComando, cn);
-                    comando.Parameters.AddWithValue("@nombre", ubicacion.NombreUbicacion);
-                    comando.Parameters.AddWithValue("@id", ubicacion.UbicacionId);
+                    comando.Parameters.AddWithValue("@nombre", formaVenta.NombreFormaVenta);
+                    comando.Parameters.AddWithValue("@id", formaVenta.FormaVentaId);
 
 
                 }
@@ -68,18 +68,18 @@ namespace Teatro.DataLayer.Repositorios
             }
         }
 
-        public List<Ubicacion> GetLista()
+        public List<FormaVenta> GetLista()
         {
-            List<Ubicacion> lista = new List<Ubicacion>();
+            List<FormaVenta> lista = new List<FormaVenta>();
             try
             {
-                string cadenaComando = "SELECT UbicacionId, Ubicacion FROM Ubicaciones";
+                string cadenaComando = "SELECT FormaVentaId, FormaVenta FROM FormasVentas";
                 SqlCommand comando = new SqlCommand(cadenaComando, cn);
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    Ubicacion ubicacion = ConstruirUbicacion(reader);
-                    lista.Add(ubicacion);
+                    FormaVenta formaVenta = ConstruirFormaVenta(reader);
+                    lista.Add(formaVenta);
                 }
                 reader.Close();
                 return lista;
@@ -91,31 +91,31 @@ namespace Teatro.DataLayer.Repositorios
             }
         }
 
-        private Ubicacion ConstruirUbicacion(SqlDataReader reader)
+        private FormaVenta ConstruirFormaVenta(SqlDataReader reader)
         {
-            return new Ubicacion()
+            return new FormaVenta()
             {
-                UbicacionId = reader.GetInt32(0),
-                NombreUbicacion = reader.GetString(1)
+                FormaVentaId = reader.GetInt32(0),
+                NombreFormaVenta = reader.GetString(1)
             };
         }
 
-        public Ubicacion GetUbicacion(string nombreUbicacion)
+        public FormaVenta GetFormaVenta(string nombreFormaVenta)
         {
             try
             {
-                Ubicacion ubicacion = null;
-                string cadenaComando = "SELECT UbicacionId, Ubicacion FROM Ubicaciones WHERE Ubicacion = @nombreUbicacion";
+                FormaVenta formaVenta = null;
+                string cadenaComando = "SELECT FormaVentaId, FormaVenta FROM FormasVentas WHERE FormaVenta = @nombreFormaVenta";
                 SqlCommand comando = new SqlCommand(cadenaComando, cn);
-                comando.Parameters.AddWithValue("@nombreUbicacion", nombreUbicacion);
+                comando.Parameters.AddWithValue("@nombreFormaVenta", nombreFormaVenta);
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    ubicacion = ConstruirUbicacion(reader);
+                    formaVenta = ConstruirFormaVenta(reader);
                     reader.Close();
                 }
-                return ubicacion;
+                return formaVenta;
             }
             catch (Exception e)
             {
@@ -124,23 +124,23 @@ namespace Teatro.DataLayer.Repositorios
             }
         }
 
-        public Ubicacion GetUbicacionPorId(int id)
+        public FormaVenta GetFormaVentaPorId(int id)
         {
             try
             {
-                Ubicacion ubicacion = null;
-                string cadenaComando = "SELECT UbicacionId,Ubicacion FROM Ubicaciones WHERE UbicacionId=@id";
+                FormaVenta formaVenta = null;
+                string cadenaComando = "SELECT FormaVentaId,FormaVenta FROM FormasVentas WHERE FormaVentaId=@id";
                 SqlCommand comando = new SqlCommand(cadenaComando, cn);
                 comando.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    ubicacion = ConstruirUbicacion(reader);
+                    formaVenta = ConstruirFormaVenta(reader);
                     reader.Close();
                 }
 
-                return ubicacion;
+                return formaVenta;
             }
             catch (Exception e)
             {
@@ -149,20 +149,20 @@ namespace Teatro.DataLayer.Repositorios
             }
         }
 
-        public void Guardar(Ubicacion ubicacion)
+        public void Guardar(FormaVenta formaVenta)
         {
-            if (ubicacion.UbicacionId == 0)
+            if (formaVenta.FormaVentaId == 0)
             {
                 //Nuevo registro
                 try
                 {
-                    string cadenaComando = "INSERT INTO Ubicaciones VALUES(@nombre)";
+                    string cadenaComando = "INSERT INTO FormasVentas VALUES(@nombre)";
                     SqlCommand comando = new SqlCommand(cadenaComando, cn);
-                    comando.Parameters.AddWithValue("@nombre", ubicacion.NombreUbicacion);
+                    comando.Parameters.AddWithValue("@nombre", formaVenta.NombreFormaVenta);
                     comando.ExecuteNonQuery();
                     cadenaComando = "SELECT @@IDENTITY";
                     comando = new SqlCommand(cadenaComando, cn);
-                    ubicacion.UbicacionId = (int)(decimal)comando.ExecuteScalar();
+                    formaVenta.FormaVentaId = (int)(decimal)comando.ExecuteScalar();
 
                 }
                 catch (Exception e)
@@ -176,10 +176,10 @@ namespace Teatro.DataLayer.Repositorios
                 //Edición
                 try
                 {
-                    string cadenaComando = "UPDATE Ubicaciones SET Ubicacion=@nombre WHERE UbicacionId=@id";
+                    string cadenaComando = "UPDATE FormasVentas SET FormaVenta=@nombre WHERE FormaVentaId=@id";
                     SqlCommand comando = new SqlCommand(cadenaComando, cn);
-                    comando.Parameters.AddWithValue("@nombre", ubicacion.NombreUbicacion);
-                    comando.Parameters.AddWithValue("@id", ubicacion.UbicacionId);
+                    comando.Parameters.AddWithValue("@nombre", formaVenta.NombreFormaVenta);
+                    comando.Parameters.AddWithValue("@id", formaVenta.FormaVentaId);
                     comando.ExecuteNonQuery();
 
                 }
@@ -191,20 +191,20 @@ namespace Teatro.DataLayer.Repositorios
             }
         }
 
-        public List<Ubicacion> BuscarUbicacion(string buscar)
+        public List<FormaVenta> BuscarFormaVenta(string buscar)
         {
-            List<Ubicacion> lista = new List<Ubicacion>();
+            List<FormaVenta> lista = new List<FormaVenta>();
             try
             {
-                string cadenaComando = "SELECT UbicacionId, Ubicacion FROM Ubicaciones " +
-                    "WHERE Ubicacion like @buscar";
+                string cadenaComando = "SELECT FormaVentaId, FormaVenta FROM FormasVentas " +
+                    "WHERE FormaVenta like @buscar";
                 SqlCommand comando = new SqlCommand(cadenaComando, cn);
                 comando.Parameters.AddWithValue("@buscar", $"%{buscar}%");
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    Ubicacion ubicacion = ConstruirUbicacion(reader);
-                    lista.Add(ubicacion);
+                    FormaVenta formaVenta = ConstruirFormaVenta(reader);
+                    lista.Add(formaVenta);
                 }
                 reader.Close();
                 return lista;

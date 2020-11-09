@@ -15,41 +15,41 @@ using Teatro.Windows.Helpers.Enum;
 
 namespace Teatro.Windows
 {
-    public partial class frmClasificacionesAE : Form
+    public partial class frmFormasVentasAE : Form
     {
-        public frmClasificacionesAE(frmClasificaciones frm)
+        public frmFormasVentasAE(frmFormasVentas frm)
         {
             InitializeComponent();
             this.frm = frm;
         }
-        public frmClasificacionesAE()
+        public frmFormasVentasAE()
         {
             InitializeComponent();
             frm = null;
         }
 
-        private frmClasificaciones frm;
+        private frmFormasVentas frm;
         private bool esEdicion = false;
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            servicio = new ServicioClasificaciones();
-            if (clasificacion != null)
+            servicio = new ServicioFormasVentas();
+            if (formaVenta != null)
             {
-                txtClasificacion.Text = clasificacion.NombreClasificacion;
+                txtFormaVenta.Text = formaVenta.NombreFormaVenta;
                 esEdicion = true;
             }
         }
 
-        private Clasificacion clasificacion;
-        public void SetClasificacion(Clasificacion clasificacion)
+        private FormaVenta formaVenta;
+        public void SetFormaVenta(FormaVenta formaVenta)
         {
-            this.clasificacion = clasificacion;
+            this.formaVenta = formaVenta;
         }
 
-        public Clasificacion GetClasificacion()
+        public FormaVenta GetFormaVenta()
         {
-            return clasificacion;
+            return formaVenta;
         }
 
 
@@ -58,11 +58,11 @@ namespace Teatro.Windows
         {
             errorProvider1.Clear();
             bool valido = true;
-            if (string.IsNullOrEmpty(txtClasificacion.Text.Trim()) &&
-                string.IsNullOrWhiteSpace(txtClasificacion.Text.Trim()))
+            if (string.IsNullOrEmpty(txtFormaVenta.Text.Trim()) &&
+                string.IsNullOrWhiteSpace(txtFormaVenta.Text.Trim()))
             {
                 valido = false;
-                errorProvider1.SetError(txtClasificacion, "Debe ingresar una clasificacion");
+                errorProvider1.SetError(txtFormaVenta, "Debe ingresar una forma de Venta");
             }
 
             return valido;
@@ -73,21 +73,21 @@ namespace Teatro.Windows
             if (ValidarDatos())
             {
 
-                if (clasificacion == null)
+                if (formaVenta == null)
                 {
-                    clasificacion = new Clasificacion();
+                    formaVenta = new FormaVenta();
                 }
 
-                clasificacion.NombreClasificacion = txtClasificacion.Text;
+                formaVenta.NombreFormaVenta = txtFormaVenta.Text;
 
                 if (ValidarObjeto())
                 {
                     if (!esEdicion)
                     {
-                        servicio.Guardar(clasificacion);
+                        servicio.Guardar(formaVenta);
                         if (frm != null)
                         {
-                            frm.AgregarFila(clasificacion);
+                            frm.AgregarFila(formaVenta);
                         }
                         Helper.MensajeBox("Registro guardado", Tipo.Success);
                         DialogResult dr = MessageBox.Show("Desea agregar otro registro?", "Confirmar",
@@ -113,19 +113,19 @@ namespace Teatro.Windows
 
         private void InicializarControles()
         {
-            txtClasificacion.Clear();
-            txtClasificacion.Focus();
-            clasificacion = null;
+            txtFormaVenta.Clear();
+            txtFormaVenta.Focus();
+            formaVenta = null;
         }
 
-        private IServicioClasificaciones servicio;
+        private IServicioFormasVentas servicio;
         private bool ValidarObjeto()
         {
             errorProvider1.Clear();
             bool valido = true;
-            if (servicio.Existe(clasificacion))
+            if (servicio.Existe(formaVenta))
             {
-                errorProvider1.SetError(txtClasificacion, "Clasificacion repetida");
+                errorProvider1.SetError(txtFormaVenta, "Forma de Venta repetida");
                 valido = false;
             }
             return valido;

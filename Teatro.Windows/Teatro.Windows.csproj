@@ -58,6 +58,18 @@
     <Compile Include="frmClasificacionesAE.Designer.cs">
       <DependentUpon>frmClasificacionesAE.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFormasVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFormasVentas.Designer.cs">
+      <DependentUpon>frmFormasVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFormasVentasAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFormasVentasAE.Designer.cs">
+      <DependentUpon>frmFormasVentasAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTipoEventosAE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +109,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmClasificacionesAE.resx">
       <DependentUpon>frmClasificacionesAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFormasVentas.resx">
+      <DependentUpon>frmFormasVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFormasVentasAE.resx">
+      <DependentUpon>frmFormasVentasAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTipoEventosAE.resx">
       <DependentUpon>frmTipoEventosAE.cs</DependentUpon>

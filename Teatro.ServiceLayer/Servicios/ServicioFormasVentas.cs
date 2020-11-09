@@ -11,16 +11,16 @@ using Teatro.ServiceLayer.Facades;
 
 namespace Teatro.ServiceLayer.Servicios
 {
-    public class ServicioClasificiones:IServicioClasificaciones
+    public class ServicioFormasVentas:IServicioFormasVentas
     {
         private ConexionBD _conexion;
-        private IRepositorioClasificaciones _repositorio;
+        private IRepositorioFormasVentas _repositorio;
         public void Borrar(int id)
         {
             try
             {
                 _conexion = new ConexionBD();
-                _repositorio = new RepositorioClasificaciones(_conexion.AbrirConexion());
+                _repositorio = new RepositorioFormasVentas(_conexion.AbrirConexion());
                 _repositorio.Borrar(id);
                 _conexion.CerrarConexion();
 
@@ -32,13 +32,13 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
-        public List<Clasificacion> BuscarClasificacion(string clasificacion)
+        public List<FormaVenta> BuscarFormaVenta(string formaVenta)
         {
             try
             {
                 _conexion = new ConexionBD();
-                _repositorio = new RepositorioClasificaciones(_conexion.AbrirConexion());
-                var lista = _repositorio.BuscarClasificacion(clasificacion);
+                _repositorio = new RepositorioFormasVentas(_conexion.AbrirConexion());
+                var lista = _repositorio.BuscarFormaVenta(formaVenta);
                 _conexion.CerrarConexion();
                 return lista;
             }
@@ -49,13 +49,13 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
-        public bool EstaRelacionado(Clasificacion clasificacion)
+        public bool EstaRelacionado(FormaVenta formaVenta)
         {
             try
             {
                 _conexion = new ConexionBD();
-                _repositorio = new RepositorioClasificaciones(_conexion.AbrirConexion());
-                var estaRelacionado = _repositorio.EstaRelacionado(clasificacion);
+                _repositorio = new RepositorioFormasVentas(_conexion.AbrirConexion());
+                var estaRelacionado = _repositorio.EstaRelacionado(formaVenta);
                 _conexion.CerrarConexion();
                 return estaRelacionado;
             }
@@ -66,13 +66,13 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
-        public bool Existe(Clasificacion clasificacion)
+        public bool Existe(FormaVenta formaVenta)
         {
             try
             {
                 _conexion = new ConexionBD();
-                _repositorio = new RepositorioClasificaciones(_conexion.AbrirConexion());
-                var existe = _repositorio.Existe(clasificacion);
+                _repositorio = new RepositorioFormasVentas(_conexion.AbrirConexion());
+                var existe = _repositorio.Existe(formaVenta);
                 _conexion.CerrarConexion();
                 return existe;
             }
@@ -83,12 +83,12 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
-        public List<Clasificacion> GetLista()
+        public List<FormaVenta> GetLista()
         {
             try
             {
                 _conexion = new ConexionBD();
-                _repositorio = new RepositorioClasificaciones(_conexion.AbrirConexion());
+                _repositorio = new RepositorioFormasVentas(_conexion.AbrirConexion());
                 var lista = _repositorio.GetLista();
                 _conexion.CerrarConexion();
                 return lista;
@@ -100,15 +100,15 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
-        public Clasificacion GetClasificacion(string nombreClasificacion)
+        public FormaVenta GetFormaVenta(string nombreFormaVenta)
         {
             try
             {
                 _conexion = new ConexionBD();
-                _repositorio = new RepositorioClasificaciones(_conexion.AbrirConexion());
-                var clasificacion = _repositorio.GetClasificacion(nombreClasificacion);
+                _repositorio = new RepositorioFormasVentas(_conexion.AbrirConexion());
+                var formaVenta = _repositorio.GetFormaVenta(nombreFormaVenta);
                 _conexion.CerrarConexion();
-                return clasificacion;
+                return formaVenta;
             }
             catch (Exception e)
             {
@@ -117,15 +117,15 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
-        public Clasificacion GetClasificacionPorId(int id)
+        public FormaVenta GetFormaVentaPorId(int id)
         {
             try
             {
                 _conexion = new ConexionBD();
-                _repositorio = new RepositorioClasificaciones(_conexion.AbrirConexion());
-                var clasificacion = _repositorio.GetClasificacionPorId(id);
+                _repositorio = new RepositorioFormasVentas(_conexion.AbrirConexion());
+                var formaVenta = _repositorio.GetFormaVentaPorId(id);
                 _conexion.CerrarConexion();
-                return clasificacion;
+                return formaVenta;
             }
             catch (Exception e)
             {
@@ -134,13 +134,13 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
-        public void Guardar(Clasificacion clasificacion)
+        public void Guardar(FormaVenta formaVenta)
         {
             try
             {
                 _conexion = new ConexionBD();
-                _repositorio = new RepositorioClasificaciones(_conexion.AbrirConexion());
-                _repositorio.Guardar(clasificacion);
+                _repositorio = new RepositorioFormasVentas(_conexion.AbrirConexion());
+                _repositorio.Guardar(formaVenta);
                 _conexion.CerrarConexion();
 
             }
