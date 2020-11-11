@@ -34,8 +34,9 @@
             this.clasificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ubicacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formasDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formasDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.plantasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,8 @@
             this.clasificacionesToolStripMenuItem,
             this.ubicacionesToolStripMenuItem,
             this.formasDeVentasToolStripMenuItem,
-            this.formasDePagosToolStripMenuItem});
+            this.formasDePagosToolStripMenuItem,
+            this.plantasToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(69, 21);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -93,6 +95,13 @@
             this.formasDeVentasToolStripMenuItem.Text = "Formas de Ventas";
             this.formasDeVentasToolStripMenuItem.Click += new System.EventHandler(this.formasDeVentasToolStripMenuItem_Click);
             // 
+            // formasDePagosToolStripMenuItem
+            // 
+            this.formasDePagosToolStripMenuItem.Name = "formasDePagosToolStripMenuItem";
+            this.formasDePagosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.formasDePagosToolStripMenuItem.Text = "Formas de Pagos";
+            this.formasDePagosToolStripMenuItem.Click += new System.EventHandler(this.formasDePagosToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
@@ -100,12 +109,12 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // formasDePagosToolStripMenuItem
+            // plantasToolStripMenuItem
             // 
-            this.formasDePagosToolStripMenuItem.Name = "formasDePagosToolStripMenuItem";
-            this.formasDePagosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.formasDePagosToolStripMenuItem.Text = "Formas de Pagos";
-            this.formasDePagosToolStripMenuItem.Click += new System.EventHandler(this.formasDePagosToolStripMenuItem_Click);
+            this.plantasToolStripMenuItem.Name = "plantasToolStripMenuItem";
+            this.plantasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.plantasToolStripMenuItem.Text = "Plantas";
+            this.plantasToolStripMenuItem.Click += new System.EventHandler(this.plantasToolStripMenuItem_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -141,5 +150,6 @@
         private System.Windows.Forms.ToolStripMenuItem ubicacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formasDeVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formasDePagosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem plantasToolStripMenuItem;
     }
 }

@@ -45,7 +45,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(286, 93);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(101, 51);
-            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.TabIndex = 2;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -57,7 +57,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(28, 93);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(101, 51);
-            this.btnGuardar.TabIndex = 12;
+            this.btnGuardar.TabIndex = 1;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -77,7 +77,7 @@
             this.txtTipoEvento.Location = new System.Drawing.Point(151, 27);
             this.txtTipoEvento.Name = "txtTipoEvento";
             this.txtTipoEvento.Size = new System.Drawing.Size(214, 20);
-            this.txtTipoEvento.TabIndex = 14;
+            this.txtTipoEvento.TabIndex = 0;
             // 
             // errorProvider1
             // 

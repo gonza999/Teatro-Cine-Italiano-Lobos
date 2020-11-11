@@ -55,5 +55,12 @@ namespace Teatro.Windows
             frm.Text = "Formas de Pagos";
             frm.ShowDialog(this);
         }
+
+        private void plantasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPlantas frm = new frmPlantas();
+            frm.Text = "Plantas";
+            frm.ShowDialog(this);
+        }
     }
 }

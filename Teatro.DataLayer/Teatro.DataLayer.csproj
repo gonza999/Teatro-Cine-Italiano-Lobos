@@ -46,12 +46,14 @@
     <Compile Include="Facades\IRepositorioClasificaciones.cs" />
     <Compile Include="Facades\IRepositorioFormasPagos.cs" />
     <Compile Include="Facades\IRepositorioFormasVentas.cs" />
+    <Compile Include="Facades\IRepositorioPlantas.cs" />
     <Compile Include="Facades\IRepositorioTipoEventos.cs" />
     <Compile Include="Facades\IRepositorioUbicaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\RepositorioClasificaciones.cs" />
     <Compile Include="Repositorios\RepositorioFormasPagos.cs" />
     <Compile Include="Repositorios\RepositorioFormasVentas.cs" />
+    <Compile Include="Repositorios\RepositorioPlantas.cs" />
     <Compile Include="Repositorios\RepositorioTipoEventos.cs" />
     <Compile Include="Repositorios\RepositorioUbicaciones.cs" />
   </ItemGroup>

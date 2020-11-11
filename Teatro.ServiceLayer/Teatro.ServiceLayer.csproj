@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facades\IServicioPlantas.cs" />
     <Compile Include="Facades\IServicioClasificaciones.cs" />
     <Compile Include="Facades\IServicioFormasPagos.cs" />
     <Compile Include="Facades\IServicioFormasVentas.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Servicios\ServicioClasificaciones.cs" />
     <Compile Include="Servicios\ServicioFormasPagos.cs" />
     <Compile Include="Servicios\ServicioFormasVentas.cs" />
+    <Compile Include="Servicios\ServicioPlantas.cs" />
     <Compile Include="Servicios\ServicioTipoEventos.cs" />
     <Compile Include="Servicios\ServicioUbicaciones.cs" />
   </ItemGroup>

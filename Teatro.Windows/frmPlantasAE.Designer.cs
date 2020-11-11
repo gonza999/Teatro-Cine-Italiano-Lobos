@@ -1,6 +1,6 @@
 ﻿namespace Teatro.Windows
 {
-    partial class frmUbicacionesAE
+    partial class frmPlantasAE
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txtUbicacion = new System.Windows.Forms.TextBox();
+            this.txtPlanta = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -37,22 +37,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtUbicacion
+            // txtPlanta
             // 
-            this.txtUbicacion.Location = new System.Drawing.Point(153, 27);
-            this.txtUbicacion.Name = "txtUbicacion";
-            this.txtUbicacion.Size = new System.Drawing.Size(214, 20);
-            this.txtUbicacion.TabIndex = 0;
+            this.txtPlanta.Location = new System.Drawing.Point(127, 27);
+            this.txtPlanta.Name = "txtPlanta";
+            this.txtPlanta.Size = new System.Drawing.Size(214, 20);
+            this.txtPlanta.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 22);
+            this.label1.Location = new System.Drawing.Point(25, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 24);
+            this.label1.Size = new System.Drawing.Size(73, 24);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Ubicacion :";
+            this.label1.Text = "Planta  :";
             // 
             // btnCancelar
             // 
@@ -83,22 +83,22 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // frmUbicacionesAE
+            // frmPlantasAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(418, 167);
             this.ControlBox = false;
-            this.Controls.Add(this.txtUbicacion);
+            this.Controls.Add(this.txtPlanta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.MaximumSize = new System.Drawing.Size(434, 206);
             this.MinimumSize = new System.Drawing.Size(434, 206);
-            this.Name = "frmUbicacionesAE";
+            this.Name = "frmPlantasAE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmUbicacionesAE";
+            this.Text = "frmPlantasAE";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -107,7 +107,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtUbicacion;
+        private System.Windows.Forms.TextBox txtPlanta;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
