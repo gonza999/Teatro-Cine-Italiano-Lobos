@@ -58,6 +58,18 @@
     <Compile Include="frmClasificacionesAE.Designer.cs">
       <DependentUpon>frmClasificacionesAE.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFormasPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFormasPagos.Designer.cs">
+      <DependentUpon>frmFormasPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFormasPagosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFormasPagosAE.Designer.cs">
+      <DependentUpon>frmFormasPagosAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFormasVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmClasificacionesAE.resx">
       <DependentUpon>frmClasificacionesAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFormasPagos.resx">
+      <DependentUpon>frmFormasPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFormasPagosAE.resx">
+      <DependentUpon>frmFormasPagosAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFormasVentas.resx">
       <DependentUpon>frmFormasVentas.cs</DependentUpon>

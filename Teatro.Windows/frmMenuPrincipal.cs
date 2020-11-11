@@ -48,5 +48,12 @@ namespace Teatro.Windows
             frm.Text = "Formas de Ventas";
             frm.ShowDialog(this);
         }
+
+        private void formasDePagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFormasPagos frm = new frmFormasPagos();
+            frm.Text = "Formas de Pagos";
+            frm.ShowDialog(this);
+        }
     }
 }
