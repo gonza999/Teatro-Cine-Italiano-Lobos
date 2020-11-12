@@ -35,8 +35,9 @@
             this.ubicacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formasDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formasDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plantasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +63,8 @@
             this.ubicacionesToolStripMenuItem,
             this.formasDeVentasToolStripMenuItem,
             this.formasDePagosToolStripMenuItem,
-            this.plantasToolStripMenuItem});
+            this.plantasToolStripMenuItem,
+            this.eventosToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(69, 21);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -102,6 +104,13 @@
             this.formasDePagosToolStripMenuItem.Text = "Formas de Pagos";
             this.formasDePagosToolStripMenuItem.Click += new System.EventHandler(this.formasDePagosToolStripMenuItem_Click);
             // 
+            // plantasToolStripMenuItem
+            // 
+            this.plantasToolStripMenuItem.Name = "plantasToolStripMenuItem";
+            this.plantasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.plantasToolStripMenuItem.Text = "Plantas";
+            this.plantasToolStripMenuItem.Click += new System.EventHandler(this.plantasToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
@@ -109,12 +118,12 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // plantasToolStripMenuItem
+            // eventosToolStripMenuItem
             // 
-            this.plantasToolStripMenuItem.Name = "plantasToolStripMenuItem";
-            this.plantasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.plantasToolStripMenuItem.Text = "Plantas";
-            this.plantasToolStripMenuItem.Click += new System.EventHandler(this.plantasToolStripMenuItem_Click);
+            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.eventosToolStripMenuItem.Text = "Eventos";
+            this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -151,5 +160,6 @@
         private System.Windows.Forms.ToolStripMenuItem formasDeVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formasDePagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem plantasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
     }
 }

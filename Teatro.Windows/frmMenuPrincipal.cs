@@ -62,5 +62,12 @@ namespace Teatro.Windows
             frm.Text = "Plantas";
             frm.ShowDialog(this);
         }
+
+        private void eventosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEventos frm = new frmEventos();
+            frm.Text = "Eventos";
+            frm.ShowDialog(this);
+        }
     }
 }

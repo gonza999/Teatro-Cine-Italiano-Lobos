@@ -35,16 +35,27 @@ namespace Teatro.Windows.Helpers
             }
         }
 
-        //internal static void CargarTipoEventoComboBox(ref ComboBox cmbTipoEvento)
-        //{
-        //    IServicioTipoEventos servicioTipoEventos = new ServicioTipoEventos();
-        //    List<TipoEvento> listaMedidas = servicioTipoEventos.GetLista();
-        //    var defaultCategorias = new TipoEvento() { TipoEventoId = 0, NombreTipoEvento = "-Seleccione TipoEvento-" };
-        //    listaMedidas.Insert(0, defaultCategorias);
-        //    cmbTipoEvento.DataSource = listaMedidas;
-        //    cmbTipoEvento.DisplayMember = "NombreTipoEvento";
-        //    cmbTipoEvento.ValueMember = "TipoEventoId";
-        //    cmbTipoEvento.SelectedIndex = 0;
-        //}
+        internal static void CargarTipoEventoComboBox(ref ComboBox cmbTipoEvento)
+        {
+            IServicioTipoEventos servicioTipoEventos = new ServicioTipoEventos();
+            List<TipoEvento> listaTipoEvento = servicioTipoEventos.GetLista();
+            var defaultTipoEvento = new TipoEvento() { TipoEventoId = 0, NombreTipoEvento = "-Seleccione TipoEvento-" };
+            listaTipoEvento.Insert(0, defaultTipoEvento);
+            cmbTipoEvento.DataSource = listaTipoEvento;
+            cmbTipoEvento.DisplayMember = "NombreTipoEvento";
+            cmbTipoEvento.ValueMember = "TipoEventoId";
+            cmbTipoEvento.SelectedIndex = 0;
+        }
+        internal static void CargarClasificacionComboBox(ref ComboBox cmbClasificacion)
+        {
+            IServicioClasificaciones servicioClasificacion = new ServicioClasificaciones();
+            List<Clasificacion> listaClasificacion = servicioClasificacion.GetLista();
+            var defaultClasificacion = new Clasificacion() { ClasificacionId = 0, NombreClasificacion = "-Seleccione Clasificacion-" };
+            listaClasificacion.Insert(0, defaultClasificacion);
+            cmbClasificacion.DataSource = listaClasificacion;
+            cmbClasificacion.DisplayMember = "NombreClasificacion";
+            cmbClasificacion.ValueMember = "ClasificacionId";
+            cmbClasificacion.SelectedIndex = 0;
+        }
     }
 }
