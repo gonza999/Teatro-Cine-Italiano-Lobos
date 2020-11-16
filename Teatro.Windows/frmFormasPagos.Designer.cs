@@ -43,7 +43,6 @@
             this.txtBuscar = new System.Windows.Forms.ToolStripTextBox();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
@@ -102,6 +101,7 @@
             this.toolStrip1.BackColor = System.Drawing.Color.White;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNuevo,
+            this.toolStripSeparator3,
             this.tsbBorrar,
             this.tsbEditar,
             this.toolStripSeparator1,
@@ -109,8 +109,6 @@
             this.txtBuscar,
             this.tsbActualizar,
             this.toolStripSeparator2,
-            this.tsbImprimir,
-            this.toolStripSeparator3,
             this.tsbCerrar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -181,15 +179,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // tsbImprimir
-            // 
-            this.tsbImprimir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(57, 22);
-            this.tsbImprimir.Text = "Imprimir";
-            this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -241,7 +230,6 @@
         private System.Windows.Forms.ToolStripTextBox txtBuscar;
         private System.Windows.Forms.ToolStripButton tsbActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnFormaPago;
