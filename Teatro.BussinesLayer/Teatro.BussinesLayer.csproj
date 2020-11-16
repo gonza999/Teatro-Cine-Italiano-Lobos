@@ -46,6 +46,7 @@
     <Compile Include="Entidades\FormaPago.cs" />
     <Compile Include="Entidades\FormaVenta.cs" />
     <Compile Include="Entidades\Planta.cs" />
+    <Compile Include="Entidades\TipoDocumento.cs" />
     <Compile Include="Entidades\TipoEvento.cs" />
     <Compile Include="Entidades\Ubicacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

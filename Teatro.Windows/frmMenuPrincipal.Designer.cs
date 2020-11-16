@@ -36,8 +36,9 @@
             this.formasDeVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formasDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plantasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDeDocumentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +65,8 @@
             this.formasDeVentasToolStripMenuItem,
             this.formasDePagosToolStripMenuItem,
             this.plantasToolStripMenuItem,
-            this.eventosToolStripMenuItem});
+            this.eventosToolStripMenuItem,
+            this.tiposDeDocumentosToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(69, 21);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -72,44 +74,51 @@
             // tiposDeEventosToolStripMenuItem
             // 
             this.tiposDeEventosToolStripMenuItem.Name = "tiposDeEventosToolStripMenuItem";
-            this.tiposDeEventosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.tiposDeEventosToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.tiposDeEventosToolStripMenuItem.Text = "Tipos de Eventos";
             this.tiposDeEventosToolStripMenuItem.Click += new System.EventHandler(this.tiposDeEventosToolStripMenuItem_Click);
             // 
             // clasificacionesToolStripMenuItem
             // 
             this.clasificacionesToolStripMenuItem.Name = "clasificacionesToolStripMenuItem";
-            this.clasificacionesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.clasificacionesToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.clasificacionesToolStripMenuItem.Text = "Clasificaciones";
             this.clasificacionesToolStripMenuItem.Click += new System.EventHandler(this.clasificacionesToolStripMenuItem_Click);
             // 
             // ubicacionesToolStripMenuItem
             // 
             this.ubicacionesToolStripMenuItem.Name = "ubicacionesToolStripMenuItem";
-            this.ubicacionesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.ubicacionesToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.ubicacionesToolStripMenuItem.Text = "Ubicaciones";
             this.ubicacionesToolStripMenuItem.Click += new System.EventHandler(this.ubicacionesToolStripMenuItem_Click);
             // 
             // formasDeVentasToolStripMenuItem
             // 
             this.formasDeVentasToolStripMenuItem.Name = "formasDeVentasToolStripMenuItem";
-            this.formasDeVentasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.formasDeVentasToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.formasDeVentasToolStripMenuItem.Text = "Formas de Ventas";
             this.formasDeVentasToolStripMenuItem.Click += new System.EventHandler(this.formasDeVentasToolStripMenuItem_Click);
             // 
             // formasDePagosToolStripMenuItem
             // 
             this.formasDePagosToolStripMenuItem.Name = "formasDePagosToolStripMenuItem";
-            this.formasDePagosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.formasDePagosToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.formasDePagosToolStripMenuItem.Text = "Formas de Pagos";
             this.formasDePagosToolStripMenuItem.Click += new System.EventHandler(this.formasDePagosToolStripMenuItem_Click);
             // 
             // plantasToolStripMenuItem
             // 
             this.plantasToolStripMenuItem.Name = "plantasToolStripMenuItem";
-            this.plantasToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.plantasToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.plantasToolStripMenuItem.Text = "Plantas";
             this.plantasToolStripMenuItem.Click += new System.EventHandler(this.plantasToolStripMenuItem_Click);
+            // 
+            // eventosToolStripMenuItem
+            // 
+            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.eventosToolStripMenuItem.Text = "Eventos";
+            this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -118,12 +127,12 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // eventosToolStripMenuItem
+            // tiposDeDocumentosToolStripMenuItem
             // 
-            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.eventosToolStripMenuItem.Text = "Eventos";
-            this.eventosToolStripMenuItem.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
+            this.tiposDeDocumentosToolStripMenuItem.Name = "tiposDeDocumentosToolStripMenuItem";
+            this.tiposDeDocumentosToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.tiposDeDocumentosToolStripMenuItem.Text = "Tipos de Documentos";
+            this.tiposDeDocumentosToolStripMenuItem.Click += new System.EventHandler(this.tiposDeDocumentosToolStripMenuItem_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -161,5 +170,6 @@
         private System.Windows.Forms.ToolStripMenuItem formasDePagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem plantasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tiposDeDocumentosToolStripMenuItem;
     }
 }

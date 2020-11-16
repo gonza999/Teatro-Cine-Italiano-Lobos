@@ -124,6 +124,18 @@
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTiposDocumentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTiposDocumentos.Designer.cs">
+      <DependentUpon>frmTiposDocumentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTiposDocumentosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTiposDocumentosAE.Designer.cs">
+      <DependentUpon>frmTiposDocumentosAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUbicaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTiposDocumentos.resx">
+      <DependentUpon>frmTiposDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTiposDocumentosAE.resx">
+      <DependentUpon>frmTiposDocumentosAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUbicaciones.resx">
       <DependentUpon>frmUbicaciones.cs</DependentUpon>
