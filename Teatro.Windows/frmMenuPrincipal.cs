@@ -76,5 +76,12 @@ namespace Teatro.Windows
             frm.Text = "Tipos de Documentos";
             frm.ShowDialog(this);
         }
+
+        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEmpleados frm = new frmEmpleados();
+            frm.Text = "Empleados";
+            frm.ShowDialog(this);
+        }
     }
 }

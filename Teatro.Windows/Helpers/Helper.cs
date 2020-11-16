@@ -39,12 +39,22 @@ namespace Teatro.Windows.Helpers
         {
             IServicioTipoEventos servicioTipoEventos = new ServicioTipoEventos();
             List<TipoEvento> listaTipoEvento = servicioTipoEventos.GetLista();
-            var defaultTipoEvento = new TipoEvento() { TipoEventoId = 0, NombreTipoEvento = "-Seleccione TipoEvento-" };
+            var defaultTipoEvento = new TipoEvento() { TipoEventoId = 0, NombreTipoEvento = "-Seleccione Tipo de Evento-" };
             listaTipoEvento.Insert(0, defaultTipoEvento);
             cmbTipoEvento.DataSource = listaTipoEvento;
             cmbTipoEvento.DisplayMember = "NombreTipoEvento";
             cmbTipoEvento.ValueMember = "TipoEventoId";
             cmbTipoEvento.SelectedIndex = 0;
+        }
+        internal static void CargarTipoDocumentoComboBox(ref ComboBox cmbTipoDocumento) { 
+            IServicioTiposDocumentos servicioTiposDocumentos = new ServicioTiposDocumentos();
+            List<TipoDocumento> listaTipoDocumento = servicioTiposDocumentos.GetLista();
+            var defaultTipoDocumento = new TipoDocumento() { TipoDocumentoId = 0, NombreTipoDocumento = "-Seleccione Tipo de Documento-" };
+            listaTipoDocumento.Insert(0, defaultTipoDocumento);
+            cmbTipoDocumento.DataSource = listaTipoDocumento;
+            cmbTipoDocumento.DisplayMember = "NombreTipoDocumento";
+            cmbTipoDocumento.ValueMember = "TipoDocumentoId";
+            cmbTipoDocumento.SelectedIndex = 0;
         }
         internal static void CargarClasificacionComboBox(ref ComboBox cmbClasificacion)
         {
