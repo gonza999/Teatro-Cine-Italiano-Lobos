@@ -78,5 +78,28 @@ namespace Teatro.Windows.Helpers
             cmbDistribucion.ValueMember = "DistribucionId";
             cmbDistribucion.SelectedIndex = 0;
         }
+        internal static void CargarPlantaComboBox(ref ComboBox cmbPlanta)
+        {
+            IServicioPlantas servicioPlanta = new ServicioPlantas();
+            List<Planta> listaPlanta = servicioPlanta.GetLista();
+            var defaultPlanta = new Planta() { PlantaId = 0, NombrePlanta = "-Seleccione Planta-" };
+            listaPlanta.Insert(0, defaultPlanta);
+            cmbPlanta.DataSource = listaPlanta;
+            cmbPlanta.DisplayMember = "NombrePlanta";
+            cmbPlanta.ValueMember = "PlantaId";
+            cmbPlanta.SelectedIndex = 0;
+        }
+
+        internal static void CargarUbicacionComboBox(ref ComboBox cmbUbicacion)
+        {
+            IServicioUbicaciones servicioPlanta = new ServicioUbicaciones();
+            List<Ubicacion> listaUbicacion = servicioPlanta.GetLista();
+            var defaultUbicacion = new Ubicacion() { UbicacionId = 0, NombreUbicacion = "-Seleccione Ubicacion-" };
+            listaUbicacion.Insert(0, defaultUbicacion);
+            cmbUbicacion.DataSource = listaUbicacion;
+            cmbUbicacion.DisplayMember = "NombreUbicacion";
+            cmbUbicacion.ValueMember = "UbicacionId";
+            cmbUbicacion.SelectedIndex = 0;
+        }
     }
 }

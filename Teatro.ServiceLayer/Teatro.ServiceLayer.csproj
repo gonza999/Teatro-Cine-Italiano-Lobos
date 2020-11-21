@@ -44,6 +44,7 @@
     <Compile Include="Facades\IServicioDistribuciones.cs" />
     <Compile Include="Facades\IServicioEmpleados.cs" />
     <Compile Include="Facades\IServicioEventos.cs" />
+    <Compile Include="Facades\IServicioLocalidades.cs" />
     <Compile Include="Facades\IServicioPlantas.cs" />
     <Compile Include="Facades\IServicioClasificaciones.cs" />
     <Compile Include="Facades\IServicioFormasPagos.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Servicios\ServicioClasificaciones.cs" />
     <Compile Include="Servicios\ServicioFormasPagos.cs" />
     <Compile Include="Servicios\ServicioFormasVentas.cs" />
+    <Compile Include="Servicios\ServicioLocalidades.cs" />
     <Compile Include="Servicios\ServicioPlantas.cs" />
     <Compile Include="Servicios\ServicioTipoEventos.cs" />
     <Compile Include="Servicios\ServicioTiposDocumentos.cs" />

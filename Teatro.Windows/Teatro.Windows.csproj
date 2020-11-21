@@ -118,6 +118,18 @@
     <Compile Include="frmFormasVentasAE.Designer.cs">
       <DependentUpon>frmFormasVentasAE.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLocalidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLocalidades.Designer.cs">
+      <DependentUpon>frmLocalidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLocalidadesAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLocalidadesAE.Designer.cs">
+      <DependentUpon>frmLocalidadesAE.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPlantas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +223,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFormasVentasAE.resx">
       <DependentUpon>frmFormasVentasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLocalidades.resx">
+      <DependentUpon>frmLocalidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLocalidadesAE.resx">
+      <DependentUpon>frmLocalidadesAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPlantas.resx">
       <DependentUpon>frmPlantas.cs</DependentUpon>

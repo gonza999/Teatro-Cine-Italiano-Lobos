@@ -47,6 +47,7 @@
     <Compile Include="Entidades\Evento.cs" />
     <Compile Include="Entidades\FormaPago.cs" />
     <Compile Include="Entidades\FormaVenta.cs" />
+    <Compile Include="Entidades\Localidad.cs" />
     <Compile Include="Entidades\Planta.cs" />
     <Compile Include="Entidades\TipoDocumento.cs" />
     <Compile Include="Entidades\TipoEvento.cs" />

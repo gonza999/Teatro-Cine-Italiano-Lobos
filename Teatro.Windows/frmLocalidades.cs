@@ -15,9 +15,9 @@ using Teatro.Windows.Helpers.Enum;
 
 namespace Teatro.Windows
 {
-    public partial class frmDistribuciones : Form
+    public partial class frmLocalidades : Form
     {
-        public frmDistribuciones()
+        public frmLocalidades()
         {
             InitializeComponent();
         }
@@ -26,9 +26,9 @@ namespace Teatro.Windows
         {
             Close();
         }
-        private IServicioDistribuciones servicio;
-        private List<Distribucion> lista = new List<Distribucion>();
-        private void frmDistribuciones_Load(object sender, EventArgs e)
+        private IServicioLocalidades servicio;
+        private List<Localidad> lista = new List<Localidad>();
+        private void frmLocalidades_Load(object sender, EventArgs e)
         {
             Actualizar();
         }
@@ -37,7 +37,7 @@ namespace Teatro.Windows
         {
             try
             {
-                servicio = new ServicioDistribuciones();
+                servicio = new ServicioLocalidades();
                 lista = servicio.GetLista();
                 MostrarDatosEnGrilla();
             }
@@ -52,16 +52,16 @@ namespace Teatro.Windows
         private void MostrarDatosEnGrilla()
         {
             dgvDatos.Rows.Clear();
-            foreach (var distribucion in lista)
+            foreach (var localidad in lista)
             {
-                AgregarFila(distribucion);
+                AgregarFila(localidad);
             }
         }
 
-        public void AgregarFila(Distribucion distribucion)
+        public void AgregarFila(Localidad localidad)
         {
             DataGridViewRow r = ConstruirFila();
-            SetearFila(r, distribucion);
+            SetearFila(r, localidad);
             AgregarFila(r);
         }
 
@@ -70,11 +70,12 @@ namespace Teatro.Windows
             dgvDatos.Rows.Add(r);
         }
 
-        private void SetearFila(DataGridViewRow r, Distribucion distribucion)
+        private void SetearFila(DataGridViewRow r, Localidad localidad)
         {
-            r.Cells[cmnDistribucion.Index].Value = distribucion.NombreDistribucion;
-            r.Cells[cmnDetalle.Index].Value = new Button().Text="Más detalle";
-            r.Tag = distribucion;
+            r.Cells[cmnPlanta.Index].Value = localidad.Planta.NombrePlanta;
+            r.Cells[cmnNumero.Index].Value = localidad.Numero;
+            r.Cells[cmnUbicacion.Index].Value = localidad.Ubicacion.NombreUbicacion;
+            r.Tag = localidad;
         }
 
         private DataGridViewRow ConstruirFila()
@@ -86,12 +87,12 @@ namespace Teatro.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            frmDistribucionesAE frm = new frmDistribucionesAE(this);
+            frmLocalidadesAE frm = new frmLocalidadesAE(this);
             frm.Text = "Nuevo";
             frm.ShowDialog(this);
         }
 
-        private void frmDistribuciones_KeyPress(object sender, KeyPressEventArgs e)
+        private void frmLocalidades_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
@@ -100,7 +101,7 @@ namespace Teatro.Windows
                 {
                     return;
                 }
-                lista = servicio.BuscarDistribucion(txtBuscar.Text);
+                lista = servicio.BuscarLocalidad(txtBuscar.Text);
                 MostrarDatosEnGrilla();
             }
         }
@@ -116,9 +117,9 @@ namespace Teatro.Windows
             if (dgvDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
-                Distribucion distribucion = (Distribucion)r.Tag;
+                Localidad localidad = (Localidad)r.Tag;
 
-                DialogResult dr = MessageBox.Show(this, $"¿Desea dar de baja la distribucion {distribucion.NombreDistribucion}?",
+                DialogResult dr = MessageBox.Show(this, $"¿Desea dar de baja a la localidad {localidad.Numero}?",
                     "Confirmar Baja",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
@@ -126,9 +127,9 @@ namespace Teatro.Windows
                 {
                     try
                     {
-                        if (!servicio.EstaRelacionado(distribucion))
+                        if (!servicio.EstaRelacionado(localidad))
                         {
-                            servicio.Borrar(distribucion.DistribucionId);
+                            servicio.Borrar(localidad.LocalidadId);
                             dgvDatos.Rows.Remove(r);
                             Helper.MensajeBox("Registro borrado", Tipo.Success);
                         }
@@ -151,19 +152,19 @@ namespace Teatro.Windows
             if (dgvDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
-                Distribucion distribucion = (Distribucion)r.Tag;
-                Distribucion distribucionAux = (Distribucion)distribucion.Clone();
-                frmDistribucionesAE frm = new frmDistribucionesAE(this);
-                frm.Text = "Editar Distribucion";
-                frm.SetDistribucion(distribucion);
+                Localidad localidad = (Localidad)r.Tag;
+                Localidad localidadAux = (Localidad)localidad.Clone();
+                frmLocalidadesAE frm = new frmLocalidadesAE(this);
+                frm.Text = "Editar Localidad";
+                frm.SetLocalidad(localidad);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.OK)
                 {
                     try
                     {
-                        distribucion = frm.GetDistribucion();
-                        servicio.Guardar(distribucion);
-                        SetearFila(r, distribucion);
+                        localidad = frm.GetLocalidad();
+                        servicio.Guardar(localidad);
+                        SetearFila(r, localidad);
                         Helper.MensajeBox("Registro Editado", Tipo.Success);
                     }
                     catch (Exception exception)

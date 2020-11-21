@@ -90,5 +90,12 @@ namespace Teatro.Windows
             frm.Text = "Distribuciones";
             frm.ShowDialog(this);
         }
+
+        private void localidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLocalidades frm = new frmLocalidades();
+            frm.Text = "Localidades";
+            frm.ShowDialog(this);
+        }
     }
 }

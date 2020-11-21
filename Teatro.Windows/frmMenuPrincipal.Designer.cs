@@ -39,8 +39,9 @@
             this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposDeDocumentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distribucionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.localidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,8 @@
             this.eventosToolStripMenuItem,
             this.tiposDeDocumentosToolStripMenuItem,
             this.empleadosToolStripMenuItem,
-            this.distribucionesToolStripMenuItem});
+            this.distribucionesToolStripMenuItem,
+            this.localidadesToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(69, 21);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -138,6 +140,13 @@
             this.empleadosToolStripMenuItem.Text = "Empleados";
             this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
             // 
+            // distribucionesToolStripMenuItem
+            // 
+            this.distribucionesToolStripMenuItem.Name = "distribucionesToolStripMenuItem";
+            this.distribucionesToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.distribucionesToolStripMenuItem.Text = "Distribuciones";
+            this.distribucionesToolStripMenuItem.Click += new System.EventHandler(this.distribucionesToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
@@ -145,12 +154,12 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // distribucionesToolStripMenuItem
+            // localidadesToolStripMenuItem
             // 
-            this.distribucionesToolStripMenuItem.Name = "distribucionesToolStripMenuItem";
-            this.distribucionesToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.distribucionesToolStripMenuItem.Text = "Distribuciones";
-            this.distribucionesToolStripMenuItem.Click += new System.EventHandler(this.distribucionesToolStripMenuItem_Click);
+            this.localidadesToolStripMenuItem.Name = "localidadesToolStripMenuItem";
+            this.localidadesToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.localidadesToolStripMenuItem.Text = "Localidades";
+            this.localidadesToolStripMenuItem.Click += new System.EventHandler(this.localidadesToolStripMenuItem_Click);
             // 
             // frmMenuPrincipal
             // 
@@ -191,5 +200,6 @@
         private System.Windows.Forms.ToolStripMenuItem tiposDeDocumentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem distribucionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem localidadesToolStripMenuItem;
     }
 }
