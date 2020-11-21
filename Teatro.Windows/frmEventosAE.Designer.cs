@@ -44,6 +44,8 @@
             this.cmbTipoEvento = new System.Windows.Forms.ComboBox();
             this.cmbClasificacion = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbDistribucion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,7 +151,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(21, 250);
+            this.label5.Location = new System.Drawing.Point(21, 226);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 24);
             this.label5.TabIndex = 25;
@@ -178,7 +180,7 @@
             // 
             this.cmbClasificacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClasificacion.FormattingEnabled = true;
-            this.cmbClasificacion.Location = new System.Drawing.Point(165, 253);
+            this.cmbClasificacion.Location = new System.Drawing.Point(165, 231);
             this.cmbClasificacion.Name = "cmbClasificacion";
             this.cmbClasificacion.Size = new System.Drawing.Size(214, 21);
             this.cmbClasificacion.TabIndex = 28;
@@ -187,6 +189,25 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(21, 268);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(113, 24);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Distribucion :";
+            // 
+            // cmbDistribucion
+            // 
+            this.cmbDistribucion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDistribucion.FormattingEnabled = true;
+            this.cmbDistribucion.Location = new System.Drawing.Point(165, 273);
+            this.cmbDistribucion.Name = "cmbDistribucion";
+            this.cmbDistribucion.Size = new System.Drawing.Size(214, 21);
+            this.cmbDistribucion.TabIndex = 28;
+            // 
             // frmEventosAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,6 +215,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(427, 457);
             this.ControlBox = false;
+            this.Controls.Add(this.cmbDistribucion);
             this.Controls.Add(this.cmbClasificacion);
             this.Controls.Add(this.cmbTipoEvento);
             this.Controls.Add(this.checkSuspendido);
@@ -201,6 +223,7 @@
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -235,5 +258,7 @@
         private System.Windows.Forms.ComboBox cmbTipoEvento;
         private System.Windows.Forms.ComboBox cmbClasificacion;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cmbDistribucion;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -14,14 +14,16 @@ namespace Teatro.DataLayer.Repositorios
         private readonly SqlConnection conexion;
         private  IRepositorioTipoEventos repositorioTipoEventos;
         private  IRepositorioClasificaciones repositorioClasificaciones;
+        private IRepositorioDistribuciones repositorioDistribuciones;
         private readonly SqlTransaction transaction;
 
         public RepositorioEventos(SqlConnection conexion, IRepositorioTipoEventos repositorioTipoEventos,
-             IRepositorioClasificaciones repositorioClasificaciones)
+             IRepositorioClasificaciones repositorioClasificaciones,IRepositorioDistribuciones repositorioDistribuciones)
         {
             this.conexion = conexion;
             this.repositorioClasificaciones = repositorioClasificaciones;
             this.repositorioTipoEventos = repositorioTipoEventos;
+            this.repositorioDistribuciones = repositorioDistribuciones;
         }
 
         public RepositorioEventos(SqlConnection sqlConnection)
@@ -91,7 +93,7 @@ namespace Teatro.DataLayer.Repositorios
             List<Evento> lista = new List<Evento>();
             try
             {
-                var cadenaDeComando = "SELECT EventoId,Evento,Descripcion,TipoEventoId,ClasificacionId,FechaEvento,Suspendido " +
+                var cadenaDeComando = "SELECT EventoId,Evento,Descripcion,TipoEventoId,ClasificacionId,FechaEvento,Suspendido,DistribucionId " +
                     "FROM Eventos";
                 var comando = new SqlCommand(cadenaDeComando, conexion);
                 var reader = comando.ExecuteReader();
@@ -122,6 +124,7 @@ namespace Teatro.DataLayer.Repositorios
             evento.Clasificacion = repositorioClasificaciones.GetClasificacionPorId(reader.GetInt32(4));
             evento.FechaEvento = reader.GetDateTime(5);
             evento.Suspendido = reader.GetBoolean(6);
+            evento.Distribucion= repositorioDistribuciones.GetDistribucionPorId(reader.GetInt32(7));
             return evento;
         }
 
@@ -131,7 +134,7 @@ namespace Teatro.DataLayer.Repositorios
             try
             {
                 var cadenaDeComando = "SELECT  FROM EventoId,Evento,Descripcion,TipoEventoId," +
-                    "ClasificacionId,FechaEvento,Suspendido FROM Eventos WHERE EventoId=@id";
+                    "ClasificacionId,FechaEvento,Suspendido,DistribucionId FROM Eventos WHERE EventoId=@id";
                 var comando = new SqlCommand(cadenaDeComando, conexion);
                 comando.Parameters.AddWithValue("@id", id);
                 var reader = comando.ExecuteReader();
@@ -158,8 +161,8 @@ namespace Teatro.DataLayer.Repositorios
                 try
                 {
                     var cadenaDeComando = "INSERT INTO Eventos (Evento,Descripcion,TipoEventoId," +
-                               "ClasificacionId,FechaEvento,Suspendido) VALUES (@evento,@descripcion,@tipoEventoId," +
-                               "@clasificacionId,@fecha,@suspendido)";
+                               "ClasificacionId,FechaEvento,Suspendido,DistribucionId) VALUES (@evento,@descripcion,@tipoEventoId," +
+                               "@clasificacionId,@fecha,@suspendido,@distribucion)";
                     var comando = new SqlCommand(cadenaDeComando, conexion);
                     comando.Parameters.AddWithValue("@evento", evento.NombreEvento);
                     comando.Parameters.AddWithValue("@descripcion", evento.Descripcion);
@@ -167,6 +170,7 @@ namespace Teatro.DataLayer.Repositorios
                     comando.Parameters.AddWithValue("@clasificacionId", evento.Clasificacion.ClasificacionId);
                     comando.Parameters.AddWithValue("@fecha", evento.FechaEvento);
                     comando.Parameters.AddWithValue("@suspendido", evento.Suspendido);
+                    comando.Parameters.AddWithValue("@distribucion", evento.Distribucion.DistribucionId);
                     comando.ExecuteNonQuery();
                     cadenaDeComando = "SELECT @@Identity";
                     comando = new SqlCommand(cadenaDeComando, conexion);
@@ -184,7 +188,7 @@ namespace Teatro.DataLayer.Repositorios
                 try
                 {
                     string cadenaComando = "UPDATE Eventos SET Evento=@nombre,Descripcion=@desc," +
-                        "TipoEventoId=@tipo,ClasificacionId=@clasi,FechaEvento=@fecha,Suspendido=@sus " +
+                        "TipoEventoId=@tipo,ClasificacionId=@clasi,FechaEvento=@fecha,Suspendido=@sus,DistribucionId=@distribucion " +
                         " WHERE EventoId=@id";
                     SqlCommand comando = new SqlCommand(cadenaComando, conexion);
                     comando.Parameters.AddWithValue("@nombre", evento.NombreEvento);
@@ -194,6 +198,7 @@ namespace Teatro.DataLayer.Repositorios
                     comando.Parameters.AddWithValue("@fecha", evento.FechaEvento);
                     comando.Parameters.AddWithValue("@sus", evento.Suspendido);
                     comando.Parameters.AddWithValue("@id", evento.EventoId);
+                    comando.Parameters.AddWithValue("@distribucion", evento.Distribucion.DistribucionId);
                     comando.ExecuteNonQuery();
 
                 }
@@ -209,7 +214,7 @@ namespace Teatro.DataLayer.Repositorios
             List<Evento> lista = new List<Evento>();
             try
             {
-                var cadenaDeComando = "SELECT EventoId,Evento,Descripcion,TipoEventoId,ClasificacionId,FechaEvento,Suspendido " +
+                var cadenaDeComando = "SELECT EventoId,Evento,Descripcion,TipoEventoId,ClasificacionId,FechaEvento,Suspendido,DistribucionId " +
                     "FROM Eventos WHERE Evento like @text";
                 var comando = new SqlCommand(cadenaDeComando, conexion);
                 comando.Parameters.AddWithValue("@text", $"%{text}%");
@@ -229,123 +234,7 @@ namespace Teatro.DataLayer.Repositorios
             }
         }
 
-        //public void ActualizarStock(Evento evento, decimal cantidad)
-        //{
-        //    try
-        //    {
-        //        string cadenaComando = "UPDATE Eventos SET Stock=Stock+@cant WHERE EventoId=@id";
-        //        var comando = new SqlCommand(cadenaComando, conexion, transaction);
-        //        comando.Parameters.AddWithValue("@cant", cantidad);
-        //        comando.Parameters.AddWithValue("@id", evento.EventoId);
-        //        comando.ExecuteNonQuery();
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        throw new Exception(e.Message);
-        //    }
-        //}
-
-        //public Evento GetEventoPorCodigoDeBarras(string codigo)
-        //{
-        //    Evento evento = null;
-        //    try
-        //    {
-        //        var cadenaDeComando = "SELECT EventoId,Descripcion,TipoEventoId,ClasificacionId," +
-        //            "PrecioUnitario,Stock,CodigoBarra,MedidaId,Imagen,Suspendido FROM " +
-        //            " Eventos WHERE CodigoBarra=@codigo";
-        //        var comando = new SqlCommand(cadenaDeComando, conexion);
-        //        comando.Parameters.AddWithValue("@codigo", codigo);
-        //        var reader = comando.ExecuteReader();
-        //        if (reader.HasRows)
-        //        {
-        //            reader.Read();
-        //            evento = ConstruirEvento(reader);
-        //            reader.Close();
-        //        }
-        //        return evento;
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        throw new Exception(e.Message);
-        //    }
-        //}
-
-        //public List<Evento> GetLista(int tipoEventoId)
-        //{
-        //    List<Evento> lista = new List<Evento>();
-        //    try
-        //    {
-        //        var cadenaDeComando = "SELECT EventoId,Descripcion,TipoEventoId,ClasificacionId,PrecioUnitario,Stock,Suspendido " +
-        //            "FROM Eventos WHERE TipoEventoId=@id";
-        //        var comando = new SqlCommand(cadenaDeComando, conexion);
-        //        comando.Parameters.AddWithValue("@id", tipoEventoId);
-        //        var reader = comando.ExecuteReader();
-        //        while (reader.Read())
-        //        {
-        //            Evento evento = ConstruirEvento(reader);
-        //            lista.Add(evento);
-        //        }
-        //        reader.Close();
-        //        return lista;
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        throw new Exception(e.Message);
-        //    }
-        //}
-
-        //public List<Evento> GetLista(Clasificacion clasificacion)
-        //{
-        //    List<Evento> lista = new List<Evento>();
-        //    try
-        //    {
-        //        var cadenaDeComando = "SELECT EventoId,Descripcion,TipoEventoId,ClasificacionId,PrecioUnitario,Stock,Suspendido " +
-        //            "FROM Eventos WHERE ClasificacionId=@id";
-        //        var comando = new SqlCommand(cadenaDeComando, conexion);
-        //        comando.Parameters.AddWithValue("@id", clasificacion.ClasificacionId);
-        //        var reader = comando.ExecuteReader();
-        //        while (reader.Read())
-        //        {
-        //            Evento evento = ConstruirEvento(reader);
-        //            lista.Add(evento);
-        //        }
-        //        reader.Close();
-        //        return lista;
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        throw new Exception(e.Message);
-        //    }
-        //}
-
-        //public List<Evento> GetLista(string descripcion)
-        //{
-        //    List<Evento> lista = new List<Evento>();
-        //    try
-        //    {
-        //        var cadenaDeComando = "SELECT EventoId,Descripcion,TipoEventoId,ClasificacionId,PrecioUnitario,Stock,Suspendido " +
-        //            "FROM Eventos WHERE Descripcion LIKE @descripcion";
-        //        var comando = new SqlCommand(cadenaDeComando, conexion);
-        //        comando.Parameters.AddWithValue("@descripcion", $"%{descripcion}%");
-        //        var reader = comando.ExecuteReader();
-        //        while (reader.Read())
-        //        {
-        //            Evento evento = ConstruirEvento(reader);
-        //            lista.Add(evento);
-        //        }
-        //        reader.Close();
-        //        return lista;
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //        throw new Exception(e.Message);
-        //    }
-
+     
     }
 }
 

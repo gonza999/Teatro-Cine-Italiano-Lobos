@@ -33,13 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.cmnEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnTipoEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnClasificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnFechaEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnSuspendido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -47,8 +43,13 @@
             this.txtBuscar = new System.Windows.Forms.ToolStripTextBox();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
+            this.cmnEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnDistribucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnTipoEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnClasificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnFechaEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnSuspendido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +71,7 @@
             this.dgvDatos.ColumnHeadersHeight = 30;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cmnEvento,
+            this.cmnDistribucion,
             this.cmnTipoEvento,
             this.cmnClasificacion,
             this.cmnFechaEvento,
@@ -96,40 +98,6 @@
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatos.Size = new System.Drawing.Size(775, 479);
             this.dgvDatos.TabIndex = 10;
-            // 
-            // cmnEvento
-            // 
-            this.cmnEvento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnEvento.HeaderText = "Evento";
-            this.cmnEvento.Name = "cmnEvento";
-            this.cmnEvento.ReadOnly = true;
-            // 
-            // cmnTipoEvento
-            // 
-            this.cmnTipoEvento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnTipoEvento.HeaderText = "TipoEvento";
-            this.cmnTipoEvento.Name = "cmnTipoEvento";
-            this.cmnTipoEvento.ReadOnly = true;
-            // 
-            // cmnClasificacion
-            // 
-            this.cmnClasificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnClasificacion.HeaderText = "Clasificacion";
-            this.cmnClasificacion.Name = "cmnClasificacion";
-            this.cmnClasificacion.ReadOnly = true;
-            // 
-            // cmnFechaEvento
-            // 
-            this.cmnFechaEvento.HeaderText = "Fecha";
-            this.cmnFechaEvento.Name = "cmnFechaEvento";
-            this.cmnFechaEvento.ReadOnly = true;
-            this.cmnFechaEvento.Width = 60;
-            // 
-            // cmnSuspendido
-            // 
-            this.cmnSuspendido.HeaderText = "Suspendido";
-            this.cmnSuspendido.Name = "cmnSuspendido";
-            this.cmnSuspendido.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -160,6 +128,11 @@
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbBorrar
             // 
@@ -214,11 +187,6 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // tsbCerrar
             // 
             this.tsbCerrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -228,6 +196,47 @@
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
+            // 
+            // cmnEvento
+            // 
+            this.cmnEvento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnEvento.HeaderText = "Evento";
+            this.cmnEvento.Name = "cmnEvento";
+            this.cmnEvento.ReadOnly = true;
+            // 
+            // cmnDistribucion
+            // 
+            this.cmnDistribucion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnDistribucion.HeaderText = "Distribucion";
+            this.cmnDistribucion.Name = "cmnDistribucion";
+            this.cmnDistribucion.ReadOnly = true;
+            // 
+            // cmnTipoEvento
+            // 
+            this.cmnTipoEvento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnTipoEvento.HeaderText = "TipoEvento";
+            this.cmnTipoEvento.Name = "cmnTipoEvento";
+            this.cmnTipoEvento.ReadOnly = true;
+            // 
+            // cmnClasificacion
+            // 
+            this.cmnClasificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnClasificacion.HeaderText = "Clasificacion";
+            this.cmnClasificacion.Name = "cmnClasificacion";
+            this.cmnClasificacion.ReadOnly = true;
+            // 
+            // cmnFechaEvento
+            // 
+            this.cmnFechaEvento.HeaderText = "Fecha";
+            this.cmnFechaEvento.Name = "cmnFechaEvento";
+            this.cmnFechaEvento.ReadOnly = true;
+            this.cmnFechaEvento.Width = 60;
+            // 
+            // cmnSuspendido
+            // 
+            this.cmnSuspendido.HeaderText = "Suspendido";
+            this.cmnSuspendido.Name = "cmnSuspendido";
+            this.cmnSuspendido.ReadOnly = true;
             // 
             // frmEventos
             // 
@@ -266,6 +275,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnEvento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnDistribucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnTipoEvento;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnClasificacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnFechaEvento;

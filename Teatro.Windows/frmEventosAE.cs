@@ -42,6 +42,7 @@ namespace Teatro.Windows
                 checkSuspendido.Checked = evento.Suspendido;
                 cmbClasificacion.SelectedValue = evento.Clasificacion.ClasificacionId ;
                 cmbTipoEvento.SelectedValue = evento.TipoEvento.TipoEventoId;
+                cmbDistribucion.SelectedValue = evento.Distribucion.DistribucionId;
                 esEdicion = true;
             }
         }
@@ -87,6 +88,12 @@ namespace Teatro.Windows
                 errorProvider1.SetError(cmbTipoEvento, "Debe seleccionar un tipo de evento");
 
             }
+            if (cmbDistribucion.SelectedIndex == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(cmbDistribucion, "Debe seleccionar una Distribucion");
+
+            }
             if (pickerFecha.Value.Date > DateTime.Today)
             {
                 valido = false;
@@ -111,7 +118,7 @@ namespace Teatro.Windows
                 evento.Suspendido = checkSuspendido.Checked;
                 evento.TipoEvento = (TipoEvento)cmbTipoEvento.SelectedItem;
                 evento.Clasificacion = (Clasificacion)cmbClasificacion.SelectedItem;
-
+                evento.Distribucion = (Distribucion)cmbDistribucion.SelectedItem;
                 if (ValidarObjeto())
                 {
                     if (!esEdicion)
@@ -151,6 +158,7 @@ namespace Teatro.Windows
             checkSuspendido.Checked = false;
             Helper.CargarClasificacionComboBox(ref cmbClasificacion);
             Helper.CargarTipoEventoComboBox(ref cmbTipoEvento);
+            Helper.CargarDistribucionComboBox(ref cmbDistribucion) ;
             txtEvento.Focus();
             evento = null;
         }
@@ -179,6 +187,7 @@ namespace Teatro.Windows
         {
             Helper.CargarClasificacionComboBox(ref cmbClasificacion);
             Helper.CargarTipoEventoComboBox(ref cmbTipoEvento);
+            Helper.CargarDistribucionComboBox(ref cmbDistribucion);
         }
     }
 }

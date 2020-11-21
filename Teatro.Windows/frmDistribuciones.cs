@@ -15,9 +15,9 @@ using Teatro.Windows.Helpers.Enum;
 
 namespace Teatro.Windows
 {
-    public partial class frmEventos : Form
+    public partial class frmDistribuciones : Form
     {
-        public frmEventos()
+        public frmDistribuciones()
         {
             InitializeComponent();
         }
@@ -26,9 +26,9 @@ namespace Teatro.Windows
         {
             Close();
         }
-        private IServicioEventos servicio;
-        private List<Evento> lista = new List<Evento>();
-        private void frmEventos_Load(object sender, EventArgs e)
+        private IServicioDistribuciones servicio;
+        private List<Distribucion> lista = new List<Distribucion>();
+        private void frmDistribuciones_Load(object sender, EventArgs e)
         {
             Actualizar();
         }
@@ -37,7 +37,7 @@ namespace Teatro.Windows
         {
             try
             {
-                servicio = new ServicioEventos();
+                servicio = new ServicioDistribuciones();
                 lista = servicio.GetLista();
                 MostrarDatosEnGrilla();
             }
@@ -52,16 +52,16 @@ namespace Teatro.Windows
         private void MostrarDatosEnGrilla()
         {
             dgvDatos.Rows.Clear();
-            foreach (var evento in lista)
+            foreach (var distribucion in lista)
             {
-                AgregarFila(evento);
+                AgregarFila(distribucion);
             }
         }
 
-        public void AgregarFila(Evento evento)
+        public void AgregarFila(Distribucion distribucion)
         {
             DataGridViewRow r = ConstruirFila();
-            SetearFila(r, evento);
+            SetearFila(r, distribucion);
             AgregarFila(r);
         }
 
@@ -70,15 +70,11 @@ namespace Teatro.Windows
             dgvDatos.Rows.Add(r);
         }
 
-        private void SetearFila(DataGridViewRow r, Evento evento)
+        private void SetearFila(DataGridViewRow r, Distribucion distribucion)
         {
-            r.Cells[cmnEvento.Index].Value = evento.NombreEvento;
-            r.Cells[cmnClasificacion.Index].Value = evento.Clasificacion.NombreClasificacion;
-            r.Cells[cmnFechaEvento.Index].Value = evento.FechaEvento;
-            r.Cells[cmnSuspendido.Index].Value = evento.Suspendido;
-            r.Cells[cmnTipoEvento.Index].Value = evento.TipoEvento.NombreTipoEvento;
-            r.Cells[cmnDistribucion.Index].Value = evento.Distribucion.NombreDistribucion;
-            r.Tag = evento;
+            r.Cells[cmnDistribucion.Index].Value = distribucion.NombreDistribucion;
+
+            r.Tag = distribucion;
         }
 
         private DataGridViewRow ConstruirFila()
@@ -90,12 +86,12 @@ namespace Teatro.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            frmEventosAE frm = new frmEventosAE(this);
+            frmDistribucionesAE frm = new frmDistribucionesAE(this);
             frm.Text = "Nuevo";
             frm.ShowDialog(this);
         }
 
-        private void frmEventos_KeyPress(object sender, KeyPressEventArgs e)
+        private void frmDistribuciones_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
@@ -104,7 +100,7 @@ namespace Teatro.Windows
                 {
                     return;
                 }
-                lista = servicio.BuscarEvento(txtBuscar.Text);
+                lista = servicio.BuscarDistribucion(txtBuscar.Text);
                 MostrarDatosEnGrilla();
             }
         }
@@ -120,9 +116,9 @@ namespace Teatro.Windows
             if (dgvDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
-                Evento evento = (Evento)r.Tag;
+                Distribucion distribucion = (Distribucion)r.Tag;
 
-                DialogResult dr = MessageBox.Show(this, $"¿Desea dar de baja a la evento {evento.NombreEvento}?",
+                DialogResult dr = MessageBox.Show(this, $"¿Desea dar de baja la distribucion {distribucion.NombreDistribucion}?",
                     "Confirmar Baja",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
@@ -130,9 +126,9 @@ namespace Teatro.Windows
                 {
                     try
                     {
-                        if (!servicio.EstaRelacionado(evento))
+                        if (!servicio.EstaRelacionado(distribucion))
                         {
-                            servicio.Borrar(evento.EventoId);
+                            servicio.Borrar(distribucion.DistribucionId);
                             dgvDatos.Rows.Remove(r);
                             Helper.MensajeBox("Registro borrado", Tipo.Success);
                         }
@@ -155,19 +151,19 @@ namespace Teatro.Windows
             if (dgvDatos.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
-                Evento evento = (Evento)r.Tag;
-                Evento eventoAux = (Evento)evento.Clone();
-                frmEventosAE frm = new frmEventosAE(this);
-                frm.Text = "Editar Evento";
-                frm.SetEvento(evento);
+                Distribucion distribucion = (Distribucion)r.Tag;
+                Distribucion distribucionAux = (Distribucion)distribucion.Clone();
+                frmDistribucionesAE frm = new frmDistribucionesAE(this);
+                frm.Text = "Editar Distribucion";
+                frm.SetDistribucion(distribucion);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.OK)
                 {
                     try
                     {
-                        evento = frm.GetEvento();
-                        servicio.Guardar(evento);
-                        SetearFila(r, evento);
+                        distribucion = frm.GetDistribucion();
+                        servicio.Guardar(distribucion);
+                        SetearFila(r, distribucion);
                         Helper.MensajeBox("Registro Editado", Tipo.Success);
                     }
                     catch (Exception exception)

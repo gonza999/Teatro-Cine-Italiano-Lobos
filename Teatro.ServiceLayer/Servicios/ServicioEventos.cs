@@ -16,6 +16,7 @@ namespace Teatro.ServiceLayer.Servicios
         private IRepositorioEventos repositorio;
         private ConexionBD conexion;
         private IRepositorioClasificaciones repositorioClasificaciones;
+        private IRepositorioDistribuciones repositorioDistribuciones;
         private IRepositorioTipoEventos repositorioTipoEventos;
         public ServicioEventos()
         {
@@ -28,7 +29,8 @@ namespace Teatro.ServiceLayer.Servicios
                 conexion = new ConexionBD();
                 repositorioClasificaciones = new RepositorioClasificaciones(conexion.AbrirConexion());
                 repositorioTipoEventos = new RepositorioTipoEvento(conexion.AbrirConexion());
-                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones);
+                repositorioDistribuciones = new RepositorioDistribuciones(conexion.AbrirConexion());
+                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones,repositorioDistribuciones);
                 repositorio.Borrar(id);
                 conexion.CerrarConexion();
             }
@@ -46,7 +48,8 @@ namespace Teatro.ServiceLayer.Servicios
                 conexion = new ConexionBD();
                 repositorioClasificaciones = new RepositorioClasificaciones(conexion.AbrirConexion());
                 repositorioTipoEventos = new RepositorioTipoEvento(conexion.AbrirConexion());
-                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones);
+                repositorioDistribuciones = new RepositorioDistribuciones(conexion.AbrirConexion());
+                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones);
                 var relacionado = repositorio.EstaRelacionado(evento);
                 conexion.CerrarConexion();
                 return relacionado;
@@ -65,7 +68,8 @@ namespace Teatro.ServiceLayer.Servicios
                 conexion = new ConexionBD();
                 repositorioClasificaciones = new RepositorioClasificaciones(conexion.AbrirConexion());
                 repositorioTipoEventos = new RepositorioTipoEvento(conexion.AbrirConexion());
-                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones);
+                repositorioDistribuciones = new RepositorioDistribuciones(conexion.AbrirConexion());
+                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones);
                 var existe = repositorio.Existe(evento);
                 conexion.CerrarConexion();
                 return existe;
@@ -84,7 +88,8 @@ namespace Teatro.ServiceLayer.Servicios
                 conexion = new ConexionBD();
                 repositorioClasificaciones = new RepositorioClasificaciones(conexion.AbrirConexion());
                 repositorioTipoEventos = new RepositorioTipoEvento(conexion.AbrirConexion());
-                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones);
+                repositorioDistribuciones = new RepositorioDistribuciones(conexion.AbrirConexion());
+                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones);
                 var lista = repositorio.GetLista();
                 conexion.CerrarConexion();
                 return lista;
@@ -182,7 +187,8 @@ namespace Teatro.ServiceLayer.Servicios
                 conexion = new ConexionBD();
                 repositorioClasificaciones = new RepositorioClasificaciones(conexion.AbrirConexion());
                 repositorioTipoEventos = new RepositorioTipoEvento(conexion.AbrirConexion());
-                repositorio = new RepositorioEventos(conexion.AbrirConexion(),repositorioTipoEventos ,repositorioClasificaciones );
+                repositorioDistribuciones = new RepositorioDistribuciones(conexion.AbrirConexion());
+                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones);
                 var evento = repositorio.GetEventoPorId(id);
                 conexion.CerrarConexion();
                 return evento;
@@ -216,8 +222,11 @@ namespace Teatro.ServiceLayer.Servicios
             {
                 List<Evento> lista = new List<Evento>();
                 conexion = new ConexionBD();
-                repositorio = new RepositorioEventos(conexion.AbrirConexion(),repositorioTipoEventos,repositorioClasificaciones);
-                lista=repositorio.BuscarEvento(text);
+                repositorioClasificaciones = new RepositorioClasificaciones(conexion.AbrirConexion());
+                repositorioTipoEventos = new RepositorioTipoEvento(conexion.AbrirConexion());
+                repositorioDistribuciones = new RepositorioDistribuciones(conexion.AbrirConexion());
+                repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones);
+                lista = repositorio.BuscarEvento(text);
                 conexion.CerrarConexion();
                 return lista;
             }

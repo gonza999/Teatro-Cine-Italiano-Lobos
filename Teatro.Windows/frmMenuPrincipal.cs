@@ -83,5 +83,12 @@ namespace Teatro.Windows
             frm.Text = "Empleados";
             frm.ShowDialog(this);
         }
+
+        private void distribucionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDistribuciones frm = new frmDistribuciones();
+            frm.Text = "Distribuciones";
+            frm.ShowDialog(this);
+        }
     }
 }

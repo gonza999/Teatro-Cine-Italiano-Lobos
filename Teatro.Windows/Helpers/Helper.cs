@@ -67,5 +67,16 @@ namespace Teatro.Windows.Helpers
             cmbClasificacion.ValueMember = "ClasificacionId";
             cmbClasificacion.SelectedIndex = 0;
         }
+        internal static void CargarDistribucionComboBox(ref ComboBox cmbDistribucion)
+        { 
+            IServicioDistribuciones servicioDistribucion = new ServicioDistribuciones();
+            List<Distribucion> listaDistribucion = servicioDistribucion.GetLista();
+            var defaultDistribucion = new Distribucion() { DistribucionId = 0, NombreDistribucion = "-Seleccione Distribucion-" };
+            listaDistribucion.Insert(0, defaultDistribucion);
+            cmbDistribucion.DataSource = listaDistribucion;
+            cmbDistribucion.DisplayMember = "NombreDistribucion";
+            cmbDistribucion.ValueMember = "DistribucionId";
+            cmbDistribucion.SelectedIndex = 0;
+        }
     }
 }

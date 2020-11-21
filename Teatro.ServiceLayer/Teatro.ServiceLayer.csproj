@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facades\IServicioDistribuciones.cs" />
     <Compile Include="Facades\IServicioEmpleados.cs" />
     <Compile Include="Facades\IServicioEventos.cs" />
     <Compile Include="Facades\IServicioPlantas.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Facades\IServicioTiposDocumentos.cs" />
     <Compile Include="Facades\IServicioUbicaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\ServicioDistribuciones.cs" />
     <Compile Include="Servicios\ServicioEmpleados.cs" />
     <Compile Include="Servicios\ServicioEventos.cs" />
     <Compile Include="Servicios\ServicioClasificaciones.cs" />

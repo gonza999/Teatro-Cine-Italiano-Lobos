@@ -16,6 +16,8 @@ namespace Teatro.BussinesLayer.Entidades
         public string Descripcion { get; set; }
         public bool Suspendido { get; set; }
 
+        public Distribucion Distribucion { get; set; }
+
         public object Clone()
         {
             return this.MemberwiseClone();
