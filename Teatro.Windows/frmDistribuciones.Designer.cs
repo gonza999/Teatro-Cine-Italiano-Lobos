@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.cmnDistribucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -44,8 +46,6 @@
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
-            this.cmnDistribucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnDetalle = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,19 @@
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatos.Size = new System.Drawing.Size(585, 372);
             this.dgvDatos.TabIndex = 10;
+            // 
+            // cmnDistribucion
+            // 
+            this.cmnDistribucion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnDistribucion.HeaderText = "Distribucion";
+            this.cmnDistribucion.Name = "cmnDistribucion";
+            this.cmnDistribucion.ReadOnly = true;
+            // 
+            // cmnDetalle
+            // 
+            this.cmnDetalle.HeaderText = "Detalle";
+            this.cmnDetalle.Name = "cmnDetalle";
+            this.cmnDetalle.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -188,19 +201,6 @@
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
-            // 
-            // cmnDistribucion
-            // 
-            this.cmnDistribucion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnDistribucion.HeaderText = "Distribucion";
-            this.cmnDistribucion.Name = "cmnDistribucion";
-            this.cmnDistribucion.ReadOnly = true;
-            // 
-            // cmnDetalle
-            // 
-            this.cmnDetalle.HeaderText = "Detalle";
-            this.cmnDetalle.Name = "cmnDetalle";
-            this.cmnDetalle.ReadOnly = true;
             // 
             // frmDistribuciones
             // 

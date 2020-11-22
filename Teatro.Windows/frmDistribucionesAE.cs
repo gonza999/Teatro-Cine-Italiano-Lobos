@@ -37,6 +37,20 @@ namespace Teatro.Windows
             if (distribucion != null)
             {
                 txtDistribucion.Text = distribucion.NombreDistribucion;
+                foreach (var d in distribucion.DistribucionUbicacion)
+                {
+                    if (d.Ubicacion.UbicacionId == 1)
+                    {
+                        txtButacas.Text = d.Precio.ToString();
+                    }
+                    else
+                    {
+                        txtPalcos.Text = d.Precio.ToString();
+                    }
+                }
+
+
+
                 esEdicion = true;
             }
         }
@@ -64,6 +78,43 @@ namespace Teatro.Windows
                 valido = false;
                 errorProvider1.SetError(txtDistribucion, "Debe ingresar una distribucion");
             }
+            if (string.IsNullOrEmpty(txtButacas.Text.Trim()) &&
+                string.IsNullOrWhiteSpace(txtButacas.Text.Trim()))
+            {
+                valido = false;
+                errorProvider1.SetError(txtButacas, "Debe ingresar un precio de butaca");
+            }
+            decimal precio = 0;
+            if (!decimal.TryParse(txtButacas.Text, out precio))
+            {
+                valido = false;
+                errorProvider1.SetError(txtButacas, "Debe ingresar un precio de butaca valido");
+            }
+            if (precio < 0)
+            {
+                valido = false;
+                errorProvider1.SetError(txtButacas, "El precio no debe ser menor a cero");
+
+            }
+
+            if (string.IsNullOrEmpty(txtPalcos.Text.Trim()) &&
+           string.IsNullOrWhiteSpace(txtPalcos.Text.Trim()))
+            {
+                valido = false;
+                errorProvider1.SetError(txtPalcos, "Debe ingresar un precio de palco");
+            }
+            precio = 0;
+            if (!decimal.TryParse(txtPalcos.Text, out precio))
+            {
+                valido = false;
+                errorProvider1.SetError(txtPalcos, "Debe ingresar un precio de palco valido");
+            }
+            if (precio < 0)
+            {
+                valido = false;
+                errorProvider1.SetError(txtPalcos, "El precio no debe ser menor a cero");
+
+            }
 
             return valido;
         }
@@ -77,8 +128,29 @@ namespace Teatro.Windows
                 {
                     distribucion = new Distribucion();
                 }
-
                 distribucion.NombreDistribucion = txtDistribucion.Text;
+                distribucion.DistribucionUbicacion.Clear();
+                Ubicacion ubicacion = new Ubicacion()
+                {
+                    UbicacionId = 1
+                };
+                DistribucionUbicacion d = new DistribucionUbicacion();
+                d.Distribucion = distribucion;
+                d.Ubicacion = ubicacion;
+                d.Precio = decimal.Parse(txtButacas.Text);
+                distribucion.DistribucionUbicacion.Add(d);
+
+                ubicacion = new Ubicacion()
+                {
+                    UbicacionId = 2
+                };
+                d = new DistribucionUbicacion();
+                d.Distribucion = distribucion;
+                d.Ubicacion = ubicacion;
+                d.Precio = decimal.Parse(txtPalcos.Text);
+                distribucion.DistribucionUbicacion.Add(d);
+
+
 
                 if (ValidarObjeto())
                 {
@@ -114,6 +186,8 @@ namespace Teatro.Windows
         private void InicializarControles()
         {
             txtDistribucion.Clear();
+            txtButacas.Clear();
+            txtPalcos.Clear();
             txtDistribucion.Focus();
             distribucion = null;
         }

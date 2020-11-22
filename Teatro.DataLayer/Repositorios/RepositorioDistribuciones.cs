@@ -12,10 +12,16 @@ namespace Teatro.DataLayer.Repositorios
     public class RepositorioDistribuciones:IRepositorioDistribuciones
     {
         private readonly SqlConnection cn;
+        private SqlTransaction transaction;
 
         public RepositorioDistribuciones(SqlConnection cn)
         {
             this.cn = cn;
+        }
+        public RepositorioDistribuciones(SqlConnection cn,SqlTransaction transaction)
+        {
+            this.cn = cn;
+            this.transaction = transaction;
         }
         public void Borrar(int id)
         {
@@ -43,7 +49,7 @@ namespace Teatro.DataLayer.Repositorios
                 var reader = comando.ExecuteReader();
                 if (!reader.HasRows)
                 {
-                     cadenaDeComando = "SELECT DistribucionId FROM Ubicaciones WHERE DistribucionId=@id";
+                     cadenaDeComando = "SELECT DistribucionId FROM DistribucionesUbicaciones WHERE DistribucionId=@id";
                      comando = new SqlCommand(cadenaDeComando, cn);
                     comando.Parameters.AddWithValue("@id", distribucion.DistribucionId);
                      reader = comando.ExecuteReader();
@@ -93,7 +99,7 @@ namespace Teatro.DataLayer.Repositorios
             try
             {
                 string cadenaComando = "SELECT DistribucionId, Distribucion FROM Distribuciones";
-                SqlCommand comando = new SqlCommand(cadenaComando, cn);
+                SqlCommand comando = new SqlCommand(cadenaComando, cn,transaction);
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
@@ -149,7 +155,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 Distribucion distribucion = null;
                 string cadenaComando = "SELECT DistribucionId,Distribucion FROM Distribuciones WHERE DistribucionId=@id";
-                SqlCommand comando = new SqlCommand(cadenaComando, cn);
+                SqlCommand comando = new SqlCommand(cadenaComando, cn,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.HasRows)
@@ -176,11 +182,11 @@ namespace Teatro.DataLayer.Repositorios
                 try
                 {
                     string cadenaComando = "INSERT INTO Distribuciones VALUES(@nombre)";
-                    SqlCommand comando = new SqlCommand(cadenaComando, cn);
+                    SqlCommand comando = new SqlCommand(cadenaComando, cn,transaction);
                     comando.Parameters.AddWithValue("@nombre", distribucion.NombreDistribucion);
                     comando.ExecuteNonQuery();
                     cadenaComando = "SELECT @@IDENTITY";
-                    comando = new SqlCommand(cadenaComando, cn);
+                    comando = new SqlCommand(cadenaComando, cn,transaction);
                     distribucion.DistribucionId = (int)(decimal)comando.ExecuteScalar();
 
                 }
@@ -196,7 +202,7 @@ namespace Teatro.DataLayer.Repositorios
                 try
                 {
                     string cadenaComando = "UPDATE Distribuciones SET Distribucion=@nombre WHERE DistribucionId=@id";
-                    SqlCommand comando = new SqlCommand(cadenaComando, cn);
+                    SqlCommand comando = new SqlCommand(cadenaComando, cn,transaction);
                     comando.Parameters.AddWithValue("@nombre", distribucion.NombreDistribucion);
                     comando.Parameters.AddWithValue("@id", distribucion.DistribucionId);
                     comando.ExecuteNonQuery();

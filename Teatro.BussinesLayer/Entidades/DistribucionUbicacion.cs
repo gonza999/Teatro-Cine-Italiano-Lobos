@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Teatro.BussinesLayer.Entidades
 {
-    public class Distribucion:ICloneable
+    public class DistribucionUbicacion:ICloneable   
     {
-        public int DistribucionId { get; set; }
-        public string NombreDistribucion { get; set; }
+        public Distribucion Distribucion { get; set; }
+        public Ubicacion Ubicacion { get; set; }
+        public decimal Precio { get; set; }
 
-        public List<DistribucionUbicacion> DistribucionUbicacion { get; set; } = new List<DistribucionUbicacion>();
         public object Clone()
         {
             return this.MemberwiseClone();

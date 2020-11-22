@@ -12,10 +12,15 @@ namespace Teatro.DataLayer.Repositorios
     public class RepositorioUbicaciones:IRepositorioUbicaciones
     {
         private readonly SqlConnection cn;
-
+        private SqlTransaction transaction;
         public RepositorioUbicaciones(SqlConnection cn)
         {
             this.cn = cn;
+        }
+        public RepositorioUbicaciones(SqlConnection cn,SqlTransaction transaction)
+        {
+            this.cn = cn;
+            this.transaction = transaction;
         }
         public void Borrar(int id)
         {
@@ -130,7 +135,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 Ubicacion ubicacion = null;
                 string cadenaComando = "SELECT UbicacionId,Ubicacion FROM Ubicaciones WHERE UbicacionId=@id";
-                SqlCommand comando = new SqlCommand(cadenaComando, cn);
+                SqlCommand comando = new SqlCommand(cadenaComando, cn,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.HasRows)

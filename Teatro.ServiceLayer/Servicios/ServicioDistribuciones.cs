@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,9 @@ namespace Teatro.ServiceLayer.Servicios
     {
         private ConexionBD _conexion;
         private IRepositorioDistribuciones _repositorio;
+        private IRepositorioDistribucionesUbicaciones repositorioDistribucionesUbicaciones;
+        private IRepositorioUbicaciones repositorioUbicaciones;
+        
         public void Borrar(int id)
         {
             try
@@ -85,17 +89,28 @@ namespace Teatro.ServiceLayer.Servicios
 
         public List<Distribucion> GetLista()
         {
+            _conexion = new ConexionBD();
+            SqlTransaction transaction = null;
             try
             {
-                _conexion = new ConexionBD();
-                _repositorio = new RepositorioDistribuciones(_conexion.AbrirConexion());
+                SqlConnection cn = _conexion.AbrirConexion();
+                transaction = cn.BeginTransaction();
+                repositorioUbicaciones = new RepositorioUbicaciones(cn,transaction);
+                repositorioDistribucionesUbicaciones = new RepositorioDistribucionesUbicaciones(cn, _repositorio,repositorioUbicaciones, transaction);
+                _repositorio = new RepositorioDistribuciones(_conexion.AbrirConexion(),transaction);
                 var lista = _repositorio.GetLista();
+                foreach (var d in lista)
+                {
+                    d.DistribucionUbicacion=repositorioDistribucionesUbicaciones.GetLista(d);
+                }
+                transaction.Commit();
                 _conexion.CerrarConexion();
+
                 return lista;
             }
             catch (Exception e)
             {
-
+                transaction.Rollback();
                 throw new Exception(e.Message);
             }
         }
@@ -136,17 +151,37 @@ namespace Teatro.ServiceLayer.Servicios
 
         public void Guardar(Distribucion distribucion)
         {
+            _conexion = new ConexionBD();
+            SqlTransaction transaction = null;
             try
             {
-                _conexion = new ConexionBD();
-                _repositorio = new RepositorioDistribuciones(_conexion.AbrirConexion());
+                bool opcion = true;
+                SqlConnection cn = _conexion.AbrirConexion();
+                transaction = cn.BeginTransaction();
+                repositorioUbicaciones = new RepositorioUbicaciones(cn, transaction);
+                repositorioDistribucionesUbicaciones = new RepositorioDistribucionesUbicaciones(cn, _repositorio,repositorioUbicaciones,transaction);
+                _repositorio = new RepositorioDistribuciones(cn,transaction);
+                if (distribucion.DistribucionId==0)
+                {
+                    opcion = true;
+                }
+                else
+                {
+                    opcion = false;
+                }
                 _repositorio.Guardar(distribucion);
+                foreach (var d in distribucion.DistribucionUbicacion)
+                {
+                    d.Distribucion.DistribucionId = distribucion.DistribucionId;
+                    repositorioDistribucionesUbicaciones.Guardar(d,opcion);
+                }
+                transaction.Commit();
                 _conexion.CerrarConexion();
 
             }
             catch (Exception e)
             {
-
+                transaction.Rollback();
                 throw new Exception(e.Message);
             }
         }
