@@ -174,5 +174,23 @@ namespace Teatro.Windows
             }
         }
 
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                frmDistribucionesDetalles frm = new frmDistribucionesDetalles();
+                frm.Text = "Detalles";
+                if (dgvDatos.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow r = dgvDatos.SelectedRows[0];
+                    Distribucion distribucion = (Distribucion)r.Tag;
+
+                    //var r = dgvDatos.SelectedRows[e.RowIndex];
+                    //Distribucion distribucion =(Distribucion) r.Tag;
+                    frm.SetDistribucion(distribucion);
+                    frm.ShowDialog(this);
+                }
+            }
+        }
     }
 }
