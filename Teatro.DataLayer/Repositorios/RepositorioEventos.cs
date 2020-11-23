@@ -174,7 +174,7 @@ namespace Teatro.DataLayer.Repositorios
                     var cadenaDeComando = "INSERT INTO Eventos (Evento,Descripcion,TipoEventoId," +
                                "ClasificacionId,FechaEvento,Suspendido,DistribucionId) VALUES (@evento,@descripcion,@tipoEventoId," +
                                "@clasificacionId,@fecha,@suspendido,@distribucion)";
-                    var comando = new SqlCommand(cadenaDeComando, conexion);
+                    var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                     comando.Parameters.AddWithValue("@evento", evento.NombreEvento);
                     comando.Parameters.AddWithValue("@descripcion", evento.Descripcion);
                     comando.Parameters.AddWithValue("@tipoEventoId", evento.TipoEvento.TipoEventoId);
@@ -184,7 +184,7 @@ namespace Teatro.DataLayer.Repositorios
                     comando.Parameters.AddWithValue("@distribucion", evento.Distribucion.DistribucionId);
                     comando.ExecuteNonQuery();
                     cadenaDeComando = "SELECT @@Identity";
-                    comando = new SqlCommand(cadenaDeComando, conexion);
+                    comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                     evento.EventoId = (int)(decimal)comando.ExecuteScalar();
                 }
                 catch (Exception e)
@@ -201,7 +201,7 @@ namespace Teatro.DataLayer.Repositorios
                     string cadenaComando = "UPDATE Eventos SET Evento=@nombre,Descripcion=@desc," +
                         "TipoEventoId=@tipo,ClasificacionId=@clasi,FechaEvento=@fecha,Suspendido=@sus,DistribucionId=@distribucion " +
                         " WHERE EventoId=@id";
-                    SqlCommand comando = new SqlCommand(cadenaComando, conexion);
+                    SqlCommand comando = new SqlCommand(cadenaComando, conexion,transaction);
                     comando.Parameters.AddWithValue("@nombre", evento.NombreEvento);
                     comando.Parameters.AddWithValue("@desc", evento.Descripcion);
                     comando.Parameters.AddWithValue("@tipo", evento.TipoEvento.TipoEventoId);

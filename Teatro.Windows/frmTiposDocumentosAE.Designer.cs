@@ -42,7 +42,7 @@
             this.txtTipoDocumento.Location = new System.Drawing.Point(153, 27);
             this.txtTipoDocumento.Name = "txtTipoDocumento";
             this.txtTipoDocumento.Size = new System.Drawing.Size(214, 20);
-            this.txtTipoDocumento.TabIndex = 18;
+            this.txtTipoDocumento.TabIndex = 0;
             // 
             // label1
             // 
@@ -62,7 +62,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(292, 93);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(101, 51);
-            this.btnCancelar.TabIndex = 20;
+            this.btnCancelar.TabIndex = 2;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -74,7 +74,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(25, 93);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(101, 51);
-            this.btnGuardar.TabIndex = 19;
+            this.btnGuardar.TabIndex = 1;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);

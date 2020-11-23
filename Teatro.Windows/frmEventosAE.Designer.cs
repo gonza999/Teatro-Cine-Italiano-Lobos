@@ -49,13 +49,13 @@
             this.btnAgregarFecha = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.cmnFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cmnFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
@@ -67,7 +67,7 @@
             this.txtEvento.Location = new System.Drawing.Point(165, 32);
             this.txtEvento.Name = "txtEvento";
             this.txtEvento.Size = new System.Drawing.Size(214, 20);
-            this.txtEvento.TabIndex = 22;
+            this.txtEvento.TabIndex = 0;
             // 
             // label1
             // 
@@ -96,7 +96,7 @@
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(214, 92);
-            this.txtDescripcion.TabIndex = 22;
+            this.txtDescripcion.TabIndex = 1;
             // 
             // label3
             // 
@@ -114,7 +114,7 @@
             this.pickerFecha.Location = new System.Drawing.Point(496, 29);
             this.pickerFecha.Name = "pickerFecha";
             this.pickerFecha.Size = new System.Drawing.Size(113, 20);
-            this.pickerFecha.TabIndex = 26;
+            this.pickerFecha.TabIndex = 6;
             // 
             // label4
             // 
@@ -132,7 +132,7 @@
             this.checkSuspendido.Location = new System.Drawing.Point(200, 338);
             this.checkSuspendido.Name = "checkSuspendido";
             this.checkSuspendido.Size = new System.Drawing.Size(13, 14);
-            this.checkSuspendido.TabIndex = 27;
+            this.checkSuspendido.TabIndex = 5;
             this.checkSuspendido.UseVisualStyleBackColor = false;
             // 
             // label5
@@ -162,7 +162,7 @@
             this.cmbTipoEvento.Location = new System.Drawing.Point(165, 191);
             this.cmbTipoEvento.Name = "cmbTipoEvento";
             this.cmbTipoEvento.Size = new System.Drawing.Size(214, 21);
-            this.cmbTipoEvento.TabIndex = 28;
+            this.cmbTipoEvento.TabIndex = 2;
             // 
             // cmbClasificacion
             // 
@@ -171,7 +171,7 @@
             this.cmbClasificacion.Location = new System.Drawing.Point(165, 231);
             this.cmbClasificacion.Name = "cmbClasificacion";
             this.cmbClasificacion.Size = new System.Drawing.Size(214, 21);
-            this.cmbClasificacion.TabIndex = 28;
+            this.cmbClasificacion.TabIndex = 3;
             // 
             // errorProvider1
             // 
@@ -194,7 +194,7 @@
             this.cmbDistribucion.Location = new System.Drawing.Point(165, 273);
             this.cmbDistribucion.Name = "cmbDistribucion";
             this.cmbDistribucion.Size = new System.Drawing.Size(214, 21);
-            this.cmbDistribucion.TabIndex = 28;
+            this.cmbDistribucion.TabIndex = 4;
             // 
             // label8
             // 
@@ -213,7 +213,7 @@
             this.pickerHora.Name = "pickerHora";
             this.pickerHora.ShowUpDown = true;
             this.pickerHora.Size = new System.Drawing.Size(113, 20);
-            this.pickerHora.TabIndex = 26;
+            this.pickerHora.TabIndex = 7;
             // 
             // btnAgregarFecha
             // 
@@ -223,7 +223,7 @@
             this.btnAgregarFecha.Location = new System.Drawing.Point(465, 120);
             this.btnAgregarFecha.Name = "btnAgregarFecha";
             this.btnAgregarFecha.Size = new System.Drawing.Size(104, 28);
-            this.btnAgregarFecha.TabIndex = 23;
+            this.btnAgregarFecha.TabIndex = 8;
             this.btnAgregarFecha.Text = "Agregar";
             this.btnAgregarFecha.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAgregarFecha.UseVisualStyleBackColor = false;
@@ -258,42 +258,6 @@
             this.dgvDatos.TabIndex = 0;
             this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewImageColumn1.HeaderText = "Borrar";
-            this.dataGridViewImageColumn1.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackgroundImage = global::Teatro.Windows.Properties.Resources.delete_40px;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(278, 378);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(101, 51);
-            this.btnCancelar.TabIndex = 24;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackgroundImage = global::Teatro.Windows.Properties.Resources.ok_40px;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGuardar.Location = new System.Drawing.Point(25, 378);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(101, 51);
-            this.btnGuardar.TabIndex = 23;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // errorProvider2
-            // 
-            this.errorProvider2.ContainerControl = this;
-            // 
             // cmnFecha
             // 
             this.cmnFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -315,6 +279,42 @@
             this.cmnBorrar.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
             this.cmnBorrar.Name = "cmnBorrar";
             this.cmnBorrar.ReadOnly = true;
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn1.HeaderText = "Borrar";
+            this.dataGridViewImageColumn1.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackgroundImage = global::Teatro.Windows.Properties.Resources.delete_40px;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.Location = new System.Drawing.Point(278, 378);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(101, 51);
+            this.btnCancelar.TabIndex = 10;
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackgroundImage = global::Teatro.Windows.Properties.Resources.ok_40px;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardar.Location = new System.Drawing.Point(25, 378);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(101, 51);
+            this.btnGuardar.TabIndex = 9;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
             // 
             // frmEventosAE
             // 

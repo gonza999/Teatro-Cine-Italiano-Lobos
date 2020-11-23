@@ -56,7 +56,7 @@
             this.cmbTipoDocumento.Location = new System.Drawing.Point(177, 120);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(214, 21);
-            this.cmbTipoDocumento.TabIndex = 42;
+            this.cmbTipoDocumento.TabIndex = 2;
             // 
             // label2
             // 
@@ -93,7 +93,7 @@
             this.txtNombre.Location = new System.Drawing.Point(178, 32);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(214, 20);
-            this.txtNombre.TabIndex = 30;
+            this.txtNombre.TabIndex = 0;
             // 
             // label1
             // 
@@ -113,7 +113,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(291, 378);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(101, 51);
-            this.btnCancelar.TabIndex = 32;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -125,7 +125,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(38, 378);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(101, 51);
-            this.btnGuardar.TabIndex = 31;
+            this.btnGuardar.TabIndex = 7;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -135,14 +135,14 @@
             this.txtApellido.Location = new System.Drawing.Point(178, 79);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(214, 20);
-            this.txtApellido.TabIndex = 30;
+            this.txtApellido.TabIndex = 1;
             // 
             // txtNroDoc
             // 
             this.txtNroDoc.Location = new System.Drawing.Point(178, 164);
             this.txtNroDoc.Name = "txtNroDoc";
             this.txtNroDoc.Size = new System.Drawing.Size(214, 20);
-            this.txtNroDoc.TabIndex = 30;
+            this.txtNroDoc.TabIndex = 3;
             // 
             // label3
             // 
@@ -159,14 +159,14 @@
             this.txtTelFijo.Location = new System.Drawing.Point(177, 206);
             this.txtTelFijo.Name = "txtTelFijo";
             this.txtTelFijo.Size = new System.Drawing.Size(214, 20);
-            this.txtTelFijo.TabIndex = 30;
+            this.txtTelFijo.TabIndex = 4;
             // 
             // txtTelMovil
             // 
             this.txtTelMovil.Location = new System.Drawing.Point(177, 253);
             this.txtTelMovil.Name = "txtTelMovil";
             this.txtTelMovil.Size = new System.Drawing.Size(214, 20);
-            this.txtTelMovil.TabIndex = 30;
+            this.txtTelMovil.TabIndex = 5;
             // 
             // label4
             // 
@@ -183,7 +183,7 @@
             this.txtMail.Location = new System.Drawing.Point(178, 299);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(214, 20);
-            this.txtMail.TabIndex = 30;
+            this.txtMail.TabIndex = 6;
             // 
             // label7
             // 
@@ -225,6 +225,7 @@
             this.MaximumSize = new System.Drawing.Size(443, 496);
             this.MinimumSize = new System.Drawing.Size(443, 496);
             this.Name = "frmEmpleadosAE";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEmpleadosAE";
             this.Load += new System.EventHandler(this.frmEmpleadosAE_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

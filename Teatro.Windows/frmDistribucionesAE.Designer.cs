@@ -47,7 +47,7 @@
             this.txtDistribucion.Location = new System.Drawing.Point(153, 27);
             this.txtDistribucion.Name = "txtDistribucion";
             this.txtDistribucion.Size = new System.Drawing.Size(214, 20);
-            this.txtDistribucion.TabIndex = 18;
+            this.txtDistribucion.TabIndex = 0;
             // 
             // label1
             // 
@@ -67,7 +67,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(287, 226);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(101, 51);
-            this.btnCancelar.TabIndex = 20;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -79,7 +79,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(20, 226);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(101, 51);
-            this.btnGuardar.TabIndex = 19;
+            this.btnGuardar.TabIndex = 3;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -123,14 +123,14 @@
             this.txtButacas.Location = new System.Drawing.Point(172, 132);
             this.txtButacas.Name = "txtButacas";
             this.txtButacas.Size = new System.Drawing.Size(155, 20);
-            this.txtButacas.TabIndex = 18;
+            this.txtButacas.TabIndex = 1;
             // 
             // txtPalcos
             // 
             this.txtPalcos.Location = new System.Drawing.Point(172, 180);
             this.txtPalcos.Name = "txtPalcos";
             this.txtPalcos.Size = new System.Drawing.Size(155, 20);
-            this.txtPalcos.TabIndex = 18;
+            this.txtPalcos.TabIndex = 2;
             // 
             // frmDistribucionesAE
             // 
@@ -149,6 +149,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Name = "frmDistribucionesAE";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDistribucionesAE";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

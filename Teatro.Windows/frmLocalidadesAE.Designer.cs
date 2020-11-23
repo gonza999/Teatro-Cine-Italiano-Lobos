@@ -49,7 +49,7 @@
             this.cmbUbicacion.Location = new System.Drawing.Point(192, 278);
             this.cmbUbicacion.Name = "cmbUbicacion";
             this.cmbUbicacion.Size = new System.Drawing.Size(214, 21);
-            this.cmbUbicacion.TabIndex = 42;
+            this.cmbUbicacion.TabIndex = 2;
             // 
             // cmbPlanta
             // 
@@ -58,7 +58,7 @@
             this.cmbPlanta.Location = new System.Drawing.Point(192, 61);
             this.cmbPlanta.Name = "cmbPlanta";
             this.cmbPlanta.Size = new System.Drawing.Size(214, 21);
-            this.cmbPlanta.TabIndex = 43;
+            this.cmbPlanta.TabIndex = 0;
             // 
             // label7
             // 
@@ -98,7 +98,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(291, 378);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(101, 51);
-            this.btnCancelar.TabIndex = 32;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -110,7 +110,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(38, 378);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(101, 51);
-            this.btnGuardar.TabIndex = 31;
+            this.btnGuardar.TabIndex = 3;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -126,7 +126,7 @@
             0});
             this.nudNumero.Name = "nudNumero";
             this.nudNumero.Size = new System.Drawing.Size(120, 20);
-            this.nudNumero.TabIndex = 45;
+            this.nudNumero.TabIndex = 1;
             this.nudNumero.ThousandsSeparator = true;
             this.nudNumero.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 

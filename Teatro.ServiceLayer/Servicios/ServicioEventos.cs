@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace Teatro.ServiceLayer.Servicios
         private IRepositorioClasificaciones repositorioClasificaciones;
         private IRepositorioDistribuciones repositorioDistribuciones;
         private IRepositorioTipoEventos repositorioTipoEventos;
+        private IRepositorioHorarios repositorioHorarios;
+        private SqlTransaction transaction;
         public ServicioEventos()
         {
 
@@ -205,13 +208,22 @@ namespace Teatro.ServiceLayer.Servicios
             try
             {
                 conexion = new ConexionBD();
-                repositorio = new RepositorioEventos(conexion.AbrirConexion());
+                transaction = null;
+                SqlConnection cn = conexion.AbrirConexion();
+                transaction = cn.BeginTransaction();
+                repositorio = new RepositorioEventos(conexion.AbrirConexion(),transaction);
+                repositorioHorarios = new RepositorioHorarios(cn,repositorio,transaction);
                 repositorio.Guardar(evento);
+                foreach (var h in evento.Horarios)
+                {
+                    repositorioHorarios.Guardar(h);
+                }
+                transaction.Commit();
                 conexion.CerrarConexion();
             }
             catch (Exception e)
             {
-
+                transaction.Rollback();
                 throw new Exception(e.Message);
             }
         }

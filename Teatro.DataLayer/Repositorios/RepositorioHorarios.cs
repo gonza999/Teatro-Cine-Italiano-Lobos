@@ -81,7 +81,7 @@ namespace Teatro.DataLayer.Repositorios
                 SqlCommand comando;
                 if (horario.HorarioId == 0)
                 {
-                    string cadenaComando = "SELECT HorarioId FROM Horarios WHERE EventoId<>@id AND convert(date,Fecha)=@fecha ";
+                    string cadenaComando = "SELECT HorarioId FROM Horarios WHERE  convert(date,Fecha)=@fecha ";
                     comando = new SqlCommand(cadenaComando, conexion,transaction);
                     comando.Parameters.AddWithValue("@id", horario.Evento.EventoId);
                     comando.Parameters.AddWithValue("@fecha",fecha);

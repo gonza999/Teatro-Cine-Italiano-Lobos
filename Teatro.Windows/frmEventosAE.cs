@@ -47,7 +47,7 @@ namespace Teatro.Windows
             }
         }
         private List<Horario> lista=new List<Horario>();
-        private IServicioHorarios servicioHorarios;
+        private IServicioHorarios servicioHorarios=new ServicioHorarios();
         private void MostrarGrilla(Evento evento)
         {
             try
@@ -96,6 +96,7 @@ namespace Teatro.Windows
             r.Cells[cmnFecha.Index].Value = horario.Fecha.Date;
             r.Cells[cmnHorario.Index].Value = horario.Hora.TimeOfDay;
             r.Tag = horario;
+            horario.Evento = evento;
             listaHorarios.Add(horario);
         }
 
@@ -158,7 +159,6 @@ namespace Teatro.Windows
             }
             return valido;
         }
-
         private void btnGuardar_Click(object sender, System.EventArgs e)
         {
             if (ValidarDatos())
@@ -175,40 +175,37 @@ namespace Teatro.Windows
                 evento.TipoEvento = (TipoEvento)cmbTipoEvento.SelectedItem;
                 evento.Clasificacion = (Clasificacion)cmbClasificacion.SelectedItem;
                 evento.Distribucion = (Distribucion)cmbDistribucion.SelectedItem;
+                evento.FechaEvento = pickerFecha.Value;
                 foreach (var h in listaHorarios)
                 {
-
+                    h.Evento = evento;
                     evento.Horarios.Add(h);
-                    if (ValidarObjeto())
-                    {
-                        servicioHorarios.Guardar(h);
-
-                    }
-
                 }
                 if (ValidarObjeto())
                 {
                     if (!esEdicion)
                     {
-                        servicio.Guardar(evento);
-                        if (frm != null)
-                        {
-                            frm.AgregarFila(evento);
-                        }
-                        Helper.MensajeBox("Registro guardado", Tipo.Success);
-                        DialogResult dr = MessageBox.Show("Desea agregar otro registro?", "Confirmar",
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (dr == DialogResult.No)
-                        {
-                            DialogResult = DialogResult.Cancel;
-                        }
-                        else
-                        {
-                            InicializarControles();
-                        }
+                            servicio.Guardar(evento);
+                            if (frm != null)
+                            {
+                                frm.AgregarFila(evento);
+                            }
+                            Helper.MensajeBox("Registro guardado", Tipo.Success);
+                            DialogResult dr = MessageBox.Show("Desea agregar otro registro?", "Confirmar",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dr == DialogResult.No)
+                            {
+                                DialogResult = DialogResult.Cancel;
+                            }
+                            else
+                            {
+                                InicializarControles();
+                            } 
+                        
                     }
                     else
                     {
+
                         DialogResult = DialogResult.OK;
                     }
 
@@ -250,8 +247,12 @@ namespace Teatro.Windows
                     valido = false;
                     errorProvider1.Clear();
                     errorProvider1.SetError(pickerFecha, "No pueden suceder dos eventos distintos en la misma fecha");
+                    evento.Horarios.Remove(h);
+                    break;
                 }
             }
+          
+
             return valido;
         }
 
@@ -308,6 +309,7 @@ namespace Teatro.Windows
                     errorProvider2.SetError(pickerFecha, "No pueden suceder dos eventos distintos en la misma fecha");
                 }
             }
+
             return valido;
         }
 
@@ -320,6 +322,7 @@ namespace Teatro.Windows
                 dgvDatos.Rows.RemoveAt(e.RowIndex);
                 servicioHorarios.Borrar(horario.HorarioId);
                 listaHorarios.Remove(horario);
+                evento.Horarios.Remove(horario);
                 MostrarGrilla(evento);
             }
         }
