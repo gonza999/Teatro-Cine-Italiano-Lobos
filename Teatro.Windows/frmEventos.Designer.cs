@@ -48,7 +48,6 @@
             this.cmnDistribucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnTipoEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnClasificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnFechaEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnSuspendido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -74,7 +73,6 @@
             this.cmnDistribucion,
             this.cmnTipoEvento,
             this.cmnClasificacion,
-            this.cmnFechaEvento,
             this.cmnSuspendido});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 25);
@@ -225,13 +223,6 @@
             this.cmnClasificacion.Name = "cmnClasificacion";
             this.cmnClasificacion.ReadOnly = true;
             // 
-            // cmnFechaEvento
-            // 
-            this.cmnFechaEvento.HeaderText = "Fecha";
-            this.cmnFechaEvento.Name = "cmnFechaEvento";
-            this.cmnFechaEvento.ReadOnly = true;
-            this.cmnFechaEvento.Width = 60;
-            // 
             // cmnSuspendido
             // 
             this.cmnSuspendido.HeaderText = "Suspendido";
@@ -278,7 +269,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnDistribucion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnTipoEvento;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnClasificacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnFechaEvento;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cmnSuspendido;
     }
 }

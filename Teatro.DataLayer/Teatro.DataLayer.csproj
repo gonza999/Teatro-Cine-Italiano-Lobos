@@ -50,6 +50,7 @@
     <Compile Include="Facades\IRepositorioEventos.cs" />
     <Compile Include="Facades\IRepositorioFormasPagos.cs" />
     <Compile Include="Facades\IRepositorioFormasVentas.cs" />
+    <Compile Include="Facades\IRepositorioHorarios.cs" />
     <Compile Include="Facades\IRepositorioLocalidades.cs" />
     <Compile Include="Facades\IRepositorioPlantas.cs" />
     <Compile Include="Facades\IRepositorioTipoEventos.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Repositorios\RepositorioEventos.cs" />
     <Compile Include="Repositorios\RepositorioFormasPagos.cs" />
     <Compile Include="Repositorios\RepositorioFormasVentas.cs" />
+    <Compile Include="Repositorios\RepositorioHorarios.cs" />
     <Compile Include="Repositorios\RepositorioLocalidades.cs" />
     <Compile Include="Repositorios\RepositorioPlantas.cs" />
     <Compile Include="Repositorios\RepositorioTipoEventos.cs" />

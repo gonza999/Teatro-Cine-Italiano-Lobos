@@ -290,7 +290,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\delete_20px.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\descarga.png" />
   </ItemGroup>

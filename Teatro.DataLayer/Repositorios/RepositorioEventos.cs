@@ -25,6 +25,16 @@ namespace Teatro.DataLayer.Repositorios
             this.repositorioTipoEventos = repositorioTipoEventos;
             this.repositorioDistribuciones = repositorioDistribuciones;
         }
+        public RepositorioEventos(SqlConnection conexion, IRepositorioTipoEventos repositorioTipoEventos,
+             IRepositorioClasificaciones repositorioClasificaciones, IRepositorioDistribuciones repositorioDistribuciones,
+             SqlTransaction transaction)
+        {
+            this.conexion = conexion;
+            this.repositorioClasificaciones = repositorioClasificaciones;
+            this.repositorioTipoEventos = repositorioTipoEventos;
+            this.repositorioDistribuciones = repositorioDistribuciones;
+            this.transaction = transaction;
+        }
 
         public RepositorioEventos(SqlConnection sqlConnection)
         {
@@ -118,12 +128,13 @@ namespace Teatro.DataLayer.Repositorios
             evento.EventoId = reader.GetInt32(0);
             evento.NombreEvento = reader.GetString(1);
             evento.Descripcion = reader.GetString(2);
-            repositorioClasificaciones = new RepositorioClasificaciones(conexion);
-            repositorioTipoEventos = new RepositorioTipoEvento(conexion);
+            repositorioClasificaciones = new RepositorioClasificaciones(conexion,transaction);
+            repositorioTipoEventos = new RepositorioTipoEvento(conexion,transaction);
             evento.TipoEvento = repositorioTipoEventos.GetTipoEventoPorId(reader.GetInt32(3));
             evento.Clasificacion = repositorioClasificaciones.GetClasificacionPorId(reader.GetInt32(4));
             evento.FechaEvento = reader.GetDateTime(5);
             evento.Suspendido = reader.GetBoolean(6);
+            repositorioDistribuciones = new RepositorioDistribuciones(conexion,transaction);
             evento.Distribucion= repositorioDistribuciones.GetDistribucionPorId(reader.GetInt32(7));
             return evento;
         }
@@ -133,9 +144,9 @@ namespace Teatro.DataLayer.Repositorios
             Evento evento = null;
             try
             {
-                var cadenaDeComando = "SELECT  FROM EventoId,Evento,Descripcion,TipoEventoId," +
+                var cadenaDeComando = "SELECT EventoId,Evento,Descripcion,TipoEventoId," +
                     "ClasificacionId,FechaEvento,Suspendido,DistribucionId FROM Eventos WHERE EventoId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion);
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 var reader = comando.ExecuteReader();
                 if (reader.HasRows)

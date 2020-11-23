@@ -17,6 +17,7 @@ namespace Teatro.BussinesLayer.Entidades
         public bool Suspendido { get; set; }
 
         public Distribucion Distribucion { get; set; }
+        public List<Horario> Horarios { get; set; } = new List<Horario>();
 
         public object Clone()
         {

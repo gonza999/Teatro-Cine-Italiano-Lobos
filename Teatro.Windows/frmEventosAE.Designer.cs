@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.txtEvento = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,7 +44,22 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.cmbDistribucion = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pickerHora = new System.Windows.Forms.DateTimePicker();
+            this.btnAgregarFecha = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmnFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtEvento
@@ -65,31 +78,6 @@
             this.label1.Size = new System.Drawing.Size(74, 24);
             this.label1.TabIndex = 25;
             this.label1.Text = "Evento :";
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackgroundImage = global::Teatro.Windows.Properties.Resources.delete_40px;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(278, 378);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(101, 51);
-            this.btnCancelar.TabIndex = 24;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackgroundImage = global::Teatro.Windows.Properties.Resources.ok_40px;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGuardar.Location = new System.Drawing.Point(25, 378);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(101, 51);
-            this.btnGuardar.TabIndex = 23;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // label2
             // 
@@ -114,7 +102,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(21, 326);
+            this.label3.Location = new System.Drawing.Point(423, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 24);
             this.label3.TabIndex = 25;
@@ -123,7 +111,7 @@
             // pickerFecha
             // 
             this.pickerFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.pickerFecha.Location = new System.Drawing.Point(94, 330);
+            this.pickerFecha.Location = new System.Drawing.Point(496, 29);
             this.pickerFecha.Name = "pickerFecha";
             this.pickerFecha.Size = new System.Drawing.Size(113, 20);
             this.pickerFecha.TabIndex = 26;
@@ -132,7 +120,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(230, 330);
+            this.label4.Location = new System.Drawing.Point(81, 328);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 24);
             this.label4.TabIndex = 25;
@@ -141,7 +129,7 @@
             // checkSuspendido
             // 
             this.checkSuspendido.BackColor = System.Drawing.Color.White;
-            this.checkSuspendido.Location = new System.Drawing.Point(349, 336);
+            this.checkSuspendido.Location = new System.Drawing.Point(200, 338);
             this.checkSuspendido.Name = "checkSuspendido";
             this.checkSuspendido.Size = new System.Drawing.Size(13, 14);
             this.checkSuspendido.TabIndex = 27;
@@ -208,17 +196,139 @@
             this.cmbDistribucion.Size = new System.Drawing.Size(214, 21);
             this.cmbDistribucion.TabIndex = 28;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(433, 74);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 24);
+            this.label8.TabIndex = 25;
+            this.label8.Text = "Hora :";
+            // 
+            // pickerHora
+            // 
+            this.pickerHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.pickerHora.Location = new System.Drawing.Point(496, 79);
+            this.pickerHora.Name = "pickerHora";
+            this.pickerHora.ShowUpDown = true;
+            this.pickerHora.Size = new System.Drawing.Size(113, 20);
+            this.pickerHora.TabIndex = 26;
+            // 
+            // btnAgregarFecha
+            // 
+            this.btnAgregarFecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAgregarFecha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAgregarFecha.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregarFecha.Location = new System.Drawing.Point(465, 120);
+            this.btnAgregarFecha.Name = "btnAgregarFecha";
+            this.btnAgregarFecha.Size = new System.Drawing.Size(104, 28);
+            this.btnAgregarFecha.TabIndex = 23;
+            this.btnAgregarFecha.Text = "Agregar";
+            this.btnAgregarFecha.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarFecha.UseVisualStyleBackColor = false;
+            this.btnAgregarFecha.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvDatos);
+            this.panel1.Location = new System.Drawing.Point(409, 154);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(271, 291);
+            this.panel1.TabIndex = 29;
+            // 
+            // dgvDatos
+            // 
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToDeleteRows = false;
+            this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cmnFecha,
+            this.cmnHorario,
+            this.cmnBorrar});
+            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDatos.Location = new System.Drawing.Point(0, 0);
+            this.dgvDatos.MultiSelect = false;
+            this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
+            this.dgvDatos.RowHeadersVisible = false;
+            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDatos.Size = new System.Drawing.Size(271, 291);
+            this.dgvDatos.TabIndex = 0;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn1.HeaderText = "Borrar";
+            this.dataGridViewImageColumn1.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackgroundImage = global::Teatro.Windows.Properties.Resources.delete_40px;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.Location = new System.Drawing.Point(278, 378);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(101, 51);
+            this.btnCancelar.TabIndex = 24;
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackgroundImage = global::Teatro.Windows.Properties.Resources.ok_40px;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuardar.Location = new System.Drawing.Point(25, 378);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(101, 51);
+            this.btnGuardar.TabIndex = 23;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
+            // cmnFecha
+            // 
+            this.cmnFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnFecha.HeaderText = "Fecha";
+            this.cmnFecha.Name = "cmnFecha";
+            this.cmnFecha.ReadOnly = true;
+            // 
+            // cmnHorario
+            // 
+            this.cmnHorario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnHorario.HeaderText = "Horario";
+            this.cmnHorario.Name = "cmnHorario";
+            this.cmnHorario.ReadOnly = true;
+            // 
+            // cmnBorrar
+            // 
+            this.cmnBorrar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnBorrar.HeaderText = "Borrar";
+            this.cmnBorrar.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
+            this.cmnBorrar.Name = "cmnBorrar";
+            this.cmnBorrar.ReadOnly = true;
+            // 
             // frmEventosAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(427, 457);
+            this.ClientSize = new System.Drawing.Size(682, 457);
             this.ControlBox = false;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmbDistribucion);
             this.Controls.Add(this.cmbClasificacion);
             this.Controls.Add(this.cmbTipoEvento);
             this.Controls.Add(this.checkSuspendido);
+            this.Controls.Add(this.pickerHora);
             this.Controls.Add(this.pickerFecha);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label4);
@@ -226,16 +336,21 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtEvento);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAgregarFecha);
             this.Controls.Add(this.btnGuardar);
             this.Name = "frmEventosAE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEventosAE";
             this.Load += new System.EventHandler(this.frmEventosAE_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +375,15 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ComboBox cmbDistribucion;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker pickerHora;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnAgregarFecha;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnHorario;
+        private System.Windows.Forms.DataGridViewImageColumn cmnBorrar;
     }
 }
