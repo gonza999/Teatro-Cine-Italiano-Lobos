@@ -65,16 +65,16 @@ namespace Teatro.DataLayer.Repositorios
                 SqlCommand comando;
                 if (evento.EventoId == 0)
                 {
-                    string cadenaComando = "SELECT EventoId, Evento FROM Eventos WHERE Evento=@nombre";
+                    string cadenaComando = "SELECT EventoId FROM Eventos WHERE FechaEvento=@fecha";
                     comando = new SqlCommand(cadenaComando, conexion);
-                    comando.Parameters.AddWithValue("@nombre", evento.NombreEvento);
+                    comando.Parameters.AddWithValue("@fecha", evento.FechaEvento);
 
                 }
                 else
                 {
-                    string cadenaComando = "SELECT EventoId, Evento FROM Eventos WHERE Evento=@nombre AND EventoId<>@id";
+                    string cadenaComando = "SELECT EventoId FROM Eventos WHERE FechaEvento=@fecha AND EventoId<>@id";
                     comando = new SqlCommand(cadenaComando, conexion);
-                    comando.Parameters.AddWithValue("@nombre", evento.NombreEvento);
+                    comando.Parameters.AddWithValue("@fecha", evento.FechaEvento);
                     comando.Parameters.AddWithValue("@id", evento.EventoId);
 
 

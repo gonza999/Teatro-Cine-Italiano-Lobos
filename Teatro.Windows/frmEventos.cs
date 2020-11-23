@@ -74,7 +74,7 @@ namespace Teatro.Windows
         {
             r.Cells[cmnEvento.Index].Value = evento.NombreEvento;
             r.Cells[cmnClasificacion.Index].Value = evento.Clasificacion.NombreClasificacion;
-            r.Cells[cmnFechaEvento.Index].Value = evento.FechaEvento;
+            r.Cells[cmnFechaEvento.Index].Value = evento.FechaEvento.Date;
             r.Cells[cmnSuspendido.Index].Value = evento.Suspendido;
             r.Cells[cmnTipoEvento.Index].Value = evento.TipoEvento.NombreTipoEvento;
             r.Cells[cmnDistribucion.Index].Value = evento.Distribucion.NombreDistribucion;

@@ -113,7 +113,7 @@ namespace Teatro.Windows
                 }
 
                 evento.NombreEvento = txtEvento.Text;
-                evento.FechaEvento = pickerFecha.Value;
+                evento.FechaEvento = pickerFecha.Value.Date;
                 evento.Descripcion = txtDescripcion.Text;
                 evento.Suspendido = checkSuspendido.Checked;
                 evento.TipoEvento = (TipoEvento)cmbTipoEvento.SelectedItem;
@@ -170,7 +170,7 @@ namespace Teatro.Windows
             bool valido = true;
             if (servicio.Existe(evento))
             {
-                errorProvider1.SetError(txtEvento, "Evento repetida");
+                errorProvider1.SetError(txtEvento, "No pueden haber dos eventos diferentes el mismo día");
                 valido = false;
             }
             return valido;
