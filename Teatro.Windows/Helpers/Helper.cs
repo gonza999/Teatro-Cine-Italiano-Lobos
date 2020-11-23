@@ -35,6 +35,18 @@ namespace Teatro.Windows.Helpers
             }
         }
 
+        internal static void CargarEmpleadoComboBox(ref ComboBox cmbEmpleado)
+        {
+            IServicioEmpleados servicioEmpleados = new ServicioEmpleados();
+            List<Empleado> listaEmpleado = servicioEmpleados.GetLista();
+            var defaultEmpleado = new Empleado() { EmpleadoId = 0, Nombre = "-Seleccione Empleado-" };
+            listaEmpleado.Insert(0, defaultEmpleado);
+            cmbEmpleado.DataSource = listaEmpleado;
+            cmbEmpleado.DisplayMember = "Nombre";
+            cmbEmpleado.ValueMember = "EmpleadoId";
+            cmbEmpleado.SelectedIndex = 0;
+        }
+
         internal static void CargarTipoEventoComboBox(ref ComboBox cmbTipoEvento)
         {
             IServicioTipoEventos servicioTipoEventos = new ServicioTipoEventos();

@@ -40,8 +40,12 @@
             this.tiposDeDocumentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distribucionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.venderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaDeLasVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaDeLosTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +76,8 @@
             this.tiposDeDocumentosToolStripMenuItem,
             this.empleadosToolStripMenuItem,
             this.distribucionesToolStripMenuItem,
-            this.localidadesToolStripMenuItem});
+            this.localidadesToolStripMenuItem,
+            this.ventasToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(69, 21);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -147,6 +152,13 @@
             this.distribucionesToolStripMenuItem.Text = "Distribuciones";
             this.distribucionesToolStripMenuItem.Click += new System.EventHandler(this.distribucionesToolStripMenuItem_Click);
             // 
+            // localidadesToolStripMenuItem
+            // 
+            this.localidadesToolStripMenuItem.Name = "localidadesToolStripMenuItem";
+            this.localidadesToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.localidadesToolStripMenuItem.Text = "Localidades";
+            this.localidadesToolStripMenuItem.Click += new System.EventHandler(this.localidadesToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
@@ -154,12 +166,34 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
-            // localidadesToolStripMenuItem
+            // ventasToolStripMenuItem
             // 
-            this.localidadesToolStripMenuItem.Name = "localidadesToolStripMenuItem";
-            this.localidadesToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
-            this.localidadesToolStripMenuItem.Text = "Localidades";
-            this.localidadesToolStripMenuItem.Click += new System.EventHandler(this.localidadesToolStripMenuItem_Click);
+            this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.venderToolStripMenuItem,
+            this.listaDeLasVentasToolStripMenuItem,
+            this.listaDeLosTicketsToolStripMenuItem});
+            this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.ventasToolStripMenuItem.Text = "Ventas";
+            // 
+            // venderToolStripMenuItem
+            // 
+            this.venderToolStripMenuItem.Name = "venderToolStripMenuItem";
+            this.venderToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.venderToolStripMenuItem.Text = "Vender";
+            this.venderToolStripMenuItem.Click += new System.EventHandler(this.venderToolStripMenuItem_Click);
+            // 
+            // listaDeLasVentasToolStripMenuItem
+            // 
+            this.listaDeLasVentasToolStripMenuItem.Name = "listaDeLasVentasToolStripMenuItem";
+            this.listaDeLasVentasToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.listaDeLasVentasToolStripMenuItem.Text = "Lista de las Ventas";
+            // 
+            // listaDeLosTicketsToolStripMenuItem
+            // 
+            this.listaDeLosTicketsToolStripMenuItem.Name = "listaDeLosTicketsToolStripMenuItem";
+            this.listaDeLosTicketsToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.listaDeLosTicketsToolStripMenuItem.Text = "Lista de los Tickets";
             // 
             // frmMenuPrincipal
             // 
@@ -201,5 +235,9 @@
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem distribucionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem localidadesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem venderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaDeLasVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaDeLosTicketsToolStripMenuItem;
     }
 }

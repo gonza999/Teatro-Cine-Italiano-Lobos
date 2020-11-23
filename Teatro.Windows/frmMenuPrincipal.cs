@@ -97,5 +97,12 @@ namespace Teatro.Windows
             frm.Text = "Localidades";
             frm.ShowDialog(this);
         }
+
+        private void venderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmVentas frm = new frmVentas();
+            frm.Text = "Venta";
+            frm.ShowDialog(this);
+        }
     }
 }
