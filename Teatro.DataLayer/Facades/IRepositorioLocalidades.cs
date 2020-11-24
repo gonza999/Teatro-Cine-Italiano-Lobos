@@ -16,5 +16,6 @@ namespace Teatro.DataLayer.Facades
         bool Existe(Localidad localidad);
         bool EstaRelacionado(Localidad localidad);
         List<Localidad> BuscarLocalidad(string text);
+        List<Localidad> GetLista(Ubicacion ubicacion);
     }
 }

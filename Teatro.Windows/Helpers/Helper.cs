@@ -47,6 +47,64 @@ namespace Teatro.Windows.Helpers
             cmbEmpleado.SelectedIndex = 0;
         }
 
+        internal static void CargarHorarioComboBox(ref ComboBox cmbHorario, Evento evento)
+        {
+            IServicioHorarios servicioHorarios = new ServicioHorarios();
+            List<Horario> listaHorario = servicioHorarios.GetLista(evento);
+            //var defaultHorario = new Horario() { HorarioId = 0, Fecha = "-Seleccione Horario-" };
+            //listaHorario.Insert(0, defaultHorario);
+            cmbHorario.DataSource = listaHorario;
+            cmbHorario.DisplayMember="Fecha";
+            cmbHorario.ValueMember = "HorarioId";
+            //cmbHorario.SelectedIndex = 0;
+        }
+
+        internal static void CargarLocalidadComboBox(ref ComboBox cmbLocalidad, Ubicacion ubicacion)
+        {
+            IServicioLocalidades servicioLocalidades = new ServicioLocalidades();
+            List<Localidad> listaLocalidad = servicioLocalidades.GetLista(ubicacion);
+            //var defaultLocalidad = new Localidad() { LocalidadId = 0, Numero = "-Seleccione Localidad-" };
+            //listaLocalidad.Insert(0, defaultLocalidad);
+            cmbLocalidad.DataSource = listaLocalidad;
+            cmbLocalidad.DisplayMember = "Numero";
+            cmbLocalidad.ValueMember = "LocalidadId";
+            //cmbLocalidad.SelectedIndex = 0;
+        }
+
+        internal static void CargarFormaPagoComboBox(ref ComboBox cmbFormaPago)
+        {
+            IServicioFormasPagos servicioFormaPago = new ServicioFormasPagos();
+            List<FormaPago> listaFormaPago = servicioFormaPago.GetLista();
+            var defaultFormaPago = new FormaPago() { FormaPagoId = 0, NombreFormaPago = "-Seleccione Forma de Pago-" };
+            listaFormaPago.Insert(0, defaultFormaPago);
+            cmbFormaPago.DataSource = listaFormaPago;
+            cmbFormaPago.DisplayMember = "NombreFormaPago";
+            cmbFormaPago.ValueMember = "FormaPagoId";
+            cmbFormaPago.SelectedIndex = 0;
+        }
+        internal static void CargarFormaVentaComboBox(ref ComboBox cmbFormaVenta)
+        {
+            IServicioFormasVentas servicioFormaVenta = new ServicioFormasVentas();
+            List<FormaVenta> listaFormaVenta = servicioFormaVenta.GetLista();
+            var defaultFormaVenta = new FormaVenta() { FormaVentaId = 0, NombreFormaVenta = "-Seleccione Forma de Venta-" };
+            listaFormaVenta.Insert(0, defaultFormaVenta);
+            cmbFormaVenta.DataSource = listaFormaVenta;
+            cmbFormaVenta.DisplayMember = "NombreFormaVenta";
+            cmbFormaVenta.ValueMember = "FormaVentaId";
+            cmbFormaVenta.SelectedIndex = 0;
+        }
+        internal static void CargarEventoComboBox(ref ComboBox cmbEvento)
+        {
+            IServicioEventos servicioEvento = new ServicioEventos();
+            List<Evento> listaEvento = servicioEvento.GetLista();
+            var defaultEvento = new Evento() { EventoId = 0, NombreEvento = "-Seleccione Evento-" };
+            listaEvento.Insert(0, defaultEvento);
+            cmbEvento.DataSource = listaEvento;
+            cmbEvento.DisplayMember = "NombreEvento";
+            cmbEvento.ValueMember = "EventoId";
+            cmbEvento.SelectedIndex = 0;
+        }
+
         internal static void CargarTipoEventoComboBox(ref ComboBox cmbTipoEvento)
         {
             IServicioTipoEventos servicioTipoEventos = new ServicioTipoEventos();

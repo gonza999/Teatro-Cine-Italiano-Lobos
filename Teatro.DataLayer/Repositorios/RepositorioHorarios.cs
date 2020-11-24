@@ -45,7 +45,7 @@ namespace Teatro.DataLayer.Repositorios
             try
             {
                 var cadenaDeComando = "DELETE Horarios WHERE HorarioId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
+                var comando = new SqlCommand(cadenaDeComando, conexion);
                 comando.Parameters.AddWithValue("@id", id);
                 comando.ExecuteNonQuery();
             }
@@ -61,7 +61,7 @@ namespace Teatro.DataLayer.Repositorios
             try
             {
                 var cadenaDeComando = "SELECT HorarioId FROM Tickets WHERE HorarioId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
+                var comando = new SqlCommand(cadenaDeComando, conexion);
                 comando.Parameters.AddWithValue("@id", horario.HorarioId);
                 var reader = comando.ExecuteReader();
                 return reader.HasRows;
@@ -148,7 +148,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 var cadenaDeComando = "SELECT  HorarioId,Fecha,Hora,EventoId " +
                     "  FROM Horarios WHERE HorarioId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion);
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 var reader = comando.ExecuteReader();
                 if (reader.HasRows)
@@ -175,13 +175,13 @@ namespace Teatro.DataLayer.Repositorios
                 {
                     var cadenaDeComando = "INSERT INTO Horarios (Fecha,Hora,EventoId) " +
                         "VALUES (@fecha,@hora,@evento)";
-                    var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
+                    var comando = new SqlCommand(cadenaDeComando, conexion);
                     comando.Parameters.AddWithValue("@fecha", horario.Fecha);
                     comando.Parameters.AddWithValue("@hora", horario.Hora);
                     comando.Parameters.AddWithValue("@evento", horario.Evento.EventoId);
                     comando.ExecuteNonQuery();
                     cadenaDeComando = "SELECT @@Identity";
-                    comando = new SqlCommand(cadenaDeComando, conexion,transaction);
+                    comando = new SqlCommand(cadenaDeComando, conexion);
                     horario.HorarioId = (int)(decimal)comando.ExecuteScalar();
                 }
                 catch (Exception e)

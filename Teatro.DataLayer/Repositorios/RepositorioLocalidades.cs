@@ -35,6 +35,11 @@ namespace Teatro.DataLayer.Repositorios
             this.transaction = transaction;
         }
 
+        public RepositorioLocalidades(SqlConnection conexion, IRepositorioPlantas repositorioPlantas, IRepositorioUbicaciones repositorioUbicaciones, SqlTransaction transaction) : this(conexion, repositorioPlantas, repositorioUbicaciones)
+        {
+            this.transaction = transaction;
+        }
+
         public void Borrar(int id)
         {
             try
@@ -128,8 +133,8 @@ namespace Teatro.DataLayer.Repositorios
         {
             Localidad localidad = new Localidad();
             localidad.LocalidadId = reader.GetInt32(0);
-            repositorioUbicaciones = new RepositorioUbicaciones(conexion);
-            repositorioPlantas = new RepositorioPlantas(conexion);
+            repositorioUbicaciones = new RepositorioUbicaciones(conexion,transaction);
+            repositorioPlantas = new RepositorioPlantas(conexion,transaction);
             localidad.Planta = repositorioPlantas.GetPlantaPorId(reader.GetInt32(1));
             localidad.Numero = reader.GetInt32(2);
             localidad.Ubicacion = repositorioUbicaciones.GetUbicacionPorId(reader.GetInt32(3));
@@ -142,7 +147,7 @@ namespace Teatro.DataLayer.Repositorios
             try
             {
                 var cadenaDeComando = "SELECT  FROM  LocalidadId,PlantaId,Numero,UbicacionId FROM Localidades WHERE LocalidadId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion);
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 var reader = comando.ExecuteReader();
                 if (reader.HasRows)
@@ -232,5 +237,29 @@ namespace Teatro.DataLayer.Repositorios
             }
         }
 
+        public List<Localidad> GetLista(Ubicacion ubicacion)
+        {
+            List<Localidad> lista = new List<Localidad>();
+            try
+            {
+                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId " +
+                    "FROM Localidades WHERE UbicacionId=@id";
+                var comando = new SqlCommand(cadenaDeComando, conexion);
+                comando.Parameters.AddWithValue("@id",ubicacion.UbicacionId);
+                var reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    Localidad localidad = ConstruirLocalidad(reader);
+                    lista.Add(localidad);
+                }
+                reader.Close();
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

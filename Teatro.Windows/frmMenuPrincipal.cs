@@ -104,5 +104,12 @@ namespace Teatro.Windows
             frm.Text = "Venta";
             frm.ShowDialog(this);
         }
+
+        private void horariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHorarios frm = new frmHorarios();
+            frm.Text = "Horarios";
+            frm.ShowDialog(this);
+        }
     }
 }

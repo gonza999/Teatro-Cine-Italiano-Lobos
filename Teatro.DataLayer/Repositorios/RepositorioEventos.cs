@@ -65,7 +65,19 @@ namespace Teatro.DataLayer.Repositorios
 
         public bool EstaRelacionado(Evento evento)
         {
-            return false;
+            try
+            {
+                var cadenaDeComando = "SELECT EventoId FROM Horarios WHERE EventoId=@id";
+                var comando = new SqlCommand(cadenaDeComando, conexion);
+                comando.Parameters.AddWithValue("@id", evento.EventoId);
+                var reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Evento evento)

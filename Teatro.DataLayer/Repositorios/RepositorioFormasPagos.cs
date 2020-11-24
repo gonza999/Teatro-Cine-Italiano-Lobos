@@ -12,11 +12,18 @@ namespace Teatro.DataLayer.Repositorios
     public class RepositorioFormasPagos:IRepositorioFormasPagos
     {
         private readonly SqlConnection cn;
+        private SqlTransaction transaction;
 
         public RepositorioFormasPagos(SqlConnection cn)
         {
             this.cn = cn;
         }
+
+        public RepositorioFormasPagos(SqlConnection cn, SqlTransaction transaction) : this(cn)
+        {
+            this.transaction = transaction;
+        }
+
         public void Borrar(int id)
         {
             try
@@ -130,7 +137,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 FormaPago formaPago = null;
                 string cadenaComando = "SELECT FormaPagoId,FormaPago FROM FormasPagos WHERE FormaPagoId=@id";
-                SqlCommand comando = new SqlCommand(cadenaComando, cn);
+                SqlCommand comando = new SqlCommand(cadenaComando, cn,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.HasRows)

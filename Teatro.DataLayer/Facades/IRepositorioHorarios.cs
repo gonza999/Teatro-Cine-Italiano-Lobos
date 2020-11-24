@@ -17,6 +17,7 @@ namespace Teatro.DataLayer.Facades
         bool EstaRelacionado(Horario horario);
         List<Horario> GetLista(Evento evento);
         void Guardar(Horario horario);
+        Horario GetHorarioPorId(int v);
         //List<Horario> BuscarHorario(string horario);
     }
 }

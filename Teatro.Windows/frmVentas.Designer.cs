@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            this.btnVender = new System.Windows.Forms.Button();
+            this.txtImporte = new System.Windows.Forms.TextBox();
             this.cmbFormaPago = new System.Windows.Forms.ComboBox();
             this.cmbLocalidades = new System.Windows.Forms.ComboBox();
             this.cmbUbicaciones = new System.Windows.Forms.ComboBox();
@@ -42,7 +43,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbFormaVenta = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -51,71 +51,86 @@
             this.cmnHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnLocalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnImporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbEmpleado = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnVender
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(477, 421);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 42);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "VENDER";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnVender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnVender.Enabled = false;
+            this.btnVender.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnVender.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVender.Location = new System.Drawing.Point(477, 421);
+            this.btnVender.Name = "btnVender";
+            this.btnVender.Size = new System.Drawing.Size(111, 42);
+            this.btnVender.TabIndex = 24;
+            this.btnVender.Text = "VENDER";
+            this.btnVender.UseVisualStyleBackColor = false;
             // 
-            // textBox3
+            // txtImporte
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(615, 211);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 23;
+            this.txtImporte.Enabled = false;
+            this.txtImporte.Location = new System.Drawing.Point(615, 211);
+            this.txtImporte.Name = "txtImporte";
+            this.txtImporte.Size = new System.Drawing.Size(100, 20);
+            this.txtImporte.TabIndex = 23;
+            this.txtImporte.Text = "00.00";
+            this.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cmbFormaPago
             // 
             this.cmbFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFormaPago.Enabled = false;
             this.cmbFormaPago.FormattingEnabled = true;
             this.cmbFormaPago.Location = new System.Drawing.Point(600, 248);
             this.cmbFormaPago.Name = "cmbFormaPago";
             this.cmbFormaPago.Size = new System.Drawing.Size(146, 21);
             this.cmbFormaPago.TabIndex = 20;
+            this.cmbFormaPago.SelectedValueChanged += new System.EventHandler(this.cmbFormaPago_SelectedValueChanged);
             // 
             // cmbLocalidades
             // 
             this.cmbLocalidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLocalidades.Enabled = false;
             this.cmbLocalidades.FormattingEnabled = true;
             this.cmbLocalidades.Location = new System.Drawing.Point(600, 141);
             this.cmbLocalidades.Name = "cmbLocalidades";
             this.cmbLocalidades.Size = new System.Drawing.Size(149, 21);
             this.cmbLocalidades.TabIndex = 19;
+            this.cmbLocalidades.SelectedValueChanged += new System.EventHandler(this.cmbLocalidades_SelectedValueChanged);
             // 
             // cmbUbicaciones
             // 
             this.cmbUbicaciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUbicaciones.Enabled = false;
             this.cmbUbicaciones.FormattingEnabled = true;
             this.cmbUbicaciones.Location = new System.Drawing.Point(600, 100);
             this.cmbUbicaciones.Name = "cmbUbicaciones";
             this.cmbUbicaciones.Size = new System.Drawing.Size(149, 21);
             this.cmbUbicaciones.TabIndex = 18;
+            this.cmbUbicaciones.SelectedValueChanged += new System.EventHandler(this.cmbUbicaciones_SelectedValueChanged);
             // 
             // cmbHorarios
             // 
             this.cmbHorarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHorarios.Enabled = false;
             this.cmbHorarios.FormattingEnabled = true;
             this.cmbHorarios.Location = new System.Drawing.Point(600, 61);
             this.cmbHorarios.Name = "cmbHorarios";
             this.cmbHorarios.Size = new System.Drawing.Size(149, 21);
             this.cmbHorarios.TabIndex = 17;
+            this.cmbHorarios.SelectedValueChanged += new System.EventHandler(this.cmbHorarios_SelectedValueChanged);
             // 
             // cmbEventos
             // 
@@ -125,6 +140,7 @@
             this.cmbEventos.Name = "cmbEventos";
             this.cmbEventos.Size = new System.Drawing.Size(149, 21);
             this.cmbEventos.TabIndex = 16;
+            this.cmbEventos.SelectedValueChanged += new System.EventHandler(this.cmbEventos_SelectedValueChanged);
             // 
             // lblOcupado
             // 
@@ -198,17 +214,6 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Eventos :";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Image = global::Teatro.Windows.Properties.Resources._1;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(452, 470);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -222,19 +227,21 @@
             // cmbFormaVenta
             // 
             this.cmbFormaVenta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFormaVenta.Enabled = false;
             this.cmbFormaVenta.FormattingEnabled = true;
             this.cmbFormaVenta.Location = new System.Drawing.Point(600, 286);
             this.cmbFormaVenta.Name = "cmbFormaVenta";
             this.cmbFormaVenta.Size = new System.Drawing.Size(146, 21);
             this.cmbFormaVenta.TabIndex = 20;
+            this.cmbFormaVenta.SelectedValueChanged += new System.EventHandler(this.cmbFormaVenta_SelectedValueChanged);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dgvDatos);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 494);
+            this.panel1.Location = new System.Drawing.Point(0, 518);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(763, 208);
+            this.panel1.Size = new System.Drawing.Size(779, 208);
             this.panel1.TabIndex = 25;
             // 
             // dgvDatos
@@ -255,8 +262,9 @@
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(763, 208);
+            this.dgvDatos.Size = new System.Drawing.Size(779, 208);
             this.dgvDatos.TabIndex = 0;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
             // cmnEvento
             // 
@@ -286,37 +294,32 @@
             this.cmnImporte.Name = "cmnImporte";
             this.cmnImporte.ReadOnly = true;
             // 
-            // cmnBorrar
+            // btnCancelar
             // 
-            this.cmnBorrar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnBorrar.HeaderText = "Borrar";
-            this.cmnBorrar.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
-            this.cmnBorrar.Name = "cmnBorrar";
-            this.cmnBorrar.ReadOnly = true;
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(618, 421);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(131, 42);
+            this.btnCancelar.TabIndex = 24;
+            this.btnCancelar.Text = "CANCELAR";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button2
+            // btnAgregar
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(618, 421);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 42);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "CANCELAR";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Bookshelf Symbol 7", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(672, 322);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(74, 22);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Agregar -->";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAgregar.Enabled = false;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregar.Font = new System.Drawing.Font("Bookshelf Symbol 7", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(672, 322);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(74, 22);
+            this.btnAgregar.TabIndex = 24;
+            this.btnAgregar.Text = "Agregar -->";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label6
             // 
@@ -337,17 +340,48 @@
             this.cmbEmpleado.Size = new System.Drawing.Size(146, 21);
             this.cmbEmpleado.TabIndex = 20;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewImageColumn1.HeaderText = "Borrar";
+            this.dataGridViewImageColumn1.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // cmnBorrar
+            // 
+            this.cmnBorrar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnBorrar.HeaderText = "Borrar";
+            this.cmnBorrar.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
+            this.cmnBorrar.Name = "cmnBorrar";
+            this.cmnBorrar.ReadOnly = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = global::Teatro.Windows.Properties.Resources._1;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(452, 470);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 702);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(779, 726);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnVender);
+            this.Controls.Add(this.txtImporte);
             this.Controls.Add(this.cmbEmpleado);
             this.Controls.Add(this.cmbFormaVenta);
             this.Controls.Add(this.cmbFormaPago);
@@ -365,15 +399,17 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(779, 741);
             this.MinimumSize = new System.Drawing.Size(779, 726);
             this.Name = "frmVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVentas";
             this.Load += new System.EventHandler(this.frmVentas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,8 +417,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnVender;
+        private System.Windows.Forms.TextBox txtImporte;
         private System.Windows.Forms.ComboBox cmbFormaPago;
         private System.Windows.Forms.ComboBox cmbLocalidades;
         private System.Windows.Forms.ComboBox cmbUbicaciones;
@@ -399,8 +435,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbFormaVenta;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnEvento;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnHorario;
@@ -409,5 +445,7 @@
         private System.Windows.Forms.DataGridViewImageColumn cmnBorrar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbEmpleado;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

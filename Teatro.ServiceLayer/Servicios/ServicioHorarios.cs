@@ -30,19 +30,12 @@ namespace Teatro.ServiceLayer.Servicios
             try
             {
                 conexion = new ConexionBD();
-                SqlConnection cn = conexion.AbrirConexion();
-                transaction = cn.BeginTransaction();
-                repositorioClasificaciones = new RepositorioClasificaciones(cn,transaction);
-                repositorioDistribuciones = new RepositorioDistribuciones(cn,transaction);
-                repositorioEventos = new RepositorioEventos(cn,repositorioTipoEventos,repositorioClasificaciones,repositorioDistribuciones,transaction);
-                repositorio = new RepositorioHorarios(cn,repositorioEventos,transaction);
+                repositorio = new RepositorioHorarios(conexion.AbrirConexion());
                 repositorio.Borrar(id);
-                transaction.Commit();
                 conexion.CerrarConexion();
             }
             catch (Exception e)
             {
-                transaction.Commit();
                 throw new Exception(e.Message);
             }
         }
@@ -52,20 +45,13 @@ namespace Teatro.ServiceLayer.Servicios
             try
             {
                 conexion = new ConexionBD();
-                SqlConnection cn = conexion.AbrirConexion();
-                transaction = cn.BeginTransaction();
-                repositorioClasificaciones = new RepositorioClasificaciones(cn, transaction);
-                repositorioDistribuciones = new RepositorioDistribuciones(cn, transaction);
-                repositorioEventos = new RepositorioEventos(cn, repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones, transaction);
-                repositorio = new RepositorioHorarios(cn, repositorioEventos, transaction);
+                repositorio = new RepositorioHorarios(conexion.AbrirConexion());
                 var relacionado = repositorio.EstaRelacionado(horario);
                 conexion.CerrarConexion();
-                transaction.Commit();
                 return relacionado;
             }
             catch (Exception e)
             {
-                transaction.Rollback();
                 throw new Exception(e.Message);
             }
         }
@@ -98,11 +84,11 @@ namespace Teatro.ServiceLayer.Servicios
             try
             {
                 conexion = new ConexionBD();
-                conexion = new ConexionBD();
                 SqlConnection cn = conexion.AbrirConexion();
                 transaction = cn.BeginTransaction();
                 repositorioClasificaciones = new RepositorioClasificaciones(cn, transaction);
                 repositorioDistribuciones = new RepositorioDistribuciones(cn, transaction);
+                repositorioTipoEventos = new RepositorioTipoEvento(cn,transaction);
                 repositorioEventos = new RepositorioEventos(cn, repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones, transaction);
                 repositorio = new RepositorioHorarios(cn, repositorioEventos, transaction);
                 var lista = repositorio.GetLista();
@@ -125,6 +111,7 @@ namespace Teatro.ServiceLayer.Servicios
                 transaction = cn.BeginTransaction();
                 repositorioClasificaciones = new RepositorioClasificaciones(cn);
                 repositorioDistribuciones = new RepositorioDistribuciones(cn);
+                repositorioTipoEventos = new RepositorioTipoEvento(cn, transaction);
                 repositorioEventos = new RepositorioEventos(cn, repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones, transaction);
                 repositorio = new RepositorioHorarios(cn, repositorioEventos, transaction);
                 var lista = repositorio.GetLista(evento);
@@ -144,19 +131,14 @@ namespace Teatro.ServiceLayer.Servicios
             try
             {
                 conexion = new ConexionBD();
-                SqlConnection cn = conexion.AbrirConexion();
-                transaction = cn.BeginTransaction();
-                repositorioClasificaciones = new RepositorioClasificaciones(cn, transaction);
-                repositorioDistribuciones = new RepositorioDistribuciones(cn, transaction);
-                repositorioEventos = new RepositorioEventos(cn, repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones, transaction);
-                repositorio = new RepositorioHorarios(cn, repositorioEventos, transaction);
+                repositorio = new RepositorioHorarios(conexion.AbrirConexion()) ;
                 repositorio.Guardar(horario);
-                transaction.Commit();
+
                 conexion.CerrarConexion();
             }
             catch (Exception e)
             {
-                transaction.Rollback();
+
                 throw new Exception(e.Message);
             }
         }

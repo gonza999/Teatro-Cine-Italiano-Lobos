@@ -229,5 +229,24 @@ namespace Teatro.ServiceLayer.Servicios
                 throw new Exception(e.Message);
             }
         }
+
+        public List<Localidad> GetLista(Ubicacion ubicacion)
+        {
+            try
+            {
+                conexion = new ConexionBD();
+                repositorioPlantas = new RepositorioPlantas(conexion.AbrirConexion());
+                repositorioUbicaciones = new RepositorioUbicaciones(conexion.AbrirConexion());
+                repositorio = new RepositorioLocalidades(conexion.AbrirConexion(), repositorioPlantas, repositorioUbicaciones);
+                var lista = repositorio.GetLista(ubicacion);
+                conexion.CerrarConexion();
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
