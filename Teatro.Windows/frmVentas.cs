@@ -21,7 +21,7 @@ namespace Teatro.Windows
         {
             InitializeComponent();
         }
-
+        private IServicioVentas servicio; 
         private void frmVentas_Load(object sender, EventArgs e)
         {
             Helper.CargarEmpleadoComboBox(ref cmbEmpleado);
@@ -82,6 +82,13 @@ namespace Teatro.Windows
         {
             localidad = (Localidad)cmbLocalidades.SelectedItem;
             VerificarOcupado();
+            foreach (var t in listaTickets)
+            {
+                if (t.Localidad==localidad && t.Horario==horario)
+                {
+                    Ocupado();
+                }
+            }
 
         }
         private IServicioTickets servicioTickets = new ServicioTickets();
@@ -91,10 +98,7 @@ namespace Teatro.Windows
             {
                 if (servicioTickets.Existe(localidad,horario))
                 {
-                    lblOcupado.Text = "OCUPADO";
-                    lblOcupado.BackColor = Color.Red;
-                    txtImporte.Enabled = false;
-                    cmbFormaPago.Enabled = false;
+                    Ocupado();
                 }
                 else
                 {
@@ -109,6 +113,16 @@ namespace Teatro.Windows
                 Helper.MensajeBox(e.Message,Tipo.Error);
                 
             }
+        }
+
+        private void Ocupado()
+        {
+            lblOcupado.Text = "OCUPADO";
+            lblOcupado.BackColor = Color.Red;
+            txtImporte.Enabled = false;
+            cmbFormaPago.Enabled = false;
+            cmbFormaVenta.Enabled = false;
+            btnAgregar.Enabled = false;
         }
 
         private void cmbFormaPago_SelectedValueChanged(object sender, EventArgs e)
@@ -151,17 +165,49 @@ namespace Teatro.Windows
                 ticket.Horario = (Horario)cmbHorarios.SelectedItem;
                 ticket.Importe =decimal.Parse(txtImporte.Text);
                 ticket.Localidad = (Localidad)cmbLocalidades.SelectedItem;
-                listaTickets.Add(ticket);
-                AgregarFila(ticket);
-                if (listaTickets.Count>0)
+                if (VerificarRepetido(ticket))
                 {
-                    btnVender.Enabled = true;
-                }
-                else
-                {
-                    btnVender.Enabled = false;
+                    AgregarFila(ticket);
+                    listaTickets.Add(ticket);
+                    if (listaTickets.Count > 0)
+                    {
+                        btnVender.Enabled = true;
+                    }
+                    else
+                    {
+                        btnVender.Enabled = false;
+                    }
+                    Ocupado();
+                    InicializarControles();
                 }
             }
+        }
+
+        private void InicializarControles()
+        {
+            cmbEmpleado.Focus();
+            cmbEventos.SelectedIndex = 0;
+            txtImporte.Text = "0";
+            cmbHorarios.Enabled = false;
+            cmbUbicaciones.Enabled = false;
+            cmbLocalidades.Enabled = false;
+            txtImporte.Enabled = false;
+            cmbFormaPago.Enabled = false;
+            cmbFormaVenta.Enabled = false;
+            btnAgregar.Enabled = false;
+        }
+
+        private bool VerificarRepetido(Ticket ticket)
+        {
+            bool valido = true;
+            foreach (var t in listaTickets)
+            {
+                if (t.Horario==ticket.Horario && t.Localidad==ticket.Localidad)
+                {
+                    valido = false;
+                }
+            }
+            return valido;
         }
 
         private bool ValidarTickets()
@@ -229,6 +275,59 @@ namespace Teatro.Windows
                 }
                 
             }
+        }
+
+        private void btnVender_Click(object sender, EventArgs e)
+        {
+            if (ValidarEmpleado())
+            {
+                Venta venta = new Venta();
+                venta.Tickets = listaTickets;
+                foreach (var t in venta.Tickets)
+                {
+                    venta.Total += t.Importe;
+                }
+                venta.Empleado = (Empleado)cmbEmpleado.SelectedItem;
+                venta.Fecha = DateTime.Now;
+                venta.Estado = true;
+                try
+                {
+                    servicio = new ServicioVentas();
+                    servicio.Guardar(venta);
+                    Helper.MensajeBox("Registro guardado", Tipo.Success);
+                    DialogResult dr = MessageBox.Show("Desea agregar otro registro?", "Confirmar",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dr == DialogResult.No)
+                    {
+                        DialogResult = DialogResult.Cancel;
+                        Close();
+                    }
+                    else
+                    {
+                        InicializarControles();
+                        dgvDatos.Rows.Clear();
+                        listaTickets.Clear();
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Helper.MensajeBox(ex.Message,Tipo.Error);
+                    
+                }
+            }
+        }
+
+        private bool ValidarEmpleado()
+        {
+            errorProvider1.Clear();
+            bool valido = true;
+            if (cmbEmpleado.SelectedIndex==0)
+            {
+                valido = false;
+                errorProvider1.SetError(cmbEmpleado,"Debe seleccionar un Empleado");
+            }
+            return valido;
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Teatro.BussinesLayer.Entidades
         public bool Estado { get; set; }
         public Empleado Empleado { get; set; }
 
+        public List<Ticket> Tickets { get; set; }
+
         public object Clone()
         {
             return this.MemberwiseClone();

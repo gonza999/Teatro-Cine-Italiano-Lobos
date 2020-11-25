@@ -54,6 +54,7 @@
     <Compile Include="Facades\IServicioTipoEventos.cs" />
     <Compile Include="Facades\IServicioTiposDocumentos.cs" />
     <Compile Include="Facades\IServicioUbicaciones.cs" />
+    <Compile Include="Facades\IServicioVentas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\ServicioDistribuciones.cs" />
     <Compile Include="Servicios\ServicioEmpleados.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Servicios\ServicioTipoEventos.cs" />
     <Compile Include="Servicios\ServicioTiposDocumentos.cs" />
     <Compile Include="Servicios\ServicioUbicaciones.cs" />
+    <Compile Include="Servicios\ServicioVentas.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -51,12 +51,12 @@
             this.cmnHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnLocalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnImporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbEmpleado = new System.Windows.Forms.ComboBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.cmnBorrar = new System.Windows.Forms.DataGridViewImageColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
@@ -77,6 +77,7 @@
             this.btnVender.TabIndex = 24;
             this.btnVender.Text = "VENDER";
             this.btnVender.UseVisualStyleBackColor = false;
+            this.btnVender.Click += new System.EventHandler(this.btnVender_Click);
             // 
             // txtImporte
             // 
@@ -85,7 +86,7 @@
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.Size = new System.Drawing.Size(100, 20);
             this.txtImporte.TabIndex = 23;
-            this.txtImporte.Text = "00.00";
+            this.txtImporte.Text = "0";
             this.txtImporte.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cmbFormaPago
@@ -294,6 +295,14 @@
             this.cmnImporte.Name = "cmnImporte";
             this.cmnImporte.ReadOnly = true;
             // 
+            // cmnBorrar
+            // 
+            this.cmnBorrar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnBorrar.HeaderText = "Borrar";
+            this.cmnBorrar.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
+            this.cmnBorrar.Name = "cmnBorrar";
+            this.cmnBorrar.ReadOnly = true;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -346,14 +355,6 @@
             this.dataGridViewImageColumn1.HeaderText = "Borrar";
             this.dataGridViewImageColumn1.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            // 
-            // cmnBorrar
-            // 
-            this.cmnBorrar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnBorrar.HeaderText = "Borrar";
-            this.cmnBorrar.Image = global::Teatro.Windows.Properties.Resources.delete_20px;
-            this.cmnBorrar.Name = "cmnBorrar";
-            this.cmnBorrar.ReadOnly = true;
             // 
             // pictureBox1
             // 
