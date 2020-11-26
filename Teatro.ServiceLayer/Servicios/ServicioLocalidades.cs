@@ -210,25 +210,25 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
-        public List<Localidad> BuscarLocalidad(string text)
-        {
-            try
-            {
-                List<Localidad> lista = new List<Localidad>();
-                conexion = new ConexionBD();
-                repositorioPlantas = new RepositorioPlantas(conexion.AbrirConexion());
-                repositorioUbicaciones = new RepositorioUbicaciones(conexion.AbrirConexion());
-                repositorio = new RepositorioLocalidades(conexion.AbrirConexion(), repositorioPlantas, repositorioUbicaciones);
-                lista = repositorio.BuscarLocalidad(text);
-                conexion.CerrarConexion();
-                return lista;
-            }
-            catch (Exception e)
-            {
+        //public List<Localidad> BuscarLocalidad(string text)
+        //{
+        //    try
+        //    {
+        //        List<Localidad> lista = new List<Localidad>();
+        //        conexion = new ConexionBD();
+        //        repositorioPlantas = new RepositorioPlantas(conexion.AbrirConexion());
+        //        repositorioUbicaciones = new RepositorioUbicaciones(conexion.AbrirConexion());
+        //        repositorio = new RepositorioLocalidades(conexion.AbrirConexion(), repositorioPlantas, repositorioUbicaciones);
+        //        lista = repositorio.BuscarLocalidad(text);
+        //        conexion.CerrarConexion();
+        //        return lista;
+        //    }
+        //    catch (Exception e)
+        //    {
 
-                throw new Exception(e.Message);
-            }
-        }
+        //        throw new Exception(e.Message);
+        //    }
+        //}
 
         public List<Localidad> GetLista(Ubicacion ubicacion)
         {

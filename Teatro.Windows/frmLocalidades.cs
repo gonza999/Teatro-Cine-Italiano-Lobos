@@ -92,24 +92,23 @@ namespace Teatro.Windows
             frm.ShowDialog(this);
         }
 
-        private void frmLocalidades_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                if (string.IsNullOrEmpty(txtBuscar.Text)
-                    || string.IsNullOrWhiteSpace(txtBuscar.Text))
-                {
-                    return;
-                }
-                lista = servicio.BuscarLocalidad(txtBuscar.Text);
-                MostrarDatosEnGrilla();
-            }
-        }
+        //private void frmLocalidades_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if (e.KeyChar == Convert.ToChar(Keys.Enter))
+        //    {
+        //        if (string.IsNullOrEmpty(txtBuscar.Text)
+        //            || string.IsNullOrWhiteSpace(txtBuscar.Text))
+        //        {
+        //            return;
+        //        }
+        //        lista = servicio.BuscarLocalidad(txtBuscar.Text);
+        //        MostrarDatosEnGrilla();
+        //    }
+        //}
 
         private void tsbActualizar_Click(object sender, EventArgs e)
         {
             Actualizar();
-            txtBuscar.Clear();
         }
 
         private void tsbBorrar_Click(object sender, EventArgs e)
