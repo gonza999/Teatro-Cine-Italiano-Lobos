@@ -37,6 +37,8 @@
             this.formasDePagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plantasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.horariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposDeDocumentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distribucionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +48,6 @@
             this.listaDeLasVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeLosTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eventosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.horariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,6 +135,20 @@
             this.eventosToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.eventosToolStripMenuItem.Text = "Eventos";
             // 
+            // eventosToolStripMenuItem1
+            // 
+            this.eventosToolStripMenuItem1.Name = "eventosToolStripMenuItem1";
+            this.eventosToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.eventosToolStripMenuItem1.Text = "Eventos";
+            this.eventosToolStripMenuItem1.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
+            // 
+            // horariosToolStripMenuItem
+            // 
+            this.horariosToolStripMenuItem.Name = "horariosToolStripMenuItem";
+            this.horariosToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.horariosToolStripMenuItem.Text = "Horarios";
+            this.horariosToolStripMenuItem.Click += new System.EventHandler(this.horariosToolStripMenuItem_Click);
+            // 
             // tiposDeDocumentosToolStripMenuItem
             // 
             this.tiposDeDocumentosToolStripMenuItem.Name = "tiposDeDocumentosToolStripMenuItem";
@@ -185,12 +199,14 @@
             this.listaDeLasVentasToolStripMenuItem.Name = "listaDeLasVentasToolStripMenuItem";
             this.listaDeLasVentasToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.listaDeLasVentasToolStripMenuItem.Text = "Lista de las Ventas";
+            this.listaDeLasVentasToolStripMenuItem.Click += new System.EventHandler(this.listaDeLasVentasToolStripMenuItem_Click);
             // 
             // listaDeLosTicketsToolStripMenuItem
             // 
             this.listaDeLosTicketsToolStripMenuItem.Name = "listaDeLosTicketsToolStripMenuItem";
             this.listaDeLosTicketsToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.listaDeLosTicketsToolStripMenuItem.Text = "Lista de los Tickets";
+            this.listaDeLosTicketsToolStripMenuItem.Click += new System.EventHandler(this.listaDeLosTicketsToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -198,20 +214,6 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(50, 21);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // eventosToolStripMenuItem1
-            // 
-            this.eventosToolStripMenuItem1.Name = "eventosToolStripMenuItem1";
-            this.eventosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.eventosToolStripMenuItem1.Text = "Eventos";
-            this.eventosToolStripMenuItem1.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
-            // 
-            // horariosToolStripMenuItem
-            // 
-            this.horariosToolStripMenuItem.Name = "horariosToolStripMenuItem";
-            this.horariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.horariosToolStripMenuItem.Text = "Horarios";
-            this.horariosToolStripMenuItem.Click += new System.EventHandler(this.horariosToolStripMenuItem_Click);
             // 
             // frmMenuPrincipal
             // 

@@ -17,5 +17,6 @@ namespace Teatro.DataLayer.Facades
         bool EstaRelacionado(Venta venta);
         Venta GetVenta(string nombreVenta);
         List<Venta> BuscarVenta(string text);
+        void AnularVenta(int ventaId);
     }
 }

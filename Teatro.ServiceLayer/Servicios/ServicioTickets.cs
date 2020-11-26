@@ -21,6 +21,24 @@ namespace Teatro.ServiceLayer.Servicios
         private IRepositorioFormasPagos repositorioFormasPagos;
         private IRepositorioFormasVentas repositorioFormasVentas;
         private SqlTransaction transaction;
+
+        public void AnularTicket(int ticketId)
+        {
+            try
+            {
+                conexion = new ConexionBD();
+                repositorio = new RepositorioTickets(conexion.AbrirConexion());
+                repositorio.AnularTicket(ticketId);
+                conexion.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
+
         public void Borrar(int id)
         {
             try
@@ -122,5 +140,7 @@ namespace Teatro.ServiceLayer.Servicios
                 throw new Exception(e.Message);
             }
         }
+
+     
     }
 }

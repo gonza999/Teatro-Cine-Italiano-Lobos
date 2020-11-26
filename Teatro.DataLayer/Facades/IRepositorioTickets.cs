@@ -17,5 +17,7 @@ namespace Teatro.DataLayer.Facades
         bool Existe(Localidad localidad, Horario horario);
         bool EstaRelacionado(Ticket ticket);
         void Guardar(Ticket ticket);
+        Ticket GetTicketPorId(int id);
+        void AnularTicket(int ticketId);
     }
 }

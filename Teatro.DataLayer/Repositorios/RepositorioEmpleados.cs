@@ -116,7 +116,7 @@ namespace Teatro.DataLayer.Repositorios
             empleado.EmpleadoId = reader.GetInt32(0);
             empleado.Nombre = reader.GetString(1);
             empleado.Apellido = reader.GetString(2);
-            repositorioTiposDocumentos = new RepositorioTiposDocumentos(conexion);
+            repositorioTiposDocumentos = new RepositorioTiposDocumentos(conexion,transaction);
             empleado.TipoDocumento = repositorioTiposDocumentos.GetTipoDocumentoPorId(reader.GetInt32(3));
             empleado.NumeroDocumento = reader.GetString(4);
             empleado.TelefonoFijo = reader.GetString(5);
@@ -132,7 +132,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 var cadenaDeComando = "SELECT  EmpleadoId,Nombre,Apellido,TipoDocumentoId,NroDocumento,TelefonoFijo, " +
                     "TelefonoMovil, Mail  FROM Empleados WHERE EmpleadoId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion);
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 var reader = comando.ExecuteReader();
                 if (reader.HasRows)

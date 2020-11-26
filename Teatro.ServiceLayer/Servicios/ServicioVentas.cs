@@ -20,6 +20,24 @@ namespace Teatro.ServiceLayer.Servicios
         private IRepositorioTickets repositorioTickets;
         private IRepositorioVentasTickets repositorioVentasTickets;
         private SqlTransaction transaction;
+
+        public void AnularVenta(int ventaId)
+        {
+            try
+            {
+                conexion = new ConexionBD();
+                repositorio = new RepositorioVentas(conexion.AbrirConexion());
+                repositorio.AnularVenta(ventaId);
+                conexion.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+                
+                throw new Exception(e.Message);
+            }
+        }
+
         public void Borrar(int id)
         {
             throw new NotImplementedException();

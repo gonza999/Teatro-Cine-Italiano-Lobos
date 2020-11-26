@@ -13,6 +13,9 @@ namespace Teatro.DataLayer.Repositorios
     {
         private readonly SqlConnection cn;
         private SqlTransaction transaction;
+        private IRepositorioEmpleados repositorioEmpleados;
+        private IRepositorioTickets repositorioTickets;
+        private IRepositorioVentasTickets repositorioVentasTickets;
 
         public RepositorioVentas(SqlConnection sqlConnection)
         {
@@ -33,6 +36,7 @@ namespace Teatro.DataLayer.Repositorios
         public List<Venta> BuscarVenta(string text)
         {
             throw new NotImplementedException();
+
         }
 
         public bool EstaRelacionado(Venta venta)
@@ -57,7 +61,48 @@ namespace Teatro.DataLayer.Repositorios
 
         public Venta GetVentaPorId(int id)
         {
-            throw new NotImplementedException();
+            Venta venta = null;
+            try
+            {
+                var cadenaDeComando = "SELECT  VentaId,Fecha,Total,Estado,EmpleadoId" +
+                    " FROM Ventas WHERE VentaId=@id";
+                var comando = new SqlCommand(cadenaDeComando, cn,transaction);
+                comando.Parameters.AddWithValue("@id", id);
+                var reader = comando.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    venta = ConstruirVenta(reader);
+                    reader.Close();
+                }
+                return venta;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
+        
+        private Venta ConstruirVenta(SqlDataReader reader)
+        {
+            Venta venta = new Venta();
+            venta.VentaId = reader.GetInt32(0);
+            venta.Fecha = reader.GetDateTime(1);
+            venta.Total = reader.GetDecimal(2);
+            venta.Estado = reader.GetBoolean(3);
+            repositorioEmpleados = new RepositorioEmpleados(cn,transaction);
+            venta.Empleado = repositorioEmpleados.GetEmpleadoPorId(reader.GetInt32(4));
+            repositorioVentasTickets = new RepositorioVentasTickets(cn, transaction);
+            List<int> listaId = repositorioVentasTickets.GetLista(venta.VentaId);
+            List<Ticket> listaTickets = new List<Ticket>();
+            repositorioTickets = new RepositorioTickets(cn,transaction);
+            foreach (var id in listaId)
+            {
+                listaTickets.Add(repositorioTickets.GetTicketPorId(id));
+            }
+            venta.Tickets = listaTickets;
+            return venta;
         }
 
         public void Guardar(Venta venta)
@@ -104,6 +149,22 @@ namespace Teatro.DataLayer.Repositorios
             //    }
 
             //}
+        }
+
+        public void AnularVenta(int ventaId)
+        {
+            try
+            {
+                var cadenaDeComando = "UPDATE  Ventas SET Estado=1 WHERE VentaId=@id";
+                var comando = new SqlCommand(cadenaDeComando,cn);
+                comando.Parameters.AddWithValue("@id",ventaId);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
     }
 }

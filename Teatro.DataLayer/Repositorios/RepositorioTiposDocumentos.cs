@@ -12,11 +12,18 @@ namespace Teatro.DataLayer.Repositorios
     public class RepositorioTiposDocumentos:IRepositorioTiposDocumentos
     {
         private readonly SqlConnection cn;
+        private SqlTransaction transaction;
 
         public RepositorioTiposDocumentos(SqlConnection cn)
         {
             this.cn = cn;
         }
+
+        public RepositorioTiposDocumentos(SqlConnection cn, SqlTransaction transaction) : this(cn)
+        {
+            this.transaction = transaction;
+        }
+
         public void Borrar(int id)
         {
             try
@@ -142,7 +149,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 TipoDocumento tipoDocumento = null;
                 string cadenaComando = "SELECT TipoDocumentoId,TipoDocumento FROM TiposDocumentos WHERE TipoDocumentoId=@id";
-                SqlCommand comando = new SqlCommand(cadenaComando, cn);
+                SqlCommand comando = new SqlCommand(cadenaComando, cn,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.HasRows)

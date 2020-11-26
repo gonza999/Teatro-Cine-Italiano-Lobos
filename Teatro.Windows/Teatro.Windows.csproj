@@ -131,6 +131,12 @@
     <Compile Include="frmHorarios.Designer.cs">
       <DependentUpon>frmHorarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListaVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaVentas.Designer.cs">
+      <DependentUpon>frmListaVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLocalidades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,12 @@
     </Compile>
     <Compile Include="frmPlantasAE.Designer.cs">
       <DependentUpon>frmPlantasAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTickets.Designer.cs">
+      <DependentUpon>frmTickets.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTipoEventosAE.cs">
       <SubType>Form</SubType>
@@ -249,6 +261,9 @@
     <EmbeddedResource Include="frmHorarios.resx">
       <DependentUpon>frmHorarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmListaVentas.resx">
+      <DependentUpon>frmListaVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLocalidades.resx">
       <DependentUpon>frmLocalidades.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPlantasAE.resx">
       <DependentUpon>frmPlantasAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTickets.resx">
+      <DependentUpon>frmTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTipoEventosAE.resx">
       <DependentUpon>frmTipoEventosAE.cs</DependentUpon>

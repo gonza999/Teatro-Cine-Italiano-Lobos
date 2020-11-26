@@ -45,6 +45,16 @@ namespace Teatro.Windows
                 cmbUbicaciones.Enabled = true;
                 Helper.CargarUbicacionComboBox(ref cmbUbicaciones);
                 horario = (Horario)cmbHorarios.SelectedItem;
+                if (horario.Fecha < DateTime.Today)
+                {
+                    cmbUbicaciones.Enabled = false;
+
+                }
+                else
+                {
+                    cmbUbicaciones.Enabled = true;
+
+                }
 
             }
             else
@@ -59,6 +69,16 @@ namespace Teatro.Windows
         private void cmbHorarios_SelectedValueChanged(object sender, EventArgs e)
         {
               horario = (Horario)cmbHorarios.SelectedItem;
+            if (horario.Fecha<DateTime.Today)
+            {
+                cmbUbicaciones.Enabled = false;
+
+            }
+            else
+            {
+                cmbUbicaciones.Enabled = true;
+
+            }
         }
 
         private void cmbUbicaciones_SelectedValueChanged(object sender, EventArgs e)
@@ -289,7 +309,7 @@ namespace Teatro.Windows
                 }
                 venta.Empleado = (Empleado)cmbEmpleado.SelectedItem;
                 venta.Fecha = DateTime.Now;
-                venta.Estado = true;
+                venta.Estado = false;
                 try
                 {
                     servicio = new ServicioVentas();

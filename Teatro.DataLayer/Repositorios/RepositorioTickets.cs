@@ -169,7 +169,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 var cadenaDeComando = "SELECT TicketId,HorarioId,Importe,LocalidadId, " +
                     "FechaVenta,FormaPagoId,FormaVentaId,Anulada FROM Tickets WHERE TicketId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion);
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 var reader = comando.ExecuteReader();
                 if (reader.HasRows)
@@ -249,7 +249,7 @@ namespace Teatro.DataLayer.Repositorios
             try
             {
                 SqlCommand comando;
-                string cadenaComando = "SELECT TicketId FROM Tickets WHERE LocalidadId=@id AND HorarioId=@horario";
+                string cadenaComando = "SELECT TicketId FROM Tickets WHERE LocalidadId=@id AND HorarioId=@horario AND Anulada=0";
                 comando = new SqlCommand(cadenaComando, conexion, transaction);
                 comando.Parameters.AddWithValue("@id", localidad.LocalidadId);
                 comando.Parameters.AddWithValue("@horario",horario.HorarioId);
@@ -258,6 +258,22 @@ namespace Teatro.DataLayer.Repositorios
             }
             catch (Exception e)
             {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void AnularTicket(int ticketId)
+        {
+            try
+            {
+                var cadenaDeComando = "UPDATE  Tickets SET Anulada=1 WHERE TicketId=@id";
+                var comando = new SqlCommand(cadenaDeComando, conexion);
+                comando.Parameters.AddWithValue("@id", ticketId);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
                 throw new Exception(e.Message);
             }
         }

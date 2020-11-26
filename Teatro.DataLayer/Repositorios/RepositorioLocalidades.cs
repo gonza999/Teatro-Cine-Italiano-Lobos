@@ -146,7 +146,7 @@ namespace Teatro.DataLayer.Repositorios
             Localidad localidad = null;
             try
             {
-                var cadenaDeComando = "SELECT  FROM  LocalidadId,PlantaId,Numero,UbicacionId FROM Localidades WHERE LocalidadId=@id";
+                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId FROM Localidades WHERE LocalidadId=@id";
                 var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 var reader = comando.ExecuteReader();

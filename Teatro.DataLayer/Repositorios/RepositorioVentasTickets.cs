@@ -13,6 +13,8 @@ namespace Teatro.DataLayer.Repositorios
     {
         private readonly SqlConnection cn;
         private SqlTransaction transaction;
+        private IRepositorioVentas repositorioVentas;
+        private IRepositorioTickets repositorioTickets;
 
         public RepositorioVentasTickets(SqlConnection cn1, SqlTransaction transaction1)
         {
@@ -37,7 +39,34 @@ namespace Teatro.DataLayer.Repositorios
 
         public List<VentaTicket> GetLista()
         {
-            throw new NotImplementedException();
+            List<VentaTicket> lista = new List<VentaTicket>();
+            try
+            {
+                var cadenaDeComando = "SELECT VentaId " +
+                    " FROM VentasTicket GROUP BY VentaId";
+                var comando = new SqlCommand(cadenaDeComando, cn, transaction);
+                var reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    VentaTicket ventaTicket = ConstruirVentaTicket(reader);
+                    lista.Add(ventaTicket);
+                }
+                reader.Close();
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
+
+        private VentaTicket ConstruirVentaTicket(SqlDataReader reader)
+        {
+            VentaTicket ventaTicket = new VentaTicket();
+            repositorioVentas = new RepositorioVentas(cn,transaction);
+            ventaTicket.Venta = repositorioVentas.GetVentaPorId(reader.GetInt32(0));
+            return ventaTicket;
         }
 
         public VentaTicket GetVentaTicket(Venta venta, Ticket ticket)
@@ -60,6 +89,30 @@ namespace Teatro.DataLayer.Repositorios
                 comando.Parameters.AddWithValue("@venta",venta.VentaId);
                 comando.Parameters.AddWithValue("@ticket",ticket.TicketId);
                 comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
+
+        public List<int> GetLista(int ventaId)
+        {
+            List<int> lista = new List<int>();
+            try
+            {
+                var cadenaDeComando = "SELECT TicketId " +
+                    " FROM VentasTicket WHERE VentaId=@id";
+                var comando = new SqlCommand(cadenaDeComando, cn, transaction);
+                comando.Parameters.AddWithValue("@id",ventaId);
+                var reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    lista.Add(reader.GetInt32(0));
+                }
+                reader.Close();
+                return lista;
             }
             catch (Exception e)
             {

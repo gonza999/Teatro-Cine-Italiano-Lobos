@@ -111,5 +111,19 @@ namespace Teatro.Windows
             frm.Text = "Horarios";
             frm.ShowDialog(this);
         }
+
+        private void listaDeLasVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListaVentas frm = new frmListaVentas();
+            frm.Text = "Ventas";
+            frm.ShowDialog(this);
+        }
+
+        private void listaDeLosTicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTickets frm = new frmTickets();
+            frm.Text = "Tickets";
+            frm.ShowDialog(this);
+        }
     }
 }
