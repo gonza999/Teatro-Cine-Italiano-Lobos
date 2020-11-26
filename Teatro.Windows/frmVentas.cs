@@ -76,15 +76,20 @@ namespace Teatro.Windows
         private Localidad localidad;
         private void cmbHorarios_SelectedValueChanged(object sender, EventArgs e)
         {
-              horario = (Horario)cmbHorarios.SelectedItem;
+            horario = (Horario)cmbHorarios.SelectedItem;
             if (horario.Fecha<DateTime.Today)
             {
                 cmbUbicaciones.Enabled = false;
-
             }
             else
             {
                 cmbUbicaciones.Enabled = true;
+                cmbLocalidades.Enabled = false;
+                if (cmbUbicaciones.Items.Count>0)
+                {
+                    cmbUbicaciones.SelectedIndex = 0;
+
+                }
 
             }
         }
@@ -253,6 +258,30 @@ namespace Teatro.Windows
             {
                 valido = false;
                 errorProvider1.SetError(txtImporte, "El importe no puede ser negativo");
+
+            }
+            if (cmbFormaVenta.SelectedIndex==0)
+            {
+                valido = false;
+                errorProvider1.SetError(cmbFormaVenta, "Debe seleccionar una forma de venta");
+
+            }
+            if (cmbFormaPago.SelectedIndex == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(cmbFormaPago, "Debe seleccionar una forma de pago");
+
+            }
+            if (cmbUbicaciones.SelectedIndex == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(cmbUbicaciones, "Debe seleccionar una ubicacion ");
+
+            }
+            if (cmbEventos.SelectedIndex == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(cmbEventos, "Debe seleccionar un evento  ");
 
             }
             return valido;
