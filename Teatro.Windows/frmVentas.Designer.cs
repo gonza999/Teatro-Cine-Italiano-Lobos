@@ -84,6 +84,7 @@
             this.txtImporte.Enabled = false;
             this.txtImporte.Location = new System.Drawing.Point(615, 211);
             this.txtImporte.Name = "txtImporte";
+            this.txtImporte.ReadOnly = true;
             this.txtImporte.Size = new System.Drawing.Size(100, 20);
             this.txtImporte.TabIndex = 23;
             this.txtImporte.Text = "0";
