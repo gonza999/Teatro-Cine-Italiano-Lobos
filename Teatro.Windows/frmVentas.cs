@@ -39,21 +39,29 @@ namespace Teatro.Windows
         {
             if (cmbEventos.SelectedIndex!=0)
             {
-                cmbHorarios.Enabled = true;
                 Evento evento =(Evento) cmbEventos.SelectedItem;
-                Helper.CargarHorarioComboBox(ref cmbHorarios,evento);
-                cmbUbicaciones.Enabled = true;
-                Helper.CargarUbicacionComboBox(ref cmbUbicaciones);
-                horario = (Horario)cmbHorarios.SelectedItem;
-                if (horario.Fecha < DateTime.Today)
+                if (!evento.Suspendido)
                 {
-                    cmbUbicaciones.Enabled = false;
+                    cmbHorarios.Enabled = true;
+                    Helper.CargarHorarioComboBox(ref cmbHorarios, evento);
+                    cmbUbicaciones.Enabled = true;
+                    Helper.CargarUbicacionComboBox(ref cmbUbicaciones);
+                    horario = (Horario)cmbHorarios.SelectedItem;
+                    if (horario.Fecha < DateTime.Today)
+                    {
+                        cmbUbicaciones.Enabled = false;
 
+                    }
+                    else
+                    {
+                        cmbUbicaciones.Enabled = true;
+
+                    }
                 }
                 else
                 {
-                    cmbUbicaciones.Enabled = true;
-
+                    cmbHorarios.Enabled = false;
+                    cmbUbicaciones.Enabled = false;
                 }
 
             }
@@ -102,20 +110,14 @@ namespace Teatro.Windows
         {
             localidad = (Localidad)cmbLocalidades.SelectedItem;
             VerificarOcupado();
-            foreach (var t in listaTickets)
-            {
-                if (t.Localidad==localidad && t.Horario==horario)
-                {
-                    Ocupado();
-                }
-            }
-
         }
+
         private IServicioTickets servicioTickets = new ServicioTickets();
         private void VerificarOcupado()
         {
             try
             {
+                
                 if (servicioTickets.Existe(localidad,horario))
                 {
                     Ocupado();
@@ -126,6 +128,13 @@ namespace Teatro.Windows
                     lblOcupado.BackColor = Color.LightBlue;
                     txtImporte.Enabled = true;
                     cmbFormaPago.Enabled = true;
+                }
+                foreach (var t in listaTickets)
+                {
+                    if (t.Localidad.LocalidadId==localidad.LocalidadId && t.Horario.HorarioId==horario.HorarioId)
+                    {
+                        Ocupado();
+                    }
                 }
             }
             catch (Exception e)

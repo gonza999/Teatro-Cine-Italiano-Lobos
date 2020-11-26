@@ -19,5 +19,6 @@ namespace Teatro.DataLayer.Facades
         void Guardar(Ticket ticket);
         Ticket GetTicketPorId(int id);
         void AnularTicket(int ticketId);
+        List<Ticket> GetLista(List<Horario> horarios);
     }
 }

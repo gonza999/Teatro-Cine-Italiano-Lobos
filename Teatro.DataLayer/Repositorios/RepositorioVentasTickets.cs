@@ -120,5 +120,32 @@ namespace Teatro.DataLayer.Repositorios
                 throw new Exception(e.Message);
             }
         }
+
+        public List<int> GetListaVentas(List<Ticket> listaTickets)
+        {
+            List<int> lista = new List<int>();
+            try
+            {
+                foreach (var t in listaTickets)
+                {
+                    var cadenaDeComando = "SELECT VentaId " +
+                               " FROM VentasTicket WHERE TicketId=@id";
+                    var comando = new SqlCommand(cadenaDeComando, cn, transaction);
+                    comando.Parameters.AddWithValue("@id", t.TicketId);
+                    var reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        lista.Add(reader.GetInt32(0));
+                    }
+                    reader.Close(); 
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

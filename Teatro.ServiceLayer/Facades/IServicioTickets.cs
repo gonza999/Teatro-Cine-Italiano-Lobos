@@ -18,5 +18,6 @@ namespace Teatro.ServiceLayer.Facades
         bool EstaRelacionado(Ticket ticket);
         void Guardar(Ticket ticket);
         void AnularTicket(int ticketId);
+        List<Ticket> GetLista(List<Horario> horarios);
     }
 }

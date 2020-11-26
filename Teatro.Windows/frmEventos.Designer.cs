@@ -33,6 +33,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.cmnEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnDistribucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnTipoEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnClasificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnSuspendido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -44,11 +49,6 @@
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
-            this.cmnEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnDistribucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnTipoEvento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnClasificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnSuspendido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +96,41 @@
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatos.Size = new System.Drawing.Size(775, 479);
             this.dgvDatos.TabIndex = 10;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            // 
+            // cmnEvento
+            // 
+            this.cmnEvento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnEvento.HeaderText = "Evento";
+            this.cmnEvento.Name = "cmnEvento";
+            this.cmnEvento.ReadOnly = true;
+            // 
+            // cmnDistribucion
+            // 
+            this.cmnDistribucion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnDistribucion.HeaderText = "Distribucion";
+            this.cmnDistribucion.Name = "cmnDistribucion";
+            this.cmnDistribucion.ReadOnly = true;
+            // 
+            // cmnTipoEvento
+            // 
+            this.cmnTipoEvento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnTipoEvento.HeaderText = "TipoEvento";
+            this.cmnTipoEvento.Name = "cmnTipoEvento";
+            this.cmnTipoEvento.ReadOnly = true;
+            // 
+            // cmnClasificacion
+            // 
+            this.cmnClasificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnClasificacion.HeaderText = "Clasificacion";
+            this.cmnClasificacion.Name = "cmnClasificacion";
+            this.cmnClasificacion.ReadOnly = true;
+            // 
+            // cmnSuspendido
+            // 
+            this.cmnSuspendido.HeaderText = "Suspendido";
+            this.cmnSuspendido.Name = "cmnSuspendido";
+            this.cmnSuspendido.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -194,40 +229,6 @@
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
-            // 
-            // cmnEvento
-            // 
-            this.cmnEvento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnEvento.HeaderText = "Evento";
-            this.cmnEvento.Name = "cmnEvento";
-            this.cmnEvento.ReadOnly = true;
-            // 
-            // cmnDistribucion
-            // 
-            this.cmnDistribucion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnDistribucion.HeaderText = "Distribucion";
-            this.cmnDistribucion.Name = "cmnDistribucion";
-            this.cmnDistribucion.ReadOnly = true;
-            // 
-            // cmnTipoEvento
-            // 
-            this.cmnTipoEvento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnTipoEvento.HeaderText = "TipoEvento";
-            this.cmnTipoEvento.Name = "cmnTipoEvento";
-            this.cmnTipoEvento.ReadOnly = true;
-            // 
-            // cmnClasificacion
-            // 
-            this.cmnClasificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnClasificacion.HeaderText = "Clasificacion";
-            this.cmnClasificacion.Name = "cmnClasificacion";
-            this.cmnClasificacion.ReadOnly = true;
-            // 
-            // cmnSuspendido
-            // 
-            this.cmnSuspendido.HeaderText = "Suspendido";
-            this.cmnSuspendido.Name = "cmnSuspendido";
-            this.cmnSuspendido.ReadOnly = true;
             // 
             // frmEventos
             // 

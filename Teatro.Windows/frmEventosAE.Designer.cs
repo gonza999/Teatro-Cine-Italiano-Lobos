@@ -35,8 +35,6 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pickerFecha = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkSuspendido = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbTipoEvento = new System.Windows.Forms.ComboBox();
@@ -55,11 +53,9 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtEvento
@@ -115,25 +111,6 @@
             this.pickerFecha.Name = "pickerFecha";
             this.pickerFecha.Size = new System.Drawing.Size(113, 20);
             this.pickerFecha.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(81, 328);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 24);
-            this.label4.TabIndex = 25;
-            this.label4.Text = "Suspendido :";
-            // 
-            // checkSuspendido
-            // 
-            this.checkSuspendido.BackColor = System.Drawing.Color.White;
-            this.checkSuspendido.Location = new System.Drawing.Point(200, 338);
-            this.checkSuspendido.Name = "checkSuspendido";
-            this.checkSuspendido.Size = new System.Drawing.Size(13, 14);
-            this.checkSuspendido.TabIndex = 5;
-            this.checkSuspendido.UseVisualStyleBackColor = false;
             // 
             // label5
             // 
@@ -312,10 +289,6 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // errorProvider2
-            // 
-            this.errorProvider2.ContainerControl = this;
-            // 
             // frmEventosAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,11 +300,9 @@
             this.Controls.Add(this.cmbDistribucion);
             this.Controls.Add(this.cmbClasificacion);
             this.Controls.Add(this.cmbTipoEvento);
-            this.Controls.Add(this.checkSuspendido);
             this.Controls.Add(this.pickerHora);
             this.Controls.Add(this.pickerFecha);
             this.Controls.Add(this.txtDescripcion);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -350,7 +321,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,8 +336,6 @@
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker pickerFecha;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkSuspendido;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbTipoEvento;
@@ -381,7 +349,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnHorario;
         private System.Windows.Forms.DataGridViewImageColumn cmnBorrar;

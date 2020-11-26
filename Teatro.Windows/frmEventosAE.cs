@@ -38,7 +38,6 @@ namespace Teatro.Windows
             {
                 txtEvento.Text = evento.NombreEvento;
                 txtDescripcion.Text = evento.Descripcion;
-                checkSuspendido.Checked = evento.Suspendido;
                 cmbClasificacion.SelectedValue = evento.Clasificacion.ClasificacionId ;
                 cmbTipoEvento.SelectedValue = evento.TipoEvento.TipoEventoId;
                 cmbDistribucion.SelectedValue = evento.Distribucion.DistribucionId;
@@ -171,7 +170,7 @@ namespace Teatro.Windows
 
                 evento.NombreEvento = txtEvento.Text;
                 evento.Descripcion = txtDescripcion.Text;
-                evento.Suspendido = checkSuspendido.Checked;
+                evento.Suspendido = false;
                 evento.TipoEvento = (TipoEvento)cmbTipoEvento.SelectedItem;
                 evento.Clasificacion = (Clasificacion)cmbClasificacion.SelectedItem;
                 evento.Distribucion = (Distribucion)cmbDistribucion.SelectedItem;
@@ -220,7 +219,6 @@ namespace Teatro.Windows
             txtDescripcion.Clear();
             pickerFecha.Value = DateTime.Today;
             pickerHora.Value = DateTime.Today;
-            checkSuspendido.Checked = false;
             dgvDatos.Rows.Clear();
             listaHorarios.Clear();
             Helper.CargarClasificacionComboBox(ref cmbClasificacion);
@@ -251,7 +249,7 @@ namespace Teatro.Windows
                     break;
                 }
             }
-          
+
 
             return valido;
         }
@@ -268,46 +266,56 @@ namespace Teatro.Windows
             Helper.CargarClasificacionComboBox(ref cmbClasificacion);
             Helper.CargarTipoEventoComboBox(ref cmbTipoEvento);
             Helper.CargarDistribucionComboBox(ref cmbDistribucion);
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (ValidarFechas())
+            if (ValidarFechas(null))
             {
                 Horario horario = new Horario();
                 horario.Evento = evento;
                 horario.Fecha = pickerFecha.Value;
                 horario.Hora = pickerHora.Value;
-                if (ValidarFechas())
+                if (ValidarFechas(horario))
                 {
                     AgregarFila(horario);
                 }
             }
         }
 
-        private bool ValidarFechas()
+        private bool ValidarFechas(Horario horario)
         {
-            errorProvider2.Clear();
+            errorProvider1.Clear();
             bool valido = true;
 
             if (pickerFecha.Value.Date < DateTime.Today)
             {
                 valido = false;
-                errorProvider2.SetError(pickerFecha, "La fecha del evento no puede ser anterior a la actual");
+                errorProvider1.SetError(pickerFecha, "La fecha del evento no puede ser anterior a la actual");
             }
             foreach (var h in listaHorarios)
             {
                 if ((h.Hora.TimeOfDay==pickerHora.Value.TimeOfDay) && h.Fecha.Date==pickerFecha.Value.Date)
                 {
                     valido = false;
-                    errorProvider2.SetError(pickerFecha, "No puede haber un evento que suceda en el mismo horario en la misma fecha");
+                    errorProvider1.SetError(pickerFecha, "No puede haber un evento que suceda en el mismo horario en la misma fecha");
                 }
                 if (servicioHorarios.Existe(h))
                 {
                     valido = false;
-                    errorProvider2.Clear();
-                    errorProvider2.SetError(pickerFecha, "No pueden suceder dos eventos distintos en la misma fecha");
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(pickerFecha, "No pueden suceder dos eventos distintos en la misma fecha");
                 }
+            }
+            if (horario!=null)
+            {
+                if (servicioHorarios.Existe(horario))
+                {
+                    valido = false;
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(pickerFecha, "No pueden suceder dos eventos distintos en la misma fecha");
+                } 
             }
 
             return valido;
@@ -322,8 +330,12 @@ namespace Teatro.Windows
                 dgvDatos.Rows.RemoveAt(e.RowIndex);
                 servicioHorarios.Borrar(horario.HorarioId);
                 listaHorarios.Remove(horario);
+                if (evento!=null)
+                {
                 evento.Horarios.Remove(horario);
-                MostrarGrilla(evento);
+
+                }
+                //MostrarGrilla(evento);
             }
         }
     }

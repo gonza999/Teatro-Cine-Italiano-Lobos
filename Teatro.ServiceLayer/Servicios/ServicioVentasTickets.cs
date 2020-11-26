@@ -52,6 +52,26 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
+        public List<int> GetListaVentas(List<Ticket> listaTickets)
+        {
+            try
+            {
+                _conexion = new ConexionBD();
+                SqlConnection cn = _conexion.AbrirConexion();
+                transaction = cn.BeginTransaction();
+                _repositorio = new RepositorioVentasTickets(cn, transaction);
+                List<int> lista = _repositorio.GetListaVentas(listaTickets);
+                transaction.Commit();
+                _conexion.CerrarConexion();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw new Exception(e.Message);
+            }
+        }
+
         public VentaTicket GetVentaTicket(Venta venta, Ticket ticket)
         {
             throw new NotImplementedException();

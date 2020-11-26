@@ -17,6 +17,7 @@ namespace Teatro.DataLayer.Facades
         bool EstaRelacionado(Venta venta, Ticket ticket);
         VentaTicket GetVentaTicket(Venta venta, Ticket ticket);
         List<int> GetLista(int ventaId);
+        List<int> GetListaVentas(List<Ticket> listaTickets);
         //List<VentaTicket> BuscarVentaTicket(string clasificacion);
     }
 }

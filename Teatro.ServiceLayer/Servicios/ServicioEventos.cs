@@ -248,5 +248,22 @@ namespace Teatro.ServiceLayer.Servicios
                 throw new Exception(e.Message);
             }
         }
+
+        public void AnularEvento(int eventoId)
+        {
+            try
+            {
+                conexion = new ConexionBD();
+                repositorio = new RepositorioEventos(conexion.AbrirConexion());
+                repositorio.AnularEvento(eventoId);
+                conexion.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

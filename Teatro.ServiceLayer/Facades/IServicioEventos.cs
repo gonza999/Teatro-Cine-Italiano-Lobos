@@ -19,5 +19,6 @@ namespace Teatro.ServiceLayer.Facades
         bool Existe(Evento evento);
         bool EstaRelacionado(Evento evento);
         List<Evento> BuscarEvento(string text);
+        void AnularEvento(int eventoId);
     }
 }

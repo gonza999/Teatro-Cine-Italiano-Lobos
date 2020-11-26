@@ -83,7 +83,7 @@ namespace Teatro.DataLayer.Repositorios
                 {
                     string cadenaComando = "SELECT HorarioId FROM Horarios WHERE  convert(date,Fecha)=@fecha ";
                     comando = new SqlCommand(cadenaComando, conexion,transaction);
-                    comando.Parameters.AddWithValue("@id", horario.Evento.EventoId);
+                   
                     comando.Parameters.AddWithValue("@fecha",fecha);
 
                 }
@@ -175,13 +175,13 @@ namespace Teatro.DataLayer.Repositorios
                 {
                     var cadenaDeComando = "INSERT INTO Horarios (Fecha,Hora,EventoId) " +
                         "VALUES (@fecha,@hora,@evento)";
-                    var comando = new SqlCommand(cadenaDeComando, conexion);
+                    var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                     comando.Parameters.AddWithValue("@fecha", horario.Fecha);
                     comando.Parameters.AddWithValue("@hora", horario.Hora);
                     comando.Parameters.AddWithValue("@evento", horario.Evento.EventoId);
                     comando.ExecuteNonQuery();
                     cadenaDeComando = "SELECT @@Identity";
-                    comando = new SqlCommand(cadenaDeComando, conexion);
+                    comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                     horario.HorarioId = (int)(decimal)comando.ExecuteScalar();
                 }
                 catch (Exception e)

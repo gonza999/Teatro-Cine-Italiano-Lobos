@@ -176,6 +176,47 @@ namespace Teatro.Windows
                 }
             }
         }
+        private IServicioVentasTickets servicioVentasTicket;
+        private IServicioTickets servicioTickets;
+        private IServicioVentas servicioVentas;
+        private IServicioHorarios servicioHorarios;
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow r = dgvDatos.SelectedRows[0];
+            Evento evento = (Evento)r.Tag;
+            servicioHorarios = new ServicioHorarios();
+            var listaHorarios = servicioHorarios.GetLista(evento);
+            evento.Horarios = listaHorarios;
+            if (e.ColumnIndex == 4)
+            {
 
+                DialogResult dr = MessageBox.Show(this, $"¿Desea anular permanentemente el evento {evento.NombreEvento}?",
+                    "Confirmar Anulado",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    evento.Suspendido = true;
+                    r.Cells[cmnSuspendido.Index].Value = evento.Suspendido;
+                    servicioVentasTicket = new ServicioVentasTickets();
+                    servicioVentas = new ServicioVentas();
+                    servicioTickets = new ServicioTickets();
+                    List<Ticket> listaTickets = new List<Ticket>();
+                    listaTickets = servicioTickets.GetLista(evento.Horarios);
+                    foreach (var t in listaTickets)
+                    {
+                        servicioTickets.AnularTicket(t.TicketId);
+                    }
+                    List<int> listaVentas = new List<int>();
+                    listaVentas = servicioVentasTicket.GetListaVentas(listaTickets);
+                    foreach (var v in listaVentas)
+                    {
+                        servicioVentas.AnularVenta(v); 
+                    }
+                    servicio.AnularEvento(evento.EventoId);
+
+                }
+            }
+        }
     }
 }

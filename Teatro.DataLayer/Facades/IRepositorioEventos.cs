@@ -19,6 +19,7 @@ namespace Teatro.DataLayer.Facades
         bool Existe(Evento evento);
         bool EstaRelacionado(Evento evento);
         List<Evento> BuscarEvento(string text);
+        void AnularEvento(int eventoId);
         //void ActualizarStock(Evento evento, decimal cantidad);
         //Evento GetEventoPorCodigoDeBarras(string codigo);
         //List<Evento> GetLista(string descripcion);

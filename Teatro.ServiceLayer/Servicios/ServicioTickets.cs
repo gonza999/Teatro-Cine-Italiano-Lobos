@@ -126,6 +126,30 @@ namespace Teatro.ServiceLayer.Servicios
             }
         }
 
+        public List<Ticket> GetLista(List<Horario> horarios)
+        {
+            try
+            {
+                conexion = new ConexionBD();
+                SqlConnection cn = conexion.AbrirConexion();
+                transaction = cn.BeginTransaction();
+                repositorioLocalidades = new RepositorioLocalidades(cn, transaction);
+                repositorioHorarios = new RepositorioHorarios(cn, transaction);
+                repositorioFormasPagos = new RepositorioFormasPagos(cn, transaction);
+                repositorioFormasVentas = new RepositorioFormasVentas(cn, transaction);
+                repositorio = new RepositorioTickets(cn, repositorioLocalidades, repositorioHorarios, repositorioFormasPagos, repositorioFormasVentas, transaction);
+                var lista = repositorio.GetLista(horarios);
+                transaction.Commit();
+                conexion.CerrarConexion();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw new Exception(e.Message);
+            }
+        }
+
         public void Guardar(Ticket ticket)
         {
             try

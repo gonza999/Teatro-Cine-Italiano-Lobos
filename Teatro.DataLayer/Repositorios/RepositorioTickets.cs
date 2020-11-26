@@ -277,5 +277,34 @@ namespace Teatro.DataLayer.Repositorios
                 throw new Exception(e.Message);
             }
         }
+
+        public List<Ticket> GetLista(List<Horario> horarios)
+        {
+            List<Ticket> lista = new List<Ticket>();
+            try
+            {
+                foreach (var h in horarios)
+                {
+                    var cadenaDeComando = "SELECT TicketId,HorarioId,Importe,LocalidadId, " +
+                               "FechaVenta,FormaPagoId,FormaVentaId,Anulada FROM Tickets WHERE HorarioId IN (" +
+                               "SELECT HorarioId FROM Horarios WHERE HorarioId=@id)";
+                    var comando = new SqlCommand(cadenaDeComando, conexion, transaction);
+                    comando.Parameters.AddWithValue("@id",h.HorarioId);
+                    var reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Ticket ticket = ConstruirTicket(reader);
+                        lista.Add(ticket);
+                    }
+                    reader.Close(); 
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

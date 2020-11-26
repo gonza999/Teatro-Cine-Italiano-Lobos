@@ -257,7 +257,21 @@ namespace Teatro.DataLayer.Repositorios
             }
         }
 
-     
+        public void AnularEvento(int eventoId)
+        {
+            try
+            {
+                var cadenaDeComando = "UPDATE  Eventos SET Suspendido=1 WHERE EventoId=@id";
+                var comando = new SqlCommand(cadenaDeComando, conexion);
+                comando.Parameters.AddWithValue("@id", eventoId);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
     }
 }
 
