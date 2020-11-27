@@ -40,7 +40,26 @@ namespace Teatro.DataLayer.Repositorios
 
         public bool EstaRelacionado(Ubicacion ubicacion)
         {
-            return false;
+            try
+            {
+                var cadenaDeComando = "SELECT UbicacionId FROM DistribucionesUbicaciones WHERE UbicacionId=@id";
+                var comando = new SqlCommand(cadenaDeComando, cn);
+                comando.Parameters.AddWithValue("@id", ubicacion.UbicacionId);
+                var reader = comando.ExecuteReader();
+                if (!reader.HasRows)
+                {
+                     cadenaDeComando = "SELECT UbicacionId FROM Localidades WHERE UbicacionId=@id";
+                     comando = new SqlCommand(cadenaDeComando, cn);
+                    comando.Parameters.AddWithValue("@id", ubicacion.UbicacionId);
+                     reader = comando.ExecuteReader();
+                }
+                return reader.HasRows;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Ubicacion ubicacion)

@@ -152,7 +152,8 @@ namespace Teatro.Windows
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 TipoDocumento tipoDocumento = (TipoDocumento)r.Tag;
-                TipoDocumento tipoDocumentoAux = (TipoDocumento)tipoDocumento.Clone();
+                tipoDocumento = servicio.GetTipoDocumentoPorId(tipoDocumento.TipoDocumentoId);
+                //TipoDocumento tipoDocumentoAux = (TipoDocumento)tipoDocumento.Clone();
                 frmTiposDocumentosAE frm = new frmTiposDocumentosAE(this);
                 frm.Text = "Editar TipoDocumento";
                 frm.SetTipoDocumento(tipoDocumento);

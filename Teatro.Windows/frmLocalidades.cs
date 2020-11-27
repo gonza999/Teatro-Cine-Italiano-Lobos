@@ -152,7 +152,8 @@ namespace Teatro.Windows
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 Localidad localidad = (Localidad)r.Tag;
-                Localidad localidadAux = (Localidad)localidad.Clone();
+                localidad = servicio.GetLocalidadPorId(localidad.LocalidadId);
+                //Localidad localidadAux = (Localidad)localidad.Clone();
                 frmLocalidadesAE frm = new frmLocalidadesAE(this);
                 frm.Text = "Editar Localidad";
                 frm.SetLocalidad(localidad);

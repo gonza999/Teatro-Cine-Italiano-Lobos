@@ -18,20 +18,25 @@ namespace Teatro.ServiceLayer.Servicios
         private IRepositorioDistribuciones _repositorio;
         private IRepositorioDistribucionesUbicaciones repositorioDistribucionesUbicaciones;
         private IRepositorioUbicaciones repositorioUbicaciones;
-        
-        public void Borrar(int id)
+        private SqlTransaction transaction;
+        public void Borrar(Distribucion distribucion)
         {
             try
             {
                 _conexion = new ConexionBD();
-                _repositorio = new RepositorioDistribuciones(_conexion.AbrirConexion());
-                _repositorio.Borrar(id);
+                SqlConnection cn = _conexion.AbrirConexion();
+                transaction = cn.BeginTransaction();
+                repositorioDistribucionesUbicaciones = new RepositorioDistribucionesUbicaciones(cn,transaction);
+               _repositorio = new RepositorioDistribuciones(cn,transaction);
+                repositorioDistribucionesUbicaciones.Borrar(distribucion.DistribucionId);
+                _repositorio.Borrar(distribucion.DistribucionId);
+                transaction.Commit();
                 _conexion.CerrarConexion();
 
             }
             catch (Exception e)
             {
-
+                transaction.Rollback();
                 throw new Exception(e.Message);
             }
         }

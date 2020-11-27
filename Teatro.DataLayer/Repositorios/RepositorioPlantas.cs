@@ -42,7 +42,19 @@ namespace Teatro.DataLayer.Repositorios
 
         public bool EstaRelacionado(Planta planta)
         {
-            return false;
+            try
+            {
+                var cadenaDeComando = "SELECT PlantaId FROM Localidades WHERE PlantaId=@id";
+                var comando = new SqlCommand(cadenaDeComando, cn);
+                comando.Parameters.AddWithValue("@id", planta.PlantaId);
+                var reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Planta planta)

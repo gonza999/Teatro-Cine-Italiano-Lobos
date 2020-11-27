@@ -14,7 +14,7 @@ namespace Teatro.DataLayer.Repositorios
         private readonly SqlConnection cn;
         private SqlTransaction transaction;
         private IRepositorioVentas repositorioVentas;
-        private IRepositorioTickets repositorioTickets;
+        //private IRepositorioTickets repositorioTickets;
 
         public RepositorioVentasTickets(SqlConnection cn1, SqlTransaction transaction1)
         {

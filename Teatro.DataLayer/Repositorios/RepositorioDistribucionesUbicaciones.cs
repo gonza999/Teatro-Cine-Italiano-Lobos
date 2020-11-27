@@ -40,8 +40,8 @@ namespace Teatro.DataLayer.Repositorios
         {
             try
             {
-                var cadenaDeComando = "DELETE DistribucionesUbicaciones WHERE DistribucionId=@disId";
-                var comando = new SqlCommand(cadenaDeComando, conexion);
+                var cadenaDeComando = "DELETE DistribucionesUbicaciones WHERE DistribucionId=@id";
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 comando.ExecuteNonQuery();
             }

@@ -128,7 +128,7 @@ namespace Teatro.Windows
                     {
                         if (!servicio.EstaRelacionado(distribucion))
                         {
-                            servicio.Borrar(distribucion.DistribucionId);
+                            servicio.Borrar(distribucion);
                             dgvDatos.Rows.Remove(r);
                             Helper.MensajeBox("Registro borrado", Tipo.Success);
                         }
@@ -152,7 +152,9 @@ namespace Teatro.Windows
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 Distribucion distribucion = (Distribucion)r.Tag;
-                Distribucion distribucionAux = (Distribucion)distribucion.Clone();
+                distribucion = servicio.GetDistribucionPorId (distribucion.DistribucionId);
+                distribucion.DistribucionUbicacion = ((Distribucion)r.Tag).DistribucionUbicacion;
+                //Distribucion distribucionAux = (Distribucion)distribucion.Clone();
                 frmDistribucionesAE frm = new frmDistribucionesAE(this);
                 frm.Text = "Editar Distribucion";
                 frm.SetDistribucion(distribucion);

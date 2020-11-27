@@ -152,7 +152,8 @@ namespace Teatro.Windows
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 Planta planta = (Planta)r.Tag;
-                Planta plantaAux = (Planta)planta.Clone();
+                planta = servicio.GetPlantaPorId(planta.PlantaId);
+                //Planta plantaAux = (Planta)planta.Clone();
                 frmPlantasAE frm = new frmPlantasAE(this);
                 frm.Text = "Editar Planta";
                 frm.SetPlanta(planta);

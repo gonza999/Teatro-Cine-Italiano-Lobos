@@ -12,7 +12,7 @@ namespace Teatro.ServiceLayer.Facades
         Distribucion GetDistribucionPorId(int id);
         List<Distribucion> GetLista();
         void Guardar(Distribucion distribucion);
-        void Borrar(int id);
+        void Borrar(Distribucion distribucion);
         bool Existe(Distribucion distribucion);
         bool EstaRelacionado(Distribucion distribucion);
         Distribucion GetDistribucion(string nombreDistribucion);

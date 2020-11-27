@@ -368,20 +368,22 @@ namespace Teatro.Windows
                     servicio = new ServicioVentas();
                     servicio.Guardar(venta);
                     Helper.MensajeBox("Registro guardado", Tipo.Success);
-                    DialogResult dr = MessageBox.Show("Desea agregar otro registro?", "Confirmar",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dr == DialogResult.No)
-                    {
-                        DialogResult = DialogResult.Cancel;
-                        Close();
-                    }
-                    else
-                    {
-                        InicializarControles();
-                        dgvDatos.Rows.Clear();
-                        listaTickets.Clear();
+                    //DialogResult dr = MessageBox.Show("Desea agregar otro registro?", "Confirmar",
+                    //    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    //if (dr == DialogResult.No)
+                    //{
+                    //    DialogResult = DialogResult.Cancel;
+                    //    Close();
+                    //}
+                    //else
+                    //{
+                    //    InicializarControles();
+                    //    dgvDatos.Rows.Clear();
+                    //    listaTickets.Clear();
 
-                    }
+                    //}
+  
+                    Close();
                 }
                 catch (Exception ex)
                 {

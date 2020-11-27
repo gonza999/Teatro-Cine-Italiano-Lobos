@@ -51,7 +51,19 @@ namespace Teatro.DataLayer.Repositorios
 
         public bool EstaRelacionado(Empleado empleado)
         {
-            return false;
+            try
+            {
+                var cadenaDeComando = "SELECT EmpleadoId FROM Ventas WHERE EmpleadoId=@id";
+                var comando = new SqlCommand(cadenaDeComando, conexion);
+                comando.Parameters.AddWithValue("@id", empleado.EmpleadoId);
+                var reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Empleado empleado)

@@ -152,7 +152,8 @@ namespace Teatro.Windows
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 TipoEvento tipoevento = (TipoEvento)r.Tag;
-                TipoEvento tipoeventoAux = (TipoEvento)tipoevento.Clone();
+                tipoevento = servicio.GetTipoEventoPorId(tipoevento.TipoEventoId);
+                //TipoEvento tipoeventoAux = (TipoEvento)tipoevento.Clone();
                 frmTipoEventoAE frm = new frmTipoEventoAE(this);
                 frm.Text = "Editar TipoEvento";
                 frm.SetTipoEvento(tipoevento);

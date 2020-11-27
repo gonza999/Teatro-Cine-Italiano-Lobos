@@ -83,7 +83,7 @@ namespace Teatro.Windows
         private void SetearFila(DataGridViewRow r, Ticket ticket)
         {
             r.Cells[cmnEvento.Index].Value = ticket.Horario.Evento.NombreEvento;
-            r.Cells[cmnFecha.Index].Value = ticket.FechaVenta;
+            r.Cells[cmnFecha.Index].Value = ticket.Horario.Fecha.Date+ticket.Horario.Hora.TimeOfDay;
             r.Cells[cmnImporte.Index].Value = ticket.Importe;
             r.Cells[cmnLocalidad.Index].Value = ticket.Localidad.Numero;
             r.Cells[cmnUbicacion.Index].Value = ticket.Localidad.Ubicacion.NombreUbicacion;

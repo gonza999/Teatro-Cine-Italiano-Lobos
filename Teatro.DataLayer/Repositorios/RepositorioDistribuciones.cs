@@ -28,7 +28,7 @@ namespace Teatro.DataLayer.Repositorios
             try
             {
                 string cadenaComando = "DELETE FROM Distribuciones WHERE DistribucionId=@id";
-                SqlCommand comando = new SqlCommand(cadenaComando, cn);
+                SqlCommand comando = new SqlCommand(cadenaComando, cn,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 comando.ExecuteNonQuery();
 
@@ -47,13 +47,13 @@ namespace Teatro.DataLayer.Repositorios
                 var comando = new SqlCommand(cadenaDeComando, cn);
                 comando.Parameters.AddWithValue("@id", distribucion.DistribucionId);
                 var reader = comando.ExecuteReader();
-                if (!reader.HasRows)
-                {
-                     cadenaDeComando = "SELECT DistribucionId FROM DistribucionesUbicaciones WHERE DistribucionId=@id";
-                     comando = new SqlCommand(cadenaDeComando, cn);
-                    comando.Parameters.AddWithValue("@id", distribucion.DistribucionId);
-                     reader = comando.ExecuteReader();
-                }
+                //if (!reader.HasRows)
+                //{
+                //     cadenaDeComando = "SELECT DistribucionId FROM DistribucionesUbicaciones WHERE DistribucionId=@id";
+                //     comando = new SqlCommand(cadenaDeComando, cn);
+                //    comando.Parameters.AddWithValue("@id", distribucion.DistribucionId);
+                //     reader = comando.ExecuteReader();
+                //}
                 return reader.HasRows;
             }
             catch (Exception e)

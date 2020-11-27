@@ -42,7 +42,19 @@ namespace Teatro.DataLayer.Repositorios
 
         public bool EstaRelacionado(FormaVenta formaVenta)
         {
-            return false;
+            try
+            {
+                var cadenaDeComando = "SELECT FormaVentaId FROM Tickets WHERE FormaVentaId=@id";
+                var comando = new SqlCommand(cadenaDeComando, cn);
+                comando.Parameters.AddWithValue("@id", formaVenta.FormaVentaId);
+                var reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(FormaVenta formaVenta)

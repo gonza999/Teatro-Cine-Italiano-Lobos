@@ -152,7 +152,8 @@ namespace Teatro.Windows
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 FormaVenta formaVenta = (FormaVenta)r.Tag;
-                FormaVenta formaVentaAux = (FormaVenta)formaVenta.Clone();
+                formaVenta = servicio.GetFormaVentaPorId(formaVenta.FormaVentaId);
+                //FormaVenta formaVentaAux = (FormaVenta)formaVenta.Clone();
                 frmFormasVentasAE frm = new frmFormasVentasAE(this);
                 frm.Text = "Editar FormaVenta";
                 frm.SetFormaVenta(formaVenta);

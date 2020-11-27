@@ -152,7 +152,8 @@ namespace Teatro.Windows
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 Ubicacion ubicacion = (Ubicacion)r.Tag;
-                Ubicacion ubicacionAux = (Ubicacion)ubicacion.Clone();
+                ubicacion = servicio.GetUbicacionPorId(ubicacion.UbicacionId);
+                //Ubicacion ubicacionAux = (Ubicacion)ubicacion.Clone();
                 frmUbicacionesAE frm = new frmUbicacionesAE(this);
                 frm.Text = "Editar Ubicacion";
                 frm.SetUbicacion(ubicacion);

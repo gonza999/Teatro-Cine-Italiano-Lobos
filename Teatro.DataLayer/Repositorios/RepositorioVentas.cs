@@ -41,7 +41,19 @@ namespace Teatro.DataLayer.Repositorios
 
         public bool EstaRelacionado(Venta venta)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var cadenaDeComando = "SELECT VentaId FROM VentasTickets WHERE VentaId=@id";
+                var comando = new SqlCommand(cadenaDeComando, cn);
+                comando.Parameters.AddWithValue("@id", venta.VentaId);
+                var reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Venta venta)

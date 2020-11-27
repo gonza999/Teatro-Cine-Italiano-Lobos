@@ -152,7 +152,8 @@ namespace Teatro.Windows
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 FormaPago formaPago = (FormaPago)r.Tag;
-                FormaPago formaPagoAux = (FormaPago)formaPago.Clone();
+                formaPago = servicio.GetFormaPagoPorId(formaPago.FormaPagoId);
+                //FormaPago formaPagoAux = (FormaPago)formaPago.Clone();
                 frmFormasPagosAE frm = new frmFormasPagosAE(this);
                 frm.Text = "Editar FormaPago";
                 frm.SetFormaPago(formaPago);

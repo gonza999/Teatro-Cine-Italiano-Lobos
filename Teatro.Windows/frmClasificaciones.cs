@@ -152,7 +152,8 @@ namespace Teatro.Windows
             {
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 Clasificacion clasificacion = (Clasificacion)r.Tag;
-                Clasificacion clasificacionAux = (Clasificacion)clasificacion.Clone();
+                clasificacion = servicio.GetClasificacionPorId(clasificacion.ClasificacionId);
+                //Clasificacion clasificacionAux = (Clasificacion)clasificacion.Clone();
                 frmClasificacionesAE frm = new frmClasificacionesAE(this);
                 frm.Text = "Editar Clasificacion";
                 frm.SetClasificacion(clasificacion);
