@@ -48,6 +48,7 @@
             this.listaDeLasVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeLosTicketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaDeLocalidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,7 +131,8 @@
             // 
             this.eventosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eventosToolStripMenuItem1,
-            this.horariosToolStripMenuItem});
+            this.horariosToolStripMenuItem,
+            this.listaDeLocalidadesToolStripMenuItem});
             this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
             this.eventosToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
             this.eventosToolStripMenuItem.Text = "Eventos";
@@ -138,14 +140,14 @@
             // eventosToolStripMenuItem1
             // 
             this.eventosToolStripMenuItem1.Name = "eventosToolStripMenuItem1";
-            this.eventosToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.eventosToolStripMenuItem1.Size = new System.Drawing.Size(211, 22);
             this.eventosToolStripMenuItem1.Text = "Eventos";
             this.eventosToolStripMenuItem1.Click += new System.EventHandler(this.eventosToolStripMenuItem_Click);
             // 
             // horariosToolStripMenuItem
             // 
             this.horariosToolStripMenuItem.Name = "horariosToolStripMenuItem";
-            this.horariosToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.horariosToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
             this.horariosToolStripMenuItem.Text = "Horarios";
             this.horariosToolStripMenuItem.Click += new System.EventHandler(this.horariosToolStripMenuItem_Click);
             // 
@@ -215,6 +217,13 @@
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
+            // listaDeLocalidadesToolStripMenuItem
+            // 
+            this.listaDeLocalidadesToolStripMenuItem.Name = "listaDeLocalidadesToolStripMenuItem";
+            this.listaDeLocalidadesToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.listaDeLocalidadesToolStripMenuItem.Text = "Lista de Localidades";
+            this.listaDeLocalidadesToolStripMenuItem.Click += new System.EventHandler(this.listaDeLocalidadesToolStripMenuItem_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,5 +270,6 @@
         private System.Windows.Forms.ToolStripMenuItem listaDeLosTicketsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem horariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaDeLocalidadesToolStripMenuItem;
     }
 }

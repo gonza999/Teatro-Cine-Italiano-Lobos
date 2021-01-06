@@ -131,6 +131,12 @@
     <Compile Include="frmHorarios.Designer.cs">
       <DependentUpon>frmHorarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListaLocalidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaLocalidades.Designer.cs">
+      <DependentUpon>frmListaLocalidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmListaVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHorarios.resx">
       <DependentUpon>frmHorarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaLocalidades.resx">
+      <DependentUpon>frmListaLocalidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListaVentas.resx">
       <DependentUpon>frmListaVentas.cs</DependentUpon>

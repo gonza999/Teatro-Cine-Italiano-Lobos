@@ -404,5 +404,12 @@ namespace Teatro.Windows
             }
             return valido;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmListaLocalidades frm = new frmListaLocalidades();
+            frm.Text = "Lista de Localidades";
+            frm.ShowDialog(this);
+        }
     }
 }

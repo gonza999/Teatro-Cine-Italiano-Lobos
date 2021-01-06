@@ -125,5 +125,12 @@ namespace Teatro.Windows
             frm.Text = "Tickets";
             frm.ShowDialog(this);
         }
+
+        private void listaDeLocalidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListaLocalidades frm = new frmListaLocalidades();
+            frm.Text = "Lista de Localidades";
+            frm.ShowDialog(this);
+        }
     }
 }
