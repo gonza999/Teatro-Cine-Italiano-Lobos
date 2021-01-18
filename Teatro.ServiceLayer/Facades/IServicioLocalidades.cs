@@ -18,5 +18,6 @@ namespace Teatro.ServiceLayer.Facades
         //Localidad GetLocalidad(string nombreLocalidad);
         //List<Localidad> BuscarLocalidad(string text);
         List<Localidad> GetLista(Ubicacion ubicacion);
+        List<Localidad> GetLista(int fila);
     }
 }

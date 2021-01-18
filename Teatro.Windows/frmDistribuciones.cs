@@ -153,7 +153,7 @@ namespace Teatro.Windows
                 DataGridViewRow r = dgvDatos.SelectedRows[0];
                 Distribucion distribucion = (Distribucion)r.Tag;
                 distribucion = servicio.GetDistribucionPorId (distribucion.DistribucionId);
-                distribucion.DistribucionUbicacion = ((Distribucion)r.Tag).DistribucionUbicacion;
+                distribucion.DistribucionLocalidad = ((Distribucion)r.Tag).DistribucionLocalidad;
                 //Distribucion distribucionAux = (Distribucion)distribucion.Clone();
                 frmDistribucionesAE frm = new frmDistribucionesAE(this);
                 frm.Text = "Editar Distribucion";

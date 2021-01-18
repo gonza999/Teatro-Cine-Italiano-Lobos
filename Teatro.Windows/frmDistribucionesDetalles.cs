@@ -31,16 +31,16 @@ namespace Teatro.Windows
         private void frmDistribucionesDetalles_Load(object sender, EventArgs e)
         {
             lblDistribucion.Text = distribucion.NombreDistribucion;
-            foreach (var d in distribucion.DistribucionUbicacion)
+            foreach (var d in distribucion.DistribucionLocalidad)
             {
-                if (d.Ubicacion.UbicacionId==1)
-                {
-                    txtButacas.Text = d.Precio.ToString();
-                }
-                else
-                {
-                    txtPalcos.Text = d.Precio.ToString();
-                }
+                //    if (d.Ubicacion.UbicacionId==1)
+                //    {
+                //        txtButacas.Text = d.Precio.ToString();
+                //    }
+                //    else
+                //    {
+                //        txtPalcos.Text = d.Precio.ToString();
+                //    }
             }
         }
     }

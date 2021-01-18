@@ -49,7 +49,7 @@ namespace Teatro.DataLayer.Repositorios
                 var reader = comando.ExecuteReader();
                 //if (!reader.HasRows)
                 //{
-                //     cadenaDeComando = "SELECT DistribucionId FROM DistribucionesUbicaciones WHERE DistribucionId=@id";
+                //     cadenaDeComando = "SELECT DistribucionId FROM DistribucionesLocalidades WHERE DistribucionId=@id";
                 //     comando = new SqlCommand(cadenaDeComando, cn);
                 //    comando.Parameters.AddWithValue("@id", distribucion.DistribucionId);
                 //     reader = comando.ExecuteReader();
@@ -188,7 +188,6 @@ namespace Teatro.DataLayer.Repositorios
                     cadenaComando = "SELECT @@IDENTITY";
                     comando = new SqlCommand(cadenaComando, cn,transaction);
                     distribucion.DistribucionId = (int)(decimal)comando.ExecuteScalar();
-
                 }
                 catch (Exception e)
                 {

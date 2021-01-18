@@ -42,7 +42,7 @@ namespace Teatro.DataLayer.Repositorios
         {
             try
             {
-                var cadenaDeComando = "SELECT UbicacionId FROM DistribucionesUbicaciones WHERE UbicacionId=@id";
+                var cadenaDeComando = "SELECT UbicacionId FROM DistribucionesLocalidades WHERE UbicacionId=@id";
                 var comando = new SqlCommand(cadenaDeComando, cn);
                 comando.Parameters.AddWithValue("@id", ubicacion.UbicacionId);
                 var reader = comando.ExecuteReader();

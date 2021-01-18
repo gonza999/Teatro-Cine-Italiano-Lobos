@@ -38,15 +38,18 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.nudNumero = new System.Windows.Forms.NumericUpDown();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.nudFila = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumero)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFila)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbUbicacion
             // 
             this.cmbUbicacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUbicacion.FormattingEnabled = true;
-            this.cmbUbicacion.Location = new System.Drawing.Point(192, 278);
+            this.cmbUbicacion.Location = new System.Drawing.Point(192, 219);
             this.cmbUbicacion.Name = "cmbUbicacion";
             this.cmbUbicacion.Size = new System.Drawing.Size(214, 21);
             this.cmbUbicacion.TabIndex = 2;
@@ -64,7 +67,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(48, 273);
+            this.label7.Location = new System.Drawing.Point(42, 214);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 24);
             this.label7.TabIndex = 35;
@@ -84,7 +87,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(69, 167);
+            this.label1.Location = new System.Drawing.Point(64, 130);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 24);
             this.label1.TabIndex = 39;
@@ -118,7 +121,7 @@
             // nudNumero
             // 
             this.nudNumero.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.nudNumero.Location = new System.Drawing.Point(227, 171);
+            this.nudNumero.Location = new System.Drawing.Point(231, 136);
             this.nudNumero.Maximum = new decimal(new int[] {
             1316134911,
             2328,
@@ -134,6 +137,31 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(64, 287);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 24);
+            this.label2.TabIndex = 39;
+            this.label2.Text = "Fila :";
+            // 
+            // nudFila
+            // 
+            this.nudFila.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.nudFila.Location = new System.Drawing.Point(231, 293);
+            this.nudFila.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
+            this.nudFila.Name = "nudFila";
+            this.nudFila.Size = new System.Drawing.Size(120, 20);
+            this.nudFila.TabIndex = 1;
+            this.nudFila.ThousandsSeparator = true;
+            this.nudFila.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            // 
             // frmLocalidadesAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,10 +169,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(427, 457);
             this.ControlBox = false;
+            this.Controls.Add(this.nudFila);
             this.Controls.Add(this.nudNumero);
             this.Controls.Add(this.cmbUbicacion);
             this.Controls.Add(this.cmbPlanta);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
@@ -157,6 +187,7 @@
             this.Load += new System.EventHandler(this.frmLocalidadesAE_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudNumero)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFila)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +204,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.NumericUpDown nudNumero;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.NumericUpDown nudFila;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -138,12 +138,12 @@ namespace Teatro.Windows
                     {
                         if (d.DistribucionId==evento.Distribucion.DistribucionId)
                         {
-                            foreach (var du in d.DistribucionUbicacion)
+                            foreach (var du in d.DistribucionLocalidad)
                             {
-                                if (du.Ubicacion.UbicacionId==ubicacion.UbicacionId)
-                                {
-                                    txtImporte.Text =du.Precio.ToString();
-                                }
+                                //if (du.Ubicacion.UbicacionId==ubicacion.UbicacionId)
+                                //{
+                                //    txtImporte.Text =du.Precio.ToString();
+                                //}
                             }
                         }
                     }

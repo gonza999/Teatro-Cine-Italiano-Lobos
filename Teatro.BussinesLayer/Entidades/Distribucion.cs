@@ -11,7 +11,7 @@ namespace Teatro.BussinesLayer.Entidades
         public int DistribucionId { get; set; }
         public string NombreDistribucion { get; set; }
 
-        public List<DistribucionUbicacion> DistribucionUbicacion { get; set; } = new List<DistribucionUbicacion>();
+        public List<DistribucionLocalidad> DistribucionLocalidad { get; set; } = new List<DistribucionLocalidad>();
         public object Clone()
         {
             return this.MemberwiseClone();

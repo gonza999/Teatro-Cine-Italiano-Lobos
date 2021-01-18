@@ -39,6 +39,7 @@ namespace Teatro.Windows
                 nudNumero.Value = localidad.Numero;
                 cmbPlanta.SelectedValue = localidad.Planta.PlantaId;
                 cmbUbicacion.SelectedValue = localidad.Ubicacion.UbicacionId;
+                nudFila.Value = localidad.Fila;
                 esEdicion = true;
             }
         }
@@ -78,6 +79,11 @@ namespace Teatro.Windows
                 valido = false;
                 errorProvider1.SetError(nudNumero, "Numero mal ingresado");
             }
+            if (nudFila.Value <= 0)
+            {
+                valido = false;
+                errorProvider1.SetError(nudFila, "Fila mal ingresado");
+            }
             return valido;
         }
 
@@ -94,6 +100,7 @@ namespace Teatro.Windows
                 localidad.Numero =Convert.ToInt32(nudNumero.Value);
                 localidad.Planta = (Planta)cmbPlanta.SelectedItem;
                 localidad.Ubicacion = (Ubicacion)cmbUbicacion.SelectedItem;
+                localidad.Fila = Convert.ToInt32(nudFila.Value);
                 if (ValidarObjeto())
                 {
                     if (!esEdicion)
@@ -128,6 +135,7 @@ namespace Teatro.Windows
         private void InicializarControles()
         {
             nudNumero.Value = 0;
+            nudFila.Value = 0;
             Helper.CargarPlantaComboBox(ref cmbPlanta);
             Helper.CargarUbicacionComboBox(ref cmbUbicacion);
             cmbPlanta.Focus();

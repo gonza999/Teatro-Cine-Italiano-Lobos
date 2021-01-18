@@ -110,7 +110,7 @@ namespace Teatro.DataLayer.Repositorios
             List<Localidad> lista = new List<Localidad>();
             try
             {
-                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId " +
+                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId,Fila " +
                     "FROM Localidades";
                 var comando = new SqlCommand(cadenaDeComando, conexion);
                 var reader = comando.ExecuteReader();
@@ -138,6 +138,7 @@ namespace Teatro.DataLayer.Repositorios
             localidad.Planta = repositorioPlantas.GetPlantaPorId(reader.GetInt32(1));
             localidad.Numero = reader.GetInt32(2);
             localidad.Ubicacion = repositorioUbicaciones.GetUbicacionPorId(reader.GetInt32(3));
+            localidad.Fila = reader.GetInt32(4);
             return localidad;
         }
 
@@ -146,7 +147,7 @@ namespace Teatro.DataLayer.Repositorios
             Localidad localidad = null;
             try
             {
-                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId FROM Localidades WHERE LocalidadId=@id";
+                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId,Fila FROM Localidades WHERE LocalidadId=@id";
                 var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 var reader = comando.ExecuteReader();
@@ -172,12 +173,13 @@ namespace Teatro.DataLayer.Repositorios
             {
                 try
                 {
-                    var cadenaDeComando = "INSERT INTO Localidades ( PlantaId,Numero,UbicacionId) " +
-                        "VALUES (@plantaId,@numero,@ubicacionId)";
+                    var cadenaDeComando = "INSERT INTO Localidades ( PlantaId,Numero,UbicacionId,Fila) " +
+                        "VALUES (@plantaId,@numero,@ubicacionId,@fila)";
                     var comando = new SqlCommand(cadenaDeComando, conexion);
                     comando.Parameters.AddWithValue("@plantaId", localidad.Planta.PlantaId);
                     comando.Parameters.AddWithValue("@numero", localidad.Numero);
                     comando.Parameters.AddWithValue("@ubicacionId", localidad.Ubicacion.UbicacionId);
+                    comando.Parameters.AddWithValue("@fila",localidad.Fila);
                     comando.ExecuteNonQuery();
                     cadenaDeComando = "SELECT @@Identity";
                     comando = new SqlCommand(cadenaDeComando, conexion);
@@ -194,14 +196,14 @@ namespace Teatro.DataLayer.Repositorios
                 //Edición
                 try
                 {
-                    string cadenaComando = "UPDATE Localidades SET PlantaId=@planta,Numero=@numero,UbicacionId=@ubicacion " +
+                    string cadenaComando = "UPDATE Localidades SET PlantaId=@planta,Numero=@numero,UbicacionId=@ubicacion,Fila=@fila " +
                         " WHERE LocalidadId=@id";
                     SqlCommand comando = new SqlCommand(cadenaComando, conexion);
                     comando.Parameters.AddWithValue("@planta", localidad.Planta.PlantaId);
                     comando.Parameters.AddWithValue("@numero", localidad.Numero);
                     comando.Parameters.AddWithValue("@ubicacion", localidad.Ubicacion.UbicacionId);
                     comando.Parameters.AddWithValue("@id", localidad.LocalidadId);
-
+                    comando.Parameters.AddWithValue("@fila",localidad.Fila);
                     comando.ExecuteNonQuery();
 
                 }
@@ -217,7 +219,7 @@ namespace Teatro.DataLayer.Repositorios
             List<Localidad> lista = new List<Localidad>();
             try
             {
-                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId  " +
+                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId,Fila " +
                     "FROM Localidades WHERE Localidad like @text";
                 var comando = new SqlCommand(cadenaDeComando, conexion);
                 comando.Parameters.AddWithValue("@text", $"%{text}%");
@@ -242,10 +244,35 @@ namespace Teatro.DataLayer.Repositorios
             List<Localidad> lista = new List<Localidad>();
             try
             {
-                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId " +
+                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId,Fila " +
                     "FROM Localidades WHERE UbicacionId=@id";
                 var comando = new SqlCommand(cadenaDeComando, conexion);
                 comando.Parameters.AddWithValue("@id",ubicacion.UbicacionId);
+                var reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    Localidad localidad = ConstruirLocalidad(reader);
+                    lista.Add(localidad);
+                }
+                reader.Close();
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
+
+        public List<Localidad> GetLista(int fila)
+        {
+            List<Localidad> lista = new List<Localidad>();
+            try
+            {
+                var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId,Fila " +
+                    "FROM Localidades WHERE Fila=@fila AND UbicacionId=1";
+                var comando = new SqlCommand(cadenaDeComando, conexion);
+                comando.Parameters.AddWithValue("@fila", fila);
                 var reader = comando.ExecuteReader();
                 while (reader.Read())
                 {

@@ -34,18 +34,23 @@ namespace Teatro.Windows
         {
             base.OnLoad(e);
             servicio = new ServicioDistribuciones();
+            dgvDatos.Rows.Clear();
+            cmbFila.SelectedIndex = 0;
             if (distribucion != null)
             {
                 txtDistribucion.Text = distribucion.NombreDistribucion;
-                foreach (var d in distribucion.DistribucionUbicacion)
+                foreach (var d in distribucion.DistribucionLocalidad)
                 {
-                    if (d.Ubicacion.UbicacionId == 1)
+                    foreach (var l in d.Localidades)
                     {
-                        txtButacas.Text = d.Precio.ToString();
-                    }
-                    else
-                    {
-                        txtPalcos.Text = d.Precio.ToString();
+                        if (l.Ubicacion.UbicacionId==2)
+                        {
+                            txtPalcos.Text = d.Precio.ToString();
+                        }
+                        else
+                        {
+                            CargarGrilla(d);
+                        }
                     }
                 }
 
@@ -53,6 +58,63 @@ namespace Teatro.Windows
 
                 esEdicion = true;
             }
+        }
+
+        private void CargarGrilla(DistribucionLocalidad d)
+        {
+            AgregarFila(d);
+        }
+        //private void Actualizar()
+        //{
+        //    try
+        //    {
+        //        servicio = new ServicioPlantas();
+        //        lista = servicio.GetLista();
+        //        MostrarDatosEnGrilla();
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        MessageBox.Show(this, ex.Message, "Error",
+        //            MessageBoxButtons.OK);
+        //    }
+        //}
+
+        //private void MostrarDatosEnGrilla()
+        //{
+        //    dgvDatos.Rows.Clear();
+        //    foreach (var planta in lista)
+        //    {
+        //        AgregarFila(planta);
+        //    }
+        //}
+        private List<DistribucionLocalidad> DistribucionLocalidades = new List<DistribucionLocalidad>();
+        public void AgregarFila(DistribucionLocalidad distribucionLocalidad)
+        {
+            DataGridViewRow r = ConstruirFila();
+            SetearFila(r, distribucionLocalidad);
+            AgregarFila(r);
+            DistribucionLocalidades.Add(distribucionLocalidad);
+        }
+
+        private void AgregarFila(DataGridViewRow r)
+        {
+            dgvDatos.Rows.Add(r);
+        }
+
+        private void SetearFila(DataGridViewRow r, DistribucionLocalidad distribucionLocalidad)
+        {
+            r.Cells[cmnPrecio.Index].Value = distribucionLocalidad.Precio;
+            var fila = distribucionLocalidad.Localidades[0].Fila;
+            r.Cells[cmnFila.Index].Value=fila;
+            r.Tag = distribucionLocalidad;
+        }
+
+        private DataGridViewRow ConstruirFila()
+        {
+            DataGridViewRow r = new DataGridViewRow();
+            r.CreateCells(dgvDatos);
+            return r;
         }
 
         private Distribucion distribucion;
@@ -76,27 +138,9 @@ namespace Teatro.Windows
                 string.IsNullOrWhiteSpace(txtDistribucion.Text.Trim()))
             {
                 valido = false;
-                errorProvider1.SetError(txtDistribucion, "Debe ingresar una distribucion");
+                errorProvider1.SetError(txtDistribucion, "Debe ingresar un nombre de distribucion");
             }
-            if (string.IsNullOrEmpty(txtButacas.Text.Trim()) &&
-                string.IsNullOrWhiteSpace(txtButacas.Text.Trim()))
-            {
-                valido = false;
-                errorProvider1.SetError(txtButacas, "Debe ingresar un precio de butaca");
-            }
-            decimal precio = 0;
-            if (!decimal.TryParse(txtButacas.Text, out precio))
-            {
-                valido = false;
-                errorProvider1.SetError(txtButacas, "Debe ingresar un precio de butaca valido");
-            }
-            if (precio < 0)
-            {
-                valido = false;
-                errorProvider1.SetError(txtButacas, "El precio no debe ser menor a cero");
-
-            }
-
+            decimal precio;
             if (string.IsNullOrEmpty(txtPalcos.Text.Trim()) &&
            string.IsNullOrWhiteSpace(txtPalcos.Text.Trim()))
             {
@@ -115,7 +159,16 @@ namespace Teatro.Windows
                 errorProvider1.SetError(txtPalcos, "El precio no debe ser menor a cero");
 
             }
-
+            if (dgvDatos.Rows.Count!=20)
+            {
+                valido = false;
+                errorProvider1.SetError(btnAgregar, "Debe ingresar un precio a cada fila");
+            }
+            if (DistribucionLocalidades.Count != 20)
+            {
+                valido = false;
+                errorProvider1.SetError(btnAgregar, "Debe ingresar un precio a cada fila");
+            }
             return valido;
         }
 
@@ -129,27 +182,8 @@ namespace Teatro.Windows
                     distribucion = new Distribucion();
                 }
                 distribucion.NombreDistribucion = txtDistribucion.Text;
-                distribucion.DistribucionUbicacion.Clear();
-                Ubicacion ubicacion = new Ubicacion()
-                {
-                    UbicacionId = 1
-                };
-                DistribucionUbicacion d = new DistribucionUbicacion();
-                d.Distribucion = distribucion;
-                d.Ubicacion = ubicacion;
-                d.Precio = decimal.Parse(txtButacas.Text);
-                distribucion.DistribucionUbicacion.Add(d);
-
-                ubicacion = new Ubicacion()
-                {
-                    UbicacionId = 2
-                };
-                d = new DistribucionUbicacion();
-                d.Distribucion = distribucion;
-                d.Ubicacion = ubicacion;
-                d.Precio = decimal.Parse(txtPalcos.Text);
-                distribucion.DistribucionUbicacion.Add(d);
-
+                distribucion.DistribucionLocalidad.Clear();
+                distribucion.DistribucionLocalidad = DistribucionLocalidades;
 
 
                 if (ValidarObjeto())
@@ -190,6 +224,8 @@ namespace Teatro.Windows
             txtPalcos.Clear();
             txtDistribucion.Focus();
             distribucion = null;
+            dgvDatos.Rows.Clear();
+            cmbFila.SelectedIndex = 0;
         }
 
         private IServicioDistribuciones servicio;
@@ -210,6 +246,95 @@ namespace Teatro.Windows
             InicializarControles();
             DialogResult = DialogResult.Cancel;
 
+        }
+        private IServicioLocalidades servicioLocalidades = new ServicioLocalidades();
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            DistribucionLocalidad distribucionLocalidad = new DistribucionLocalidad();
+            if (ValidarPrecio())
+            {
+                distribucionLocalidad.Precio =decimal.Parse(txtButacas.Text);
+                int fila = cmbFila.SelectedIndex;
+                switch (fila)
+                {
+                    case 0:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila+1);
+                        break;
+                    case 1:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 2:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 3:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 4:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 5:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 6:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 7:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 8:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 9:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 10:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 11:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 12:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 13:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 14:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 15:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 16:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 17:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 18:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    case 19:
+                        distribucionLocalidad.Localidades = servicioLocalidades.GetLista(fila + 1);
+                        break;
+                    default:
+                        break;
+                }
+                CargarGrilla(distribucionLocalidad);
+            }
+        }
+
+        private bool ValidarPrecio()
+        {
+            errorProvider1.Clear();
+            bool valido = true;
+            decimal precio;
+            if (!decimal.TryParse(txtButacas.Text,out precio))
+            {
+                valido = false;
+                errorProvider1.SetError(txtButacas,"Debe ingresar un precio valido");
+            }
+            return valido;
         }
     }
 }

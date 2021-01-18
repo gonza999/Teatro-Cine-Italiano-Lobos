@@ -33,9 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.cmnPlanta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnUbicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -45,6 +42,10 @@
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
+            this.cmnPlanta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnUbicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnFila = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +68,8 @@
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cmnPlanta,
             this.cmnNumero,
-            this.cmnUbicacion});
+            this.cmnUbicacion,
+            this.cmnFila});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 25);
             this.dgvDatos.MultiSelect = false;
@@ -90,27 +92,6 @@
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatos.Size = new System.Drawing.Size(775, 479);
             this.dgvDatos.TabIndex = 12;
-            // 
-            // cmnPlanta
-            // 
-            this.cmnPlanta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnPlanta.HeaderText = "Planta";
-            this.cmnPlanta.Name = "cmnPlanta";
-            this.cmnPlanta.ReadOnly = true;
-            // 
-            // cmnNumero
-            // 
-            this.cmnNumero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnNumero.HeaderText = "Numero";
-            this.cmnNumero.Name = "cmnNumero";
-            this.cmnNumero.ReadOnly = true;
-            // 
-            // cmnUbicacion
-            // 
-            this.cmnUbicacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnUbicacion.HeaderText = "Ubicacion";
-            this.cmnUbicacion.Name = "cmnUbicacion";
-            this.cmnUbicacion.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -195,6 +176,34 @@
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
+            // cmnPlanta
+            // 
+            this.cmnPlanta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnPlanta.HeaderText = "Planta";
+            this.cmnPlanta.Name = "cmnPlanta";
+            this.cmnPlanta.ReadOnly = true;
+            // 
+            // cmnNumero
+            // 
+            this.cmnNumero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnNumero.HeaderText = "Numero";
+            this.cmnNumero.Name = "cmnNumero";
+            this.cmnNumero.ReadOnly = true;
+            // 
+            // cmnUbicacion
+            // 
+            this.cmnUbicacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnUbicacion.HeaderText = "Ubicacion";
+            this.cmnUbicacion.Name = "cmnUbicacion";
+            this.cmnUbicacion.ReadOnly = true;
+            // 
+            // cmnFila
+            // 
+            this.cmnFila.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnFila.HeaderText = "Fila";
+            this.cmnFila.Name = "cmnFila";
+            this.cmnFila.ReadOnly = true;
+            // 
             // frmLocalidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,9 +230,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnPlanta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnNumero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnUbicacion;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -233,5 +239,9 @@
         private System.Windows.Forms.ToolStripButton tsbActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnPlanta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnNumero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnUbicacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnFila;
     }
 }

@@ -75,6 +75,7 @@ namespace Teatro.Windows
             r.Cells[cmnPlanta.Index].Value = localidad.Planta.NombrePlanta;
             r.Cells[cmnNumero.Index].Value = localidad.Numero;
             r.Cells[cmnUbicacion.Index].Value = localidad.Ubicacion.NombreUbicacion;
+            r.Cells[cmnFila.Index].Value = localidad.Fila;
             r.Tag = localidad;
         }
 

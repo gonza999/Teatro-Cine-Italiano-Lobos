@@ -15,6 +15,7 @@ namespace Teatro.BussinesLayer.Entidades
 
         public Ubicacion Ubicacion { get; set; }
 
+        public int Fila { get; set; }
         public object Clone()
         {
            return this.MemberwiseClone();
