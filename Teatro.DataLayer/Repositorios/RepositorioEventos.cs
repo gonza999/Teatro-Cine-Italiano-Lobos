@@ -150,7 +150,7 @@ namespace Teatro.DataLayer.Repositorios
             evento.Distribucion= repositorioDistribuciones.GetDistribucionPorId(reader.GetInt32(7));
             return evento;
         }
-
+        
         public Evento GetEventoPorId(int id)
         {
             Evento evento = null;

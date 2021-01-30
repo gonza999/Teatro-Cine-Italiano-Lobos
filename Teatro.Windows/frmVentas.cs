@@ -102,6 +102,7 @@ namespace Teatro.Windows
                 ubicacion = (Ubicacion)cmbUbicaciones.SelectedItem;
                 Helper.CargarLocalidadComboBox(ref cmbLocalidades,ubicacion);
                 localidad =(Localidad) cmbLocalidades.SelectedItem;
+                MostrarPrecio(localidad);
                 VerificarOcupado();
             }
             else
@@ -111,9 +112,29 @@ namespace Teatro.Windows
             }
         }
 
+        private void MostrarPrecio(Localidad localidad)
+        {
+            foreach (var dl in evento.Distribucion.DistribucionLocalidad)
+            {
+                //if (dl.Localidades.Contains(localidad))
+                //{
+                //    txtImporte.Text = dl.Precio.ToString();
+                //}
+                foreach (var l in dl.Localidades)
+                {
+                    if (l.LocalidadId==localidad.LocalidadId)
+                    {
+                        txtImporte.Text = dl.Precio.ToString();
+
+                    }
+                }
+            }
+        }
+
         private void cmbLocalidades_SelectedValueChanged(object sender, EventArgs e)
         {
             localidad = (Localidad)cmbLocalidades.SelectedItem;
+            MostrarPrecio(localidad);
             VerificarOcupado();
         }
         private IServicioDistribuciones servicioDistribuciones;
@@ -132,21 +153,21 @@ namespace Teatro.Windows
                     lblOcupado.Text = "DESOCUPADO";
                     lblOcupado.BackColor = Color.LightBlue;
                     txtImporte.Enabled = true;
-                    servicioDistribuciones = new ServicioDistribuciones();
-                    var listaDistribuciones = servicioDistribuciones.GetLista();
-                    foreach (var d in listaDistribuciones)
-                    {
-                        if (d.DistribucionId==evento.Distribucion.DistribucionId)
-                        {
-                            foreach (var du in d.DistribucionLocalidad)
-                            {
-                                //if (du.Ubicacion.UbicacionId==ubicacion.UbicacionId)
-                                //{
-                                //    txtImporte.Text =du.Precio.ToString();
-                                //}
-                            }
-                        }
-                    }
+                    //servicioDistribuciones = new ServicioDistribuciones();
+                    //var listaDistribuciones = servicioDistribuciones.GetLista();
+                    //foreach (var d in listaDistribuciones)
+                    //{
+                    //    if (d.DistribucionId==evento.Distribucion.DistribucionId)
+                    //    {
+                    //        foreach (var du in d.DistribucionLocalidad)
+                    //        {
+                    //            if (du.Ubicacion.UbicacionId == ubicacion.UbicacionId)
+                    //            {
+                    //                txtImporte.Text = du.Precio.ToString();
+                    //            }
+                    //        }
+                    //    }
+                    //}
                     cmbFormaPago.Enabled = true;
                 }
                 foreach (var t in listaTickets)

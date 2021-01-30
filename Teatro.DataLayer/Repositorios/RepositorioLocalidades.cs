@@ -246,7 +246,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId,Fila " +
                     "FROM Localidades WHERE UbicacionId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion);
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id",ubicacion.UbicacionId);
                 var reader = comando.ExecuteReader();
                 while (reader.Read())
@@ -271,7 +271,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 var cadenaDeComando = "SELECT LocalidadId,PlantaId,Numero,UbicacionId,Fila " +
                     "FROM Localidades WHERE Fila=@fila AND UbicacionId=1";
-                var comando = new SqlCommand(cadenaDeComando, conexion);
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@fila", fila);
                 var reader = comando.ExecuteReader();
                 while (reader.Read())

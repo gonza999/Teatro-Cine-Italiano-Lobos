@@ -83,7 +83,7 @@ namespace Teatro.ServiceLayer.Servicios
                 throw new Exception(e.Message);
             }
         }
-
+        IServicioDistribuciones servicioDistribuciones = new ServicioDistribuciones();
         public List<Evento> GetLista()
         {
             try
@@ -94,6 +94,10 @@ namespace Teatro.ServiceLayer.Servicios
                 repositorioDistribuciones = new RepositorioDistribuciones(conexion.AbrirConexion());
                 repositorio = new RepositorioEventos(conexion.AbrirConexion(), repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones);
                 var lista = repositorio.GetLista();
+                foreach (var e in lista)
+                {
+                    e.Distribucion = servicioDistribuciones.GetDistribucionPorId(e.Distribucion.DistribucionId);
+                }
                 conexion.CerrarConexion();
                 return lista;
             }
