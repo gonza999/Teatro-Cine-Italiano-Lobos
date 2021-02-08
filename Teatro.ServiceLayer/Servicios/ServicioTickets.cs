@@ -20,8 +20,17 @@ namespace Teatro.ServiceLayer.Servicios
         private IRepositorioLocalidades repositorioLocalidades;
         private IRepositorioFormasPagos repositorioFormasPagos;
         private IRepositorioFormasVentas repositorioFormasVentas;
+        private IRepositorioVentasTickets repositorioVentasTickets;
         private SqlTransaction transaction;
 
+        public ServicioTickets(SqlTransaction transaction)
+        {
+            this.transaction = transaction;
+        }
+        public ServicioTickets()
+        {
+
+        }
         public void AnularTicket(int ticketId)
         {
             try
@@ -50,6 +59,31 @@ namespace Teatro.ServiceLayer.Servicios
             }
             catch (Exception e)
             {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void BorrarPorHorario(Horario horario)
+        {
+            try
+            {
+                conexion = new ConexionBD();
+                SqlConnection cn = conexion.AbrirConexion();
+                transaction = cn.BeginTransaction();
+                repositorioVentasTickets = new RepositorioVentasTickets(cn,transaction);
+                repositorio = new RepositorioTickets(cn,transaction);
+                List<Ticket> lista = repositorio.GetLista(horario);
+                foreach (var t in lista)
+                {
+                    repositorioVentasTickets.Borrar(t.TicketId);
+                }
+                repositorio.BorrarPorHorario(horario.HorarioId);
+                transaction.Commit();
+                conexion.CerrarConexion();
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
                 throw new Exception(e.Message);
             }
         }

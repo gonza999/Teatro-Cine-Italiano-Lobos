@@ -20,5 +20,7 @@ namespace Teatro.DataLayer.Facades
         Ticket GetTicketPorId(int id);
         void AnularTicket(int ticketId);
         List<Ticket> GetLista(List<Horario> horarios);
+        void BorrarPorHorario(int id);
+        List<Ticket> GetLista(Horario horario);
     }
 }

@@ -19,5 +19,6 @@ namespace Teatro.ServiceLayer.Facades
         void Guardar(Ticket ticket);
         void AnularTicket(int ticketId);
         List<Ticket> GetLista(List<Horario> horarios);
+        void BorrarPorHorario(Horario horario);
     }
 }

@@ -45,7 +45,7 @@ namespace Teatro.DataLayer.Repositorios
             try
             {
                 var cadenaDeComando = "DELETE Horarios WHERE HorarioId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion);
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 comando.ExecuteNonQuery();
             }

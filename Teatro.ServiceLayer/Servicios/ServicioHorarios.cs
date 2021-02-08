@@ -20,22 +20,29 @@ namespace Teatro.ServiceLayer.Servicios
         private IRepositorioDistribuciones repositorioDistribuciones;
         private IRepositorioClasificaciones repositorioClasificaciones;
         private IRepositorioTipoEventos repositorioTipoEventos;
+        private IServicioTickets servicioTickets;
         private SqlTransaction transaction;
         public ServicioHorarios()
         {
 
         }
-        public void Borrar(int id)
+        public void Borrar(Horario horario)
         {
             try
             {
                 conexion = new ConexionBD();
-                repositorio = new RepositorioHorarios(conexion.AbrirConexion());
-                repositorio.Borrar(id);
+                SqlConnection cn = conexion.AbrirConexion();
+                transaction = cn.BeginTransaction();
+                servicioTickets = new ServicioTickets(transaction);
+                repositorio = new RepositorioHorarios(cn,transaction);
+                servicioTickets.BorrarPorHorario(horario);
+                repositorio.Borrar(horario.HorarioId);
+                transaction.Commit();
                 conexion.CerrarConexion();
             }
             catch (Exception e)
             {
+                transaction.Rollback();
                 throw new Exception(e.Message);
             }
         }

@@ -42,17 +42,11 @@ namespace Teatro.DataLayer.Repositorios
         {
             try
             {
-                var cadenaDeComando = "SELECT UbicacionId FROM DistribucionesLocalidades WHERE UbicacionId=@id";
+                var cadenaDeComando = "SELECT UbicacionId FROM Localidades WHERE UbicacionId=@id";
                 var comando = new SqlCommand(cadenaDeComando, cn);
                 comando.Parameters.AddWithValue("@id", ubicacion.UbicacionId);
                 var reader = comando.ExecuteReader();
-                if (!reader.HasRows)
-                {
-                     cadenaDeComando = "SELECT UbicacionId FROM Localidades WHERE UbicacionId=@id";
-                     comando = new SqlCommand(cadenaDeComando, cn);
-                    comando.Parameters.AddWithValue("@id", ubicacion.UbicacionId);
-                     reader = comando.ExecuteReader();
-                }
+              
                 return reader.HasRows;
             }
             catch (Exception e)

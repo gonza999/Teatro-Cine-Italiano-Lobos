@@ -24,7 +24,18 @@ namespace Teatro.DataLayer.Repositorios
 
         public void Borrar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var cadenaDeComando = "DELETE VentasTicket WHERE TicketId=@id";
+                var comando = new SqlCommand(cadenaDeComando,cn,transaction);
+                comando.Parameters.AddWithValue("@id",id);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool EstaRelacionado(Venta venta, Ticket ticket)

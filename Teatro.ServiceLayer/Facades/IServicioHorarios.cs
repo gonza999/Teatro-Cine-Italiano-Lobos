@@ -13,7 +13,7 @@ namespace Teatro.ServiceLayer.Facades
         List<Horario> GetLista(Evento evento);
 
         void Guardar(Horario horario);
-        void Borrar(int id);
+        void Borrar(Horario horario);
         bool Existe(Horario horario);
         bool EstaRelacionado(Horario horario);
         //List<Horario> BuscarHorario(string horario);

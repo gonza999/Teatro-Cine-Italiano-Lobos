@@ -9,7 +9,7 @@ using Teatro.DataLayer.Facades;
 
 namespace Teatro.DataLayer.Repositorios
 {
-    public class RepositorioTickets:IRepositorioTickets
+    public class RepositorioTickets : IRepositorioTickets
     {
         private readonly SqlConnection conexion;
         private IRepositorioLocalidades repositorioLocalidades;
@@ -30,8 +30,8 @@ namespace Teatro.DataLayer.Repositorios
         }
 
         public RepositorioTickets(SqlConnection cn, IRepositorioLocalidades repositorioLocalidades,
-            IRepositorioHorarios repositorioHorarios,IRepositorioFormasPagos repositorioFormasPagos,
-            IRepositorioFormasVentas repositorioFormasVentas,SqlTransaction transaction)
+            IRepositorioHorarios repositorioHorarios, IRepositorioFormasPagos repositorioFormasPagos,
+            IRepositorioFormasVentas repositorioFormasVentas, SqlTransaction transaction)
         {
             conexion = cn;
             this.transaction = transaction;
@@ -142,16 +142,16 @@ namespace Teatro.DataLayer.Repositorios
         {
             Ticket ticket = new Ticket();
             ticket.TicketId = reader.GetInt32(0);
-            repositorioClasificaciones = new RepositorioClasificaciones(conexion,transaction);
-            repositorioTipoEventos = new RepositorioTipoEvento(conexion,transaction);
-            repositorioDistribuciones = new RepositorioDistribuciones(conexion,transaction);
-            repositorioEventos = new RepositorioEventos(conexion,repositorioTipoEventos,repositorioClasificaciones,repositorioDistribuciones,transaction);
-            repositorioHorarios = new RepositorioHorarios(conexion,repositorioEventos,transaction);
-            ticket.Horario =repositorioHorarios.GetHorarioPorId(reader.GetInt32(1));
+            repositorioClasificaciones = new RepositorioClasificaciones(conexion, transaction);
+            repositorioTipoEventos = new RepositorioTipoEvento(conexion, transaction);
+            repositorioDistribuciones = new RepositorioDistribuciones(conexion, transaction);
+            repositorioEventos = new RepositorioEventos(conexion, repositorioTipoEventos, repositorioClasificaciones, repositorioDistribuciones, transaction);
+            repositorioHorarios = new RepositorioHorarios(conexion, repositorioEventos, transaction);
+            ticket.Horario = repositorioHorarios.GetHorarioPorId(reader.GetInt32(1));
             ticket.Importe = reader.GetDecimal(2);
-            repositorioPlantas = new RepositorioPlantas(conexion,transaction);
-            repositorioUbicaciones = new RepositorioUbicaciones(conexion,transaction);
-            repositorioLocalidades = new RepositorioLocalidades(conexion,repositorioPlantas,repositorioUbicaciones, transaction);
+            repositorioPlantas = new RepositorioPlantas(conexion, transaction);
+            repositorioUbicaciones = new RepositorioUbicaciones(conexion, transaction);
+            repositorioLocalidades = new RepositorioLocalidades(conexion, repositorioPlantas, repositorioUbicaciones, transaction);
             ticket.Localidad = repositorioLocalidades.GetLocalidadPorId(reader.GetInt32(3));
             ticket.FechaVenta = reader.GetDateTime(4);
             repositorioFormasPagos = new RepositorioFormasPagos(conexion, transaction);
@@ -169,7 +169,7 @@ namespace Teatro.DataLayer.Repositorios
             {
                 var cadenaDeComando = "SELECT TicketId,HorarioId,Importe,LocalidadId, " +
                     "FechaVenta,FormaPagoId,FormaVentaId,Anulada FROM Tickets WHERE TicketId=@id";
-                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
+                var comando = new SqlCommand(cadenaDeComando, conexion, transaction);
                 comando.Parameters.AddWithValue("@id", id);
                 var reader = comando.ExecuteReader();
                 if (reader.HasRows)
@@ -192,29 +192,29 @@ namespace Teatro.DataLayer.Repositorios
 
             //if (ticket.TicketId == 0)
             //{
-                try
-                {
-                    var cadenaDeComando = "INSERT INTO Tickets (HorarioId,Importe,LocalidadId,FechaVenta," +
-                        "FormaPagoId,FormaVentaId,Anulada) " +
-                        "VALUES (@horario,@importe,@localidad,@fecha,@pago,@venta,@anulada)";
-                    var comando = new SqlCommand(cadenaDeComando, conexion, transaction);
-                    comando.Parameters.AddWithValue("@horario", ticket.Horario.HorarioId);
-                    comando.Parameters.AddWithValue("@importe", ticket.Importe);
-                    comando.Parameters.AddWithValue("@localidad", ticket.Localidad.LocalidadId);
-                    comando.Parameters.AddWithValue("@fecha", ticket.FechaVenta);
-                    comando.Parameters.AddWithValue("@pago", ticket.FormaPago.FormaPagoId);
-                    comando.Parameters.AddWithValue("@venta", ticket.FormaVenta.FormaVentaId);
-                    comando.Parameters.AddWithValue("@anulada", ticket.Anulada);
-                    comando.ExecuteNonQuery();
-                    cadenaDeComando = "SELECT @@Identity";
-                    comando = new SqlCommand(cadenaDeComando, conexion, transaction);
-                    ticket.TicketId = (int)(decimal)comando.ExecuteScalar();
-                }
-                catch (Exception e)
-                {
+            try
+            {
+                var cadenaDeComando = "INSERT INTO Tickets (HorarioId,Importe,LocalidadId,FechaVenta," +
+                    "FormaPagoId,FormaVentaId,Anulada) " +
+                    "VALUES (@horario,@importe,@localidad,@fecha,@pago,@venta,@anulada)";
+                var comando = new SqlCommand(cadenaDeComando, conexion, transaction);
+                comando.Parameters.AddWithValue("@horario", ticket.Horario.HorarioId);
+                comando.Parameters.AddWithValue("@importe", ticket.Importe);
+                comando.Parameters.AddWithValue("@localidad", ticket.Localidad.LocalidadId);
+                comando.Parameters.AddWithValue("@fecha", ticket.FechaVenta);
+                comando.Parameters.AddWithValue("@pago", ticket.FormaPago.FormaPagoId);
+                comando.Parameters.AddWithValue("@venta", ticket.FormaVenta.FormaVentaId);
+                comando.Parameters.AddWithValue("@anulada", ticket.Anulada);
+                comando.ExecuteNonQuery();
+                cadenaDeComando = "SELECT @@Identity";
+                comando = new SqlCommand(cadenaDeComando, conexion, transaction);
+                ticket.TicketId = (int)(decimal)comando.ExecuteScalar();
+            }
+            catch (Exception e)
+            {
 
-                    throw new Exception(e.Message);
-                }
+                throw new Exception(e.Message);
+            }
             //}
             //else
             //{
@@ -244,7 +244,7 @@ namespace Teatro.DataLayer.Repositorios
             //}
         }
 
-        public bool Existe(Localidad localidad,Horario horario)
+        public bool Existe(Localidad localidad, Horario horario)
         {
             try
             {
@@ -252,7 +252,7 @@ namespace Teatro.DataLayer.Repositorios
                 string cadenaComando = "SELECT TicketId FROM Tickets WHERE LocalidadId=@id AND HorarioId=@horario AND Anulada=0";
                 comando = new SqlCommand(cadenaComando, conexion, transaction);
                 comando.Parameters.AddWithValue("@id", localidad.LocalidadId);
-                comando.Parameters.AddWithValue("@horario",horario.HorarioId);
+                comando.Parameters.AddWithValue("@horario", horario.HorarioId);
                 SqlDataReader reader = comando.ExecuteReader();
                 return reader.HasRows;
             }
@@ -289,15 +289,57 @@ namespace Teatro.DataLayer.Repositorios
                                "FechaVenta,FormaPagoId,FormaVentaId,Anulada FROM Tickets WHERE HorarioId IN (" +
                                "SELECT HorarioId FROM Horarios WHERE HorarioId=@id)";
                     var comando = new SqlCommand(cadenaDeComando, conexion, transaction);
-                    comando.Parameters.AddWithValue("@id",h.HorarioId);
+                    comando.Parameters.AddWithValue("@id", h.HorarioId);
                     var reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
                         Ticket ticket = ConstruirTicket(reader);
                         lista.Add(ticket);
                     }
-                    reader.Close(); 
+                    reader.Close();
                 }
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void BorrarPorHorario(int id)
+        {
+            try
+            {
+                var cadenaDeComando = "DELETE Tickets WHERE HorarioId=@id";
+                var comando = new SqlCommand(cadenaDeComando, conexion,transaction);
+                comando.Parameters.AddWithValue("@id", id);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
+
+        public List<Ticket> GetLista(Horario horario)
+        {
+            List<Ticket> lista = new List<Ticket>();
+            try
+            {
+                var cadenaDeComando = "SELECT TicketId,HorarioId,Importe,LocalidadId, " +
+                           "FechaVenta,FormaPagoId,FormaVentaId,Anulada FROM Tickets WHERE HorarioId IN (" +
+                           "SELECT HorarioId FROM Horarios WHERE HorarioId=@id)";
+                var comando = new SqlCommand(cadenaDeComando, conexion, transaction);
+                comando.Parameters.AddWithValue("@id", horario.HorarioId);
+                var reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    Ticket ticket = ConstruirTicket(reader);
+                    lista.Add(ticket);
+                }
+                reader.Close();
                 return lista;
             }
             catch (Exception e)

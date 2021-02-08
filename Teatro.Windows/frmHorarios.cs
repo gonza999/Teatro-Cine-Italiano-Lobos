@@ -101,7 +101,7 @@ namespace Teatro.Windows
                     {
                         if (!servicio.EstaRelacionado(horario))
                         {
-                            servicio.Borrar(horario.HorarioId);
+                            servicio.Borrar(horario);
                             dgvDatos.Rows.Remove(r);
                             Helper.MensajeBox("Registro borrado", Tipo.Success);
                         }

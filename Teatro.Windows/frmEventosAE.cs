@@ -328,7 +328,7 @@ namespace Teatro.Windows
                 DataGridViewRow r = dgvDatos.Rows[e.RowIndex];
                 Horario horario =(Horario) r.Tag;
                 dgvDatos.Rows.RemoveAt(e.RowIndex);
-                servicioHorarios.Borrar(horario.HorarioId);
+                servicioHorarios.Borrar(horario);
                 listaHorarios.Remove(horario);
                 if (evento!=null)
                 {
