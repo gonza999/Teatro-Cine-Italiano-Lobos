@@ -22,12 +22,20 @@ namespace Teatro.Windows
             InitializeComponent();
         }
 
+        public frmHorarios(Evento evento)
+        {
+            InitializeComponent();
+            this.evento = evento;
+        }
+
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
             Close();
         }
         private IServicioHorarios servicio;
         private List<Horario> lista = new List<Horario>();
+        private Evento evento;
+
         private void frmHorarios_Load(object sender, EventArgs e)
         {
             Actualizar();
@@ -37,7 +45,14 @@ namespace Teatro.Windows
             try
             {
                 servicio = new ServicioHorarios();
-                lista = servicio.GetLista();
+                if (evento==null)
+                {
+                    lista = servicio.GetLista();
+                }
+                else
+                {
+                    lista = servicio.GetLista(evento);
+                }
                 MostrarDatosEnGrilla();
             }
             catch (Exception ex)

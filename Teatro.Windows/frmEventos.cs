@@ -77,6 +77,7 @@ namespace Teatro.Windows
             r.Cells[cmnSuspendido.Index].Value = evento.Suspendido;
             r.Cells[cmnTipoEvento.Index].Value = evento.TipoEvento.NombreTipoEvento;
             r.Cells[cmnDistribucion.Index].Value = evento.Distribucion.NombreDistribucion;
+            r.Cells[cmnHorario.Index].Value = new Button().Text = "Horarios";
             r.Tag = evento;
         }
 
@@ -187,7 +188,7 @@ namespace Teatro.Windows
             servicioHorarios = new ServicioHorarios();
             var listaHorarios = servicioHorarios.GetLista(evento);
             evento.Horarios = listaHorarios;
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 5)
             {
 
                 DialogResult dr = MessageBox.Show(this, $"¿Desea anular permanentemente el evento {evento.NombreEvento}?",
@@ -216,6 +217,12 @@ namespace Teatro.Windows
                     servicio.AnularEvento(evento.EventoId);
 
                 }
+            }
+            if (e.ColumnIndex==4)
+            {
+                frmHorarios frmHorarios = new frmHorarios(evento);
+                frmHorarios.Text = $"Horarios de {evento.NombreEvento}";
+                frmHorarios.ShowDialog(this);
             }
         }
     }
